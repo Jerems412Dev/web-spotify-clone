@@ -1,1 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+    background-color: black;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gotham','Gotham-Bold';
+    font-weight: 300;
+    display: flex;
+    color: white;
+}
