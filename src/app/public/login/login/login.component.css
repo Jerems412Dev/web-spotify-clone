@@ -1,3 +1,212 @@
-h2 {
-    color: white;
+.container-login {
+    position: relative;
+    display: block;
+    flex-wrap: nowrap;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background: linear-gradient(rgba(255, 255, 255, 0.1) 0%, rgb(0, 0, 0) 100%);;
+    box-sizing: border-box;
+    padding-bottom: 2%;
+}
+
+.navlogin {
+    display: flex;
+    width: 100%;
+    height: 15vh;
+    background-color: black;
+    align-items: center;
+    margin-bottom: 3%;
+}
+
+.navlogin svg {
+    margin-left: 2%;
+}
+
+.content-login {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form {
+    width: 55%;
+    padding: 2%;
+    margin: auto;
+    background-color: black;
+    text-align: center;
+    border-radius: 6px;
+    margin-bottom: 6%;
+}
+
+.form h1 {
+    font-size: 3rem;
+    margin: 48px 0px;
+}
+
+.login-with {
+    margin: 48px 0px;
+}
+
+.login-with a {
+    width: 45%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1%;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: bold;
+    font-size: 1rem;
+    letter-spacing: normal;
+    flex-direction: row;
+    align-items: center;
+    padding: 14px;
+    border: .01rem solid rgba(255, 255, 255, 0.646);
+    border-radius: 500px;
+    text-align: center;
+}
+
+.login-with a:hover {
+    border: .06rem solid white;
+}
+
+.form hr {
+    border-width: 1px medium medium;
+    border-style: solid none none;
+    border-color: rgb(41, 41, 41) currentcolor currentcolor;
+    margin: 48px 0px;
+}
+
+.forminput {
+    display: block;
+    width: 100%;
+}
+
+.forminput .div-input {
+    width: 100%;
+    margin-bottom: 1.5%;
+}
+
+.forminput .div-input-text {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: justify;
+}
+
+.forminput .div-input-text .input {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 0.875rem;
+    font-weight: 700;
+    font-family: CircularSp,CircularSp-Arab,CircularSp-Hebr,CircularSp-Cyrl,CircularSp-Grek,CircularSp-Deva,sans-serif,Helvetica,Arial,sans-serif;
+    -moz-box-align: center;
+    align-items: center;
+    display: flex;
+    inline-size: 100%;
+    padding-block-end: 8px;
+    margin-top: 10px;
+}
+
+.forminput .div-input-text .input input {
+    appearance: none;
+    background-image: none;
+    border: 0px;
+    display: block;
+    font-size: 1rem;
+    font-weight: 400;
+    font-family: CircularSp,CircularSp-Arab,CircularSp-Hebr,CircularSp-Cyrl,CircularSp-Grek,CircularSp-Deva,sans-serif,Helvetica,Arial,sans-serif;
+    transition: box-shadow 0.1s ease-in-out 0s, color 0.1s ease-in-out 0s;
+    inline-size: 100%;
+    box-sizing: border-box;
+    margin-block: 0px;
+    border-radius: 4px;
+    padding-inline: 14px;
+    padding-block-start: 8px;
+    padding-block-end: 8px;
+    min-block-size: 48px;
+    background-color: transparent;
+    box-shadow: inset 0 0 0 1px #878787;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.forminput .div-input-text .input input.custom-outline:focus  {
+    border: 7px solid whitesmoke;
+}
+
+.forminput .div-input-text label {
+    font-size: 0.875rem;
+    font-weight: 700;
+    font-family: CircularSp,CircularSp-Arab,CircularSp-Hebr,CircularSp-Cyrl,CircularSp-Grek,CircularSp-Deva,sans-serif,Helvetica,Arial,sans-serif;
+}
+
+.forminput .div-input-checkbox {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: justify;
+    font-size: 0.875rem;
+    margin-bottom: 4%;
+}
+
+.forminput .div-input-submit {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-bottom: 4%;
+}
+
+.forminput .div-input-submit input {
+   width: 100%;
+   border: 0;
+   border-radius: 400px;
+   padding-inline: 14px;
+   padding-block-start: 8px;
+   padding-block-end: 8px;
+   min-block-size: 48px;
+   font-size: 1rem;
+   font-weight: 700;
+   background-color: #1ed760;
+}
+
+.forminput .div-input-submit input:hover {
+    transform: scale(1.07);
+    cursor: pointer;
+}
+
+.div-input-link {
+    margin-bottom: 4%;
+}
+
+.div-input-link a {
+    text-decoration: underline;
+    color: inherit;
+}
+
+.div-input-link a:hover {
+    color: #1ed760;
+}
+
+.div-input-link span {
+    color: rgba(255, 255, 255, 0.646);
+}
+
+.content-login footer span {
+    box-sizing: border-box;
+    margin-block: 0px;
+    font-size: 0.6875rem;
+    font-weight: 400;
+    color: inherit;
+}
+
+.content-login footer a {
+    text-decoration: underline;
+    color: inherit;
+}
+
+.content-login footer a:hover {
+    color: #1ed760;
 }

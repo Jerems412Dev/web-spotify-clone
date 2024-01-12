@@ -1,13 +1,49 @@
-* {
-    background-color: black;
-}
-
 body {
+    background-color: black;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Gotham','Gotham-Bold';
-    font-weight: 300;
-    display: flex;
+    font-family: CircularSp,CircularSp-Arab,CircularSp-Hebr,CircularSp-Cyrl,CircularSp-Grek,CircularSp-Deva,sans-serif,Helvetica,Arial,sans-serif;
     color: white;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: .5px;
 }
+
+/*scrollbar*/
+
+/* For WebKit (Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 15px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: black;
+    opacity: .7;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: rgb(105, 105, 105);
+    opacity: .7;
+  }
+  
+  /* For Microsoft Edge */
+  /* Notez que Edge utilise la propriété -ms-overflow-style */
+  * {
+    -ms-overflow-style: none;
+  }
+  
+  *::-ms-scrollbar {
+    width: 15px;
+  }
+  
+  *::-ms-scrollbar-track {
+    background-color: black;
+    opacity: .7;
+  }
+  
+  *::-ms-scrollbar-thumb {
+    background-color: rgb(105, 105, 105);
+    opacity: .7;
+  }
+  
