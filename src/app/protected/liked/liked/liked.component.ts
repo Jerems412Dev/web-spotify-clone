@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-liked',
+  standalone: true,
   templateUrl: './liked.component.html',
   styleUrls: ['./liked.component.css']
 })
