@@ -1,0 +1,30 @@
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: transparent;
+    gap: 7px;
+}
+
+.logo svg {
+    height: 25px;
+}
+
+.top {
+    background-color: #121212;
+    border-radius: 6px;
+}
+
+.bottom {
+    background-color: #121212;
+    border-radius: 6px;
+}
+
+ul {
+    list-style: none;
+}
+
+ul li a {
+    text-decoration: none;
+    color: inherit;
+}
