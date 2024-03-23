@@ -17,5 +17,6 @@
 }
 
 app-sidebar {
-    min-width: 23%;
+    min-width: 22.5%;
+    max-width: 22.5%;
 }
