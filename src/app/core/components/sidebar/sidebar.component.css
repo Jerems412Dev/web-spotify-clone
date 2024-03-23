@@ -3,7 +3,7 @@
     flex-direction: column;
     height: 100vh;
     background-color: transparent;
-    gap: 7px;
+    gap: 8px;
 }
 
 .logo svg {
@@ -13,6 +13,8 @@
 .top {
     background-color: #121212;
     border-radius: 6px;
+    width: 100%;
+    padding-top: 1%;
 }
 
 .bottom {
@@ -20,11 +22,21 @@
     border-radius: 6px;
 }
 
-ul {
+.top ul {
     list-style: none;
+    padding: 0;
+    padding-left: 1.1rem;
 }
 
-ul li a {
+.top ul li a {
     text-decoration: none;
-    color: inherit;
+    color: #a7a7a7;
+    font-weight: bold;
+    display: block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.top ul li a svg {
+    margin-bottom: -6px;
 }
