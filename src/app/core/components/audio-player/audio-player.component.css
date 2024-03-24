@@ -12,7 +12,7 @@
 img{
     height: 56px;
     border-radius: 4px;
-    margin-right: -22%;
+    margin-right: -9%;
 }
 
 .ionicon {
@@ -41,11 +41,11 @@ img{
     float: left;
     align-items: center;
     display: flex;
-    justify-content: space-between;
 }
 
 .left ul {
     list-style: none;
+    margin-right: 5%;
 }
 
 .left ul a {
@@ -78,16 +78,67 @@ img{
 
 .center .top {
     align-items: center;
+    display: flex;
+    justify-content: center;
+    gap: 22px;
+    margin-bottom: 1%;
 }
 
 .center .bottom {
     align-items: center;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.center input {
+    width: 60%;
+    border-radius: 3px;
+    height: 0.3em;
+    background-color: #5e5e5e;
+    -webkit-appearance: none;
+    outline: none;
+}
+
+.center input::-webkit-slider-thumb {
+    height: 0.3em;
+    background-color: white;
+    border: 0;
+    cursor: pointer;
+    border-radius: 3px;
+    height: inherit;
+}
+
+.center .bottom span {
+    color: #a7a7a7;
+    font-size: 12px;
+    font-weight: 554;
 }
 
 .right {
-    width: 22%;
+    width: 23%;
+    height: 100%;
     align-items: center;
+    text-align: center;
     display: flex;
-    justify-content: space-between;
-    gap: 13px;
+    justify-content: center;
+    gap: 14px;
+}
+
+.right input {
+    width: 34%;
+    border-radius: 3px;
+    height: 0.3em;
+    background-color: #5e5e5e;
+    -webkit-appearance: none;
+    outline: none;
+}
+
+.right input::-webkit-slider-thumb {
+    height: 0.3em;
+    background-color: white;
+    border: 0;
+    cursor: pointer;
+    border-radius: 3px;
+    height: inherit;
 }
