@@ -1,8 +1,93 @@
 .audioplayer {
     background-color: black;
     width: 100%;
-    height: 14vh;
+    height: 10vh;
     bottom: 0;
     position: fixed;
+    padding: 10px;
+    padding-left: 16px;
     display: flex;
+}
+
+img{
+    height: 56px;
+    border-radius: 4px;
+    margin-right: -22%;
+}
+
+.ionicon {
+    cursor: pointer;
+    transition: ease-in-out .3s;
+}
+
+.play {
+    cursor: pointer;
+    transition: ease-in-out .2s;
+}
+
+.play:hover {
+    transform: scale(1.2);
+}
+
+.ionicon:hover{
+    path {
+        fill: whitesmoke;
+    }
+}
+
+.left {
+    width: 22%;
+    height: 100%;
+    float: left;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.left ul {
+    list-style: none;
+}
+
+.left ul a {
+    text-decoration: none;
+    transition: ease-in-out .3s;
+    font-weight: 549;
+}
+
+.left ul a:hover {
+    text-decoration: underline;
+}
+
+.left ul li:first-child a {
+    color: whitesmoke;
+    font-size: 13px;
+}
+
+.left ul li:last-child a {
+    color: #a7a7a7;
+    font-size: 12px;
+}
+
+.center {
+    width: 53%;
+    height: 100%;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.center .top {
+    align-items: center;
+}
+
+.center .bottom {
+    align-items: center;
+}
+
+.right {
+    width: 22%;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    gap: 13px;
 }
