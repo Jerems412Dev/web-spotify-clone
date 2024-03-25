@@ -75,19 +75,19 @@ nav {
     transform: scale(1.05);
 }
 
-.navbar .right a:first-child {
+.navbar .right .first {
     background-color: whitesmoke;
     color: #242424;
 }
 
-.navbar .right a:nth-child(2) {
+.navbar .right .second {
     background-color: black;
     color: whitesmoke;
     display: flex;
     align-items: center;
 }
 
-.navbar .right a:nth-child(3) {
+.navbar .right .third {
     background-color: black;
     border-radius: 80px;
     padding: 4px;
