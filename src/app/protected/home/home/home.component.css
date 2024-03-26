@@ -11,7 +11,7 @@
 .right {
     display: block;
     background-color: #1f1f1f;
-    width: 77%;
+    width: 78%;
     min-height: 50vh;
     max-height: 88vh;
     border-radius: 6px;
@@ -19,8 +19,8 @@
 }
 
 app-sidebar {
-    min-width: 22.5%;
-    max-width: 22.5%;
+    min-width: 22%;
+    max-width: 22%;
 }
 
 app-navbar {

@@ -11,6 +11,8 @@ footer {
 
 .list {
     display: flex;
+    justify-content: space-between;
+    gap: 5%;
 }
 
 .list ul {
@@ -27,6 +29,7 @@ footer {
     color: #a7a7a7;
     transition: ease-in-out .3s;
     font-size: 15px;
+    white-space: nowrap;
 }
 
 .list ul a:hover {
