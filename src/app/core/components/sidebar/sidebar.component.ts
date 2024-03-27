@@ -20,7 +20,7 @@ export class SidebarComponent implements OnInit {
     return false;
   }
 
-  isActiveSearch() {
+  isActiveSearch(): boolean {
     if(this.router.url === '/search') {
       return true;
     }

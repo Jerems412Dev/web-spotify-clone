@@ -117,7 +117,7 @@
 .part-two  a {
     text-decoration: none;
     color: whitesmoke;
-    font-size: 13px;
+    font-size: .85rem;
     font-weight: 200;
     white-space: nowrap; 
     display: block;
@@ -169,7 +169,7 @@
     outline: none;
     color: #a7a7a7;
     font-weight: 600;
-    font-size: 13px;
+    font-size: .85rem;
 }
 
 .content-part-three {
@@ -205,7 +205,7 @@
 }
 
 .content-part-three ul li a ul li:first-child {
-    font-size: 15px;
+    font-size: .95rem;
     font-weight: 700;
     color: whitesmoke;
     margin-bottom: 4px;
@@ -213,7 +213,7 @@
 
 .content-part-three ul li a ul li:last-child {
     color: #a7a7a7;
-    font-size: 12.5px;
+    font-size: .825rem;
     font-weight: 550;
     margin-top: 4px;
 }

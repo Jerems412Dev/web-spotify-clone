@@ -69,12 +69,12 @@ img{
 
 .left ul li:first-child a {
     color: whitesmoke;
-    font-size: 13px;
+    font-size: 0.85rem;
 }
 
 .left ul li:last-child a {
     color: #a7a7a7;
-    font-size: 12px;
+    font-size: .8rem;
 }
 
 .center {
@@ -120,7 +120,7 @@ img{
 
 .center .bottom span {
     color: #a7a7a7;
-    font-size: 12px;
+    font-size: .8rem;
     font-weight: 554;
 }
 

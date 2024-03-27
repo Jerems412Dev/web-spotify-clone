@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { SqueletonComponent } from '../../../core/components/squeleton/squeleton.component';
 
 @Component({

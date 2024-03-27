@@ -29,8 +29,16 @@ app-navbar {
 }
 
 .right .content {
-    padding: 2%;
-    margin-top: 12%;
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
+.right .home {
+  margin-top: 11%;
+}
+
+.right .other {
+  margin-top: 6%;
 }
 
 /* scrollbar */
