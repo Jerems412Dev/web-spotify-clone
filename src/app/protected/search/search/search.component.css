@@ -1,5 +1,5 @@
 .browseAll h2 {
-    font-size: 21px;
+    font-size: 1.313rem;
     font-weight: 700;
 }
 
@@ -19,12 +19,11 @@
 .list a {
     display: block;
     text-decoration: none;
-    background-color: #dc148c;
     width: 15.5%;
-    height: 27vh;
+    height: 23vh;
     float: left;
     margin: 0 2.5% 2.5% 0;
-    border-radius: 5px;
+    border-radius: 7px;
     color: whitesmoke;
     font-size: 1.313rem;
     font-weight: 700;

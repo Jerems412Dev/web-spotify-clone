@@ -1,13 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, ContentChild, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css'],
   standalone: true,
-  imports: [CommonModule]
+  imports: [CommonModule,RouterLink]
 })
 export class SidebarComponent implements OnInit { 
 
