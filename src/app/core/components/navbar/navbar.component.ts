@@ -25,12 +25,7 @@ export class NavbarComponent implements OnInit {
   }
 
   hideDiv() {
-    if(this.clickbutton == false) {
-      this.clickbutton = !this.clickbutton;
-    }else {
-      this.showDiv = false;
-      this.clickbutton = !this.clickbutton;
-    }
+    this.showDiv = false;
   }
 
   ngOnInit() {

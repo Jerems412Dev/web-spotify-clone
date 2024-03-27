@@ -29,6 +29,15 @@ img{
     transform: scale(1.2);
 }
 
+.pause {
+    cursor: pointer;
+    transition: ease-in-out .2s;
+}
+
+.pause:hover {
+    transform: scale(1.2);
+}
+
 .ionicon:hover{
     path {
         fill: whitesmoke;
