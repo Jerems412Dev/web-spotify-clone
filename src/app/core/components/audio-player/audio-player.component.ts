@@ -126,8 +126,8 @@ export class AudioPlayerComponent implements OnInit {
 
   updatedRange() {
     if (!this.music?.nativeElement.paused) {
-      if (this.currentTime?.nativeElement && this.rangeInput?.nativeElement) {
-        this.currentTime.nativeElement.textContent = this.formatTime(this.rangeInput.nativeElement.value * this.music?.nativeElement.duration * 100);
+      if (this.music?.nativeElement && this.rangeInput?.nativeElement) {
+        this.music.nativeElement.currentTime = (this.music.nativeElement.duration || 0) * this.rangeInput?.nativeElement.value / 100;
       }
     }
   }
