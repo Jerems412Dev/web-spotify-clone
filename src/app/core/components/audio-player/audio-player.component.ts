@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
-import { UpdateAudioTimeDirective } from '../../directives/updateAudioTime.directive';
 
 @Component({
   selector: 'app-audio-player',
@@ -12,11 +11,10 @@ import { UpdateAudioTimeDirective } from '../../directives/updateAudioTime.direc
 export class AudioPlayerComponent implements OnInit {
   showPlay = false;
   @ViewChild('music') music: ElementRef | undefined;
-  /*@ViewChild('rangeInput') range: ElementRef | undefined;
-  @ViewChild('currentTime') currentTime: ElementRef | undefined;
-  @ViewChild('totalTime') totalTime: ElementRef | undefined;*/
-  intervalId: any;
-  isClicked: boolean = false;
+  @ViewChild('volume') volume: ElementRef | undefined;
+  isClickedLoop: boolean = false;
+  isClickedMute: boolean = false;
+  saveVolume: string = "";
 
   constructor() {}
 
@@ -57,11 +55,27 @@ export class AudioPlayerComponent implements OnInit {
     }
   }
 
+  endedMusic() {
+    this.showPlay = false;
+  }
+
   loopClick() {
-    this.isClicked = !this.isClicked;
+    this.isClickedLoop = !this.isClickedLoop;
     switch (this.music?.nativeElement.loop) {
       case false:
         this.music.nativeElement.loop = true;
+        break;
+      case true:
+        this.music.nativeElement.loop = false;
+        break;
+    }
+  }
+
+  muteVolumeClick() {
+    this.isClickedMute = !this.isClickedMute;
+    switch (this.music?.nativeElement.volume) {
+      case !"0":
+        this.music.nativeElement.volume = "0";
         break;
       case true:
         this.music.nativeElement.loop = false;
@@ -79,6 +93,27 @@ export class AudioPlayerComponent implements OnInit {
   isFocusOnTextInput(): boolean {
     const activeElement = document.activeElement;
     return activeElement?.tagName === 'INPUT' && (activeElement as HTMLInputElement).type === 'text';
+  }
+
+  volumeChange(event: Event) {
+    (this.music?.nativeElement) ? this.music.nativeElement.volume = (event.target as HTMLInputElement).value : null;
+    if(this.volume?.nativeElement.value != 0) {
+      this.isClickedMute = false;
+    }else {
+      this.isClickedMute = true;
+    }
+  }
+
+  blockVolume() {
+    this.isClickedMute = !this.isClickedMute;
+    if(this.music?.nativeElement.volume != "0"){
+      this.saveVolume = this.music?.nativeElement.volume;
+      (this.volume?.nativeElement) ? this.volume.nativeElement.value = 0 : null;
+      (this.music?.nativeElement.volume) ? this.music.nativeElement.volume = 0 : null;
+    }else{
+      (this.music.nativeElement) ? this.music.nativeElement.volume = this.saveVolume : null;
+      (this.volume?.nativeElement) ? this.volume.nativeElement.value = this.saveVolume : null;
+    }
   }
 
   ngOnInit() {
