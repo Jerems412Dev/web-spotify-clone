@@ -12,9 +12,14 @@ export class AudioPlayerComponent implements OnInit {
   showPlay = false;
   @ViewChild('music') music: ElementRef | undefined;
   @ViewChild('volume') volume: ElementRef | undefined;
+  @ViewChild('rangeInput') rangeInput: ElementRef | undefined;
+  @ViewChild('currentTime') currentTime: ElementRef | undefined;
+  @ViewChild('totalTime') totalTime: ElementRef | undefined;
+  intervalId: any;
   isClickedLoop: boolean = false;
   isClickedMute: boolean = false;
   saveVolume: string = "";
+  total = '04:09';
 
   constructor() {}
 
@@ -23,33 +28,11 @@ export class AudioPlayerComponent implements OnInit {
     this.playMusic();
   }
 
-  /*seekUpdate() {
-    if (!isNaN(this.music?.nativeElement.duration)) {
-      (this.currentTime?.nativeElement) ? this.currentTime.nativeElement.textContent = this.formatTime(this.music?.nativeElement.currentTime) : null;
-    }
-  }
-
-  loadeddata() {
-    if(this.range?.nativeElement) {
-      this.range.nativeElement.value = 0;
-    }
-    alert("oui");
-    (this.totalTime?.nativeElement) ? this.totalTime.nativeElement.innerText = this.formatTime(this.music?.nativeElement.duration) : null;
-  }
-
-  private formatTime(time: number): string {
-    const minutes = Math.floor(time / 60);
-    const seconds = Math.floor(time - minutes * 60);
-    return `${this.padZero(minutes)}:${this.padZero(seconds)}`;
-  }
-
-  private padZero(num: number): string {
-    return num < 10 ? `0${num}` : num.toString();
-  }*/
-
   playMusic() {
     if(this.showPlay) {
       this.music?.nativeElement.play();
+      this.loadTotalTime();
+      this.seekUpdate();
     }else {
       this.music?.nativeElement.pause();
     }
@@ -116,7 +99,40 @@ export class AudioPlayerComponent implements OnInit {
     }
   }
 
-  ngOnInit() {
+  formatTime(time: number): string {
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time - minutes * 60);
+    return `${this.padZero(minutes)}:${this.padZero(seconds)}`;
   }
 
+  padZero(num: number): string {
+    return num < 10 ? `0${num}` : num.toString();
+  }
+
+  loadTotalTime() {
+    this.total = this.formatTime(this.music?.nativeElement.duration);
+  }
+
+  seekUpdate() {
+    this.intervalId = setInterval(() => {
+      if (!this.music?.nativeElement.paused) {
+        if (this.currentTime?.nativeElement && this.rangeInput?.nativeElement) {
+          this.currentTime.nativeElement.textContent = this.formatTime(this.music?.nativeElement.currentTime);
+          this.rangeInput.nativeElement.value = (this.music?.nativeElement.currentTime / this.music?.nativeElement.duration * 100).toString();
+        }
+      }
+    }, 1000);
+  }
+
+  updatedRange() {
+    if (!this.music?.nativeElement.paused) {
+      if (this.currentTime?.nativeElement && this.rangeInput?.nativeElement) {
+        this.currentTime.nativeElement.textContent = this.formatTime(this.rangeInput.nativeElement.value * this.music?.nativeElement.duration * 100);
+      }
+    }
+  }
+
+  ngOnInit() {
+    
+  }
 }

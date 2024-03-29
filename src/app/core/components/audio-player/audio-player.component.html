@@ -29,9 +29,9 @@
       </svg>
     </div>
     <div class="bottom">
-      <span #currentTime>0:00</span>
-      <input type="range" #rangeInput>
-      <span #totalTime></span>
+      <span #currentTime>00:00</span>
+      <input type="range" #rangeInput min="0" value="0" (change)="updatedRange()">
+      <span #totalTime>{{total}}</span>
     </div>
   </div>
   <div class="right">
@@ -56,4 +56,4 @@
     </svg> 
   </div>
 </div>
-<audio src="assets/musics/Afro/Essence.mp3" #music (ended)="endedMusic()"></audio>
+<audio src="assets/musics/Afro/Essence.mp3" #music (ended)="endedMusic()" min="0"></audio>
