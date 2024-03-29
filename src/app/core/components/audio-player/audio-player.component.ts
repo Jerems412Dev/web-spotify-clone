@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { UpdateAudioTimeDirective } from '../../directives/updateAudioTime.directive';
 
 @Component({
   selector: 'app-audio-player',
@@ -11,10 +12,11 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 export class AudioPlayerComponent implements OnInit {
   showPlay = false;
   @ViewChild('music') music: ElementRef | undefined;
-  @ViewChild('rangeInput') range: ElementRef | undefined;
-  currTime =  "0";
-  totalTime = "0";
-  limitedInterval : any;
+  /*@ViewChild('rangeInput') range: ElementRef | undefined;
+  @ViewChild('currentTime') currentTime: ElementRef | undefined;
+  @ViewChild('totalTime') totalTime: ElementRef | undefined;*/
+  intervalId: any;
+  isClicked: boolean = false;
 
   constructor() {}
 
@@ -22,6 +24,30 @@ export class AudioPlayerComponent implements OnInit {
     this.showPlay = !this.showPlay;
     this.playMusic();
   }
+
+  /*seekUpdate() {
+    if (!isNaN(this.music?.nativeElement.duration)) {
+      (this.currentTime?.nativeElement) ? this.currentTime.nativeElement.textContent = this.formatTime(this.music?.nativeElement.currentTime) : null;
+    }
+  }
+
+  loadeddata() {
+    if(this.range?.nativeElement) {
+      this.range.nativeElement.value = 0;
+    }
+    alert("oui");
+    (this.totalTime?.nativeElement) ? this.totalTime.nativeElement.innerText = this.formatTime(this.music?.nativeElement.duration) : null;
+  }
+
+  private formatTime(time: number): string {
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time - minutes * 60);
+    return `${this.padZero(minutes)}:${this.padZero(seconds)}`;
+  }
+
+  private padZero(num: number): string {
+    return num < 10 ? `0${num}` : num.toString();
+  }*/
 
   playMusic() {
     if(this.showPlay) {
@@ -31,20 +57,29 @@ export class AudioPlayerComponent implements OnInit {
     }
   }
 
-  /*seekUpdate() {
-    if (!isNaN(this.music?.nativeElement.duration)) {
-      let currentMinutes = Math.floor(this.music?.nativeElement.currentTime / 60);
-      let currentSeconds = Math.floor(this.music?.nativeElement.currentTime - currentMinutes * 60);
-       this.currTime = currentMinutes + ":" + currentSeconds;
+  loopClick() {
+    this.isClicked = !this.isClicked;
+    switch (this.music?.nativeElement.loop) {
+      case false:
+        this.music.nativeElement.loop = true;
+        break;
+      case true:
+        this.music.nativeElement.loop = false;
+        break;
     }
   }
 
-  loadeddata() {
-    this.range?.nativeElement.value = 0;
-    let durationMinutes = Math.floor(this.music?.nativeElement.duration / 60);
-    let durationSeconds = Math.floor(this.music?.nativeElement.duration - durationMinutes * 60);
-    this.totalTime = durationMinutes + ":" + durationSeconds;
-  }*/
+  @HostListener('window:keydown.space', ['$event'])
+  pauseAudioWithSpaceButton(event: KeyboardEvent) {
+    if (event.code === 'Space' && !this.isFocusOnTextInput()) {
+      this.hogglePlayPauseDirective();
+    }
+  }
+
+  isFocusOnTextInput(): boolean {
+    const activeElement = document.activeElement;
+    return activeElement?.tagName === 'INPUT' && (activeElement as HTMLInputElement).type === 'text';
+  }
 
   ngOnInit() {
   }
