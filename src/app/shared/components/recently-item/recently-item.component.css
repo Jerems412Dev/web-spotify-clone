@@ -1,0 +1,35 @@
+a {
+    display: flex;
+    background-color: rgba(47, 47, 47, 0.4);
+    width: 24%;
+    height: 8vh;
+    align-items: center;
+    text-decoration: none;
+    font-size: .8rem;
+    color: whitesmoke;
+    justify-content: space-between;
+    border-radius: 6px;
+    float: left;
+    margin: 0 .9% .9% 0;
+}
+
+a:hover {
+    background-color: rgba(47, 47, 47, 0.9);
+}
+
+a img {
+    width: 45px;
+    height: 100%;
+    border-radius: 6px 0 0 6px;
+}
+
+a svg {
+    width: 40px;
+    opacity: 0;
+    transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) .3s;
+}
+
+a svg:hover {
+    transition: all .1s;
+    transform: scale(1.1);
+}

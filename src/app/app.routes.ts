@@ -4,6 +4,7 @@ import { LoginComponent } from './public/login/login/login.component';
 import { RegisterComponent } from './public/register/register/register.component';
 import { HomeComponent } from './protected/home/home/home.component';
 import { SearchComponent } from './protected/search/search/search.component';
+import { ShowAllComponent } from './protected/home/show-all/show-all.component';
 
 export const routes: Routes = [
     { 
@@ -25,5 +26,10 @@ export const routes: Routes = [
         path: 'search',
         title: 'Search - Spotify',
         component: SearchComponent
+    },
+    { 
+        path: 'section',
+        title: 'Spotify - Web Player',
+        component: ShowAllComponent
     }
 ];

@@ -18,8 +18,12 @@ export class NavbarComponent implements OnInit {
   constructor(private router: Router) {}
 
   isHomeRoute(): boolean {
-      return this.router.url === '/home';
+      return this.router.url === '/search';
   }
+
+  isHomeRouteHome(): boolean {
+    return this.router.url === '/home';
+}
 
   toggleDiv() {
     this.showDiv = !this.showDiv;
