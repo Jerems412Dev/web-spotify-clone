@@ -1,0 +1,6 @@
+<div class="search-category">
+  <div class="title">
+    <a class="first"><ng-content></ng-content></a><a class="last" [routerLink]="['/section']" *ngIf="isRightLink()">Show all</a>
+  </div>
+  <ng-content select=".list"></ng-content>
+</div>

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ClickOutsideDirective } from '../../directives/clickOutside.directive';
 import { AutoFocusDirective } from '../../directives/autoFocus.directive';

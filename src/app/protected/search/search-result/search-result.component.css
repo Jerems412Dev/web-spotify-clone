@@ -1,0 +1,31 @@
+.search-result {
+    padding-top: 3%;
+}
+
+.top {
+    width: 100%;
+    display: block;
+    overflow: hidden;
+}
+
+.top .list {
+    width: 100%;
+    display: grid;
+}
+
+app-recently-item {
+    width: 150%;
+}
+
+.top .title {
+    padding-bottom: 2%;
+}
+
+.top .title a {
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-weight: bold;
+    letter-spacing: .01px;
+    cursor: pointer;
+    color: whitesmoke;
+}

@@ -1,0 +1,10 @@
+.top {
+    width: 100%;
+    padding-top: .9%;
+    padding-bottom: 1%;
+}
+
+.top h1 {
+    font-size: 5.4rem;
+    font-weight: 950;
+}

@@ -1,0 +1,31 @@
+.browseAll h2 {
+    font-size: 1.313rem;
+    font-weight: 700;
+}
+
+.browseAll {
+    max-width: 100%;
+    min-width: 100%;
+    display: grid;
+    padding-top: 3%;
+}
+
+.list {
+    max-width: 100%;
+    min-width: 100%;
+    overflow: hidden;
+}
+
+.list a {
+    display: block;
+    text-decoration: none;
+    width: 15.5%;
+    height: 23vh;
+    float: left;
+    margin: 0 2.5% 2.5% 0;
+    border-radius: 7px;
+    color: whitesmoke;
+    font-size: 1.313rem;
+    font-weight: 700;
+    padding: 2% 0 0 2%;
+}

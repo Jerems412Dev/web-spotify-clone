@@ -30,6 +30,7 @@ footer {
     transition: ease-in-out .3s;
     font-size: .95rem;
     white-space: nowrap;
+    cursor: pointer;
 }
 
 .list ul a:hover {

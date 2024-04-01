@@ -18,7 +18,9 @@ export class AppComponent {
   auth = false;
   title = 'web-spotify-clone';
 
-  constructor(private router:Router) { }
+  constructor(private router:Router) {
+    
+  }
 
   isAuth(): boolean {
     if(this.router.url !== '/register' && this.router.url !== '/') {
@@ -26,4 +28,5 @@ export class AppComponent {
     }
     return this.auth;
   }
+
 }
