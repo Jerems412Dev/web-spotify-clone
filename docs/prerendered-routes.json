@@ -1,0 +1,11 @@
+{
+  "routes": [
+    "/",
+    "/genre",
+    "/genre/section",
+    "/home",
+    "/register",
+    "/search",
+    "/section"
+  ]
+}
