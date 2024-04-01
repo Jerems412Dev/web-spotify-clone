@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-playlist-details',
@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./playlist-details.component.css']
 })
 export class PlaylistDetailsComponent implements OnInit {
+  @Input() imgLeftLink: string | undefined;
 
   constructor() { }
 

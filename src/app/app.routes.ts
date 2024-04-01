@@ -7,6 +7,7 @@ import { SearchComponent } from './protected/search/search/search.component';
 import { ShowAllComponent } from './protected/home/show-all/show-all.component';
 import { GenreComponent } from './protected/search/genre/genre.component';
 import { SearchShowAllComponent } from './protected/search/search-show-all/search-show-all.component';
+import { PlaylistComponent } from './protected/playlist/playlist/playlist.component';
 
 export const routes: Routes = [
     { 
@@ -38,11 +39,15 @@ export const routes: Routes = [
         path: 'genre',
         title: 'Spotify - Web Player',
         component: GenreComponent
-    }
-    ,
+    },
     { 
         path: 'genre/section',
         title: 'Spotify - Web Player',
         component: SearchShowAllComponent
+    },
+    { 
+        path: 'playlist',
+        title: 'Spotify - Web Player',
+        component: PlaylistComponent
     }
 ];

@@ -1,0 +1,96 @@
+.top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 3%;
+}
+
+.top .left {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.875rem;
+}
+
+.top .right a {
+    display: flex;
+    align-items: center;
+    font-size: .75rem;
+    color: #a7a7a7;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.top .right a:hover {
+    color: whitesmoke;
+}
+
+.top .left svg {
+    cursor: pointer;
+    transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) .3s;
+}
+
+.top .left svg:hover {
+    transition: all .1s;
+    transform: scale(1.1);
+}
+
+.list .bottom table {
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+}
+
+.list .bottom table tr {
+    margin-bottom: 1%;
+}
+
+.list .bottom table tr:hover {
+   background-color: rgba(47, 47, 47, 0.4);;
+}
+
+.list .bottom table tr th {
+    color: #a7a7a7;
+    font-size: .813rem;
+}
+
+.list .bottom table tr td {
+    text-align: left;
+    font-size: .813rem;
+    color: #a7a7a7;
+}
+
+.titlePlaylist {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.titlePlaylist ul {
+    list-style: none;
+}
+
+.titlePlaylist ul li {
+    color: whitesmoke;
+    white-space: nowrap;
+    margin-bottom: 3%;
+}
+
+.titlePlaylist ul li a {
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+.titlePlaylist ul li a:hover {
+    color: whitesmoke;
+    text-decoration: 1px underline;
+}
+
+.titlePlaylist img {
+    width: 45px;
+    border-radius: 5px;
+}
+
+.firstColumn {
+    border-bottom: .01px solid #a7a7a7;
+}
