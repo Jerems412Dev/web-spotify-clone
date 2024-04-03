@@ -47,6 +47,10 @@
     height: 9vh;
 }
 
+.list-playlist-song .bottom table .trPlaylist td:first-child {
+    font-size: 1rem;
+}
+
 .list-playlist-song .bottom table .trPlaylist svg {
     display: none;
     transition: ease-in-out .5s;

@@ -1,15 +1,21 @@
+@font-face {
+  font-family: 'CircularStd';
+  src: url('assets/police/CircularStd-Medium.ttf') format('truetype');
+}
+
 @media screen and (min-width: 768px) {
   body {
     background-color: black;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: CircularSp,CircularSp-Arab,CircularSp-Hebr,CircularSp-Cyrl,CircularSp-Grek,CircularSp-Deva,sans-serif,Helvetica,Arial,sans-serif;
+    font-family: 'CircularStd';
     color: white;
     justify-content: center;
     align-items: center;
     letter-spacing: .5px;
 }
+
 }
 
 /*scrollbar*/

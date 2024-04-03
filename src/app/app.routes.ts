@@ -8,6 +8,8 @@ import { ShowAllComponent } from './protected/home/show-all/show-all.component';
 import { GenreComponent } from './protected/search/genre/genre.component';
 import { SearchShowAllComponent } from './protected/search/search-show-all/search-show-all.component';
 import { PlaylistComponent } from './protected/playlist/playlist/playlist.component';
+import { LikedComponent } from './protected/liked/liked/liked.component';
+import { AlbumComponent } from './protected/album/album/album.component';
 
 export const routes: Routes = [
     { 
@@ -49,5 +51,15 @@ export const routes: Routes = [
         path: 'playlist',
         title: 'Spotify - Web Player',
         component: PlaylistComponent
+    },
+    { 
+        path: 'liked',
+        title: 'Spotify - Web Player',
+        component: LikedComponent
+    },
+    { 
+        path: 'album',
+        title: 'Spotify - Web Player',
+        component: AlbumComponent
     }
 ];

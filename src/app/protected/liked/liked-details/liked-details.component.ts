@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-liked-details',
@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./liked-details.component.css']
 })
 export class LikedDetailsComponent implements OnInit {
-
+  @Input() imgLeftLink: string | undefined;
   constructor() { }
 
   ngOnInit() {

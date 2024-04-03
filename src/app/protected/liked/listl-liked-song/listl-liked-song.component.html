@@ -1,3 +1,89 @@
-<p>
-  listl-liked-song works!
-</p>
+<div class="list-liked-song">
+  <div class="top">
+    <div class="left">
+      <svg *ngIf="showPlayPlaylist == false" (click)="hogglePlayPausePlaylist()" height="4.313rem" xmlns="http://www.w3.org/2000/svg" class="play" fill="#1ed760" viewBox="0 0 512 512"><path d="M256 48C141.31 48 48 141.31 48 256s93.31 208 208 208 208-93.31 208-208S370.69 48 256 48zm74.77 217.3l-114.45 69.14a10.78 10.78 0 01-16.32-9.31V186.87a10.78 10.78 0 0116.32-9.31l114.45 69.14a10.89 10.89 0 010 18.6z"/></svg>
+      <svg *ngIf="showPlayPlaylist == true" (click)="hogglePlayPausePlaylist()" height="4.313rem" xmlns="http://www.w3.org/2000/svg" class="play" viewBox="0 0 512 512" fill="#1ed760"><path d="M256 48C141.31 48 48 141.31 48 256s93.31 208 208 208 208-93.31 208-208S370.69 48 256 48zm-32 272a16 16 0 01-32 0V192a16 16 0 0132 0zm96 0a16 16 0 01-32 0V192a16 16 0 0132 0z"/></svg>
+    </div>
+    <div class="right">
+      <a>
+        List
+        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" height="1.375rem" viewBox="0 0 512 512"><path fill="#a7a7a7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M160 144h288M160 256h288M160 368h288"/><circle cx="80" cy="144" r="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><circle cx="80" cy="256" r="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><circle cx="80" cy="368" r="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="bottom">
+    <table>
+      <thead>
+        <tr class="firstColumn">
+          <th>#</th>
+          <th>Title</th>
+          <th>Album</th>
+          <th>Date added</th>
+          <th></th>
+          <th>
+            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" height="1.375rem" fill="#a7a7a7" viewBox="0 0 512 512"><path d="M256 64C150 64 64 150 64 256s86 192 192 192 192-86 192-192S362 64 256 64z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M256 128v144h96"/></svg>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="trPlaylist">
+          <td>
+            <span>1</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" height="1rem" fill="whitesmoke" viewBox="0 0 512 512"><path d="M133 440a35.37 35.37 0 01-17.5-4.67c-12-6.8-19.46-20-19.46-34.33V111c0-14.37 7.46-27.53 19.46-34.33a35.13 35.13 0 0135.77.45l247.85 148.36a36 36 0 010 61l-247.89 148.4A35.5 35.5 0 01133 440z"/></svg>
+          </td>
+          <td class="titlePlaylist">
+              <img src="assets/img/billy.jpg" alt="">
+              <ul>
+                  <li><a href="">Anti élite</a></li>
+                  <li><a href="">404Billy</a></li>
+              </ul>
+          </td>
+          <td><a href="">Anti élite</a></td>
+          <td>Jan 11, 2024</td>
+          <td>
+            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" height="1.5rem" fill="whitesmoke" viewBox="0 0 512 512"><path d="M256 48C141.31 48 48 141.31 48 256s93.31 208 208 208 208-93.31 208-208S370.69 48 256 48zm108.25 138.29l-134.4 160a16 16 0 01-12 5.71h-.27a16 16 0 01-11.89-5.3l-57.6-64a16 16 0 1123.78-21.4l45.29 50.32 122.59-145.91a16 16 0 0124.5 20.58z"/></svg>
+          </td>
+          <td>1:55</td>
+        </tr>
+        <tr class="trPlaylist">
+          <td>
+            <span>2</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" height="1rem" fill="whitesmoke" viewBox="0 0 512 512"><path d="M133 440a35.37 35.37 0 01-17.5-4.67c-12-6.8-19.46-20-19.46-34.33V111c0-14.37 7.46-27.53 19.46-34.33a35.13 35.13 0 0135.77.45l247.85 148.36a36 36 0 010 61l-247.89 148.4A35.5 35.5 0 01133 440z"/></svg>
+          </td>
+          <td class="titlePlaylist">
+              <img src="assets/img/billy.jpg" alt="">
+              <ul>
+                  <li><a href="">Anti élite</a></li>
+                  <li><a href="">404Billy</a></li>
+              </ul>
+          </td>
+          <td><a href="">Anti élite</a></td>
+          <td>Jan 11, 2024</td>
+          <td>
+            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" height="1.5rem" fill="whitesmoke" viewBox="0 0 512 512"><path d="M256 48C141.31 48 48 141.31 48 256s93.31 208 208 208 208-93.31 208-208S370.69 48 256 48zm108.25 138.29l-134.4 160a16 16 0 01-12 5.71h-.27a16 16 0 01-11.89-5.3l-57.6-64a16 16 0 1123.78-21.4l45.29 50.32 122.59-145.91a16 16 0 0124.5 20.58z"/></svg>
+          </td>
+          <td>1:55</td>
+        </tr>
+        <tr class="trPlaylist">
+          <td>
+            <span>3</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" height="1rem" fill="whitesmoke" viewBox="0 0 512 512"><path d="M133 440a35.37 35.37 0 01-17.5-4.67c-12-6.8-19.46-20-19.46-34.33V111c0-14.37 7.46-27.53 19.46-34.33a35.13 35.13 0 0135.77.45l247.85 148.36a36 36 0 010 61l-247.89 148.4A35.5 35.5 0 01133 440z"/></svg>
+          </td>
+          <td class="titlePlaylist">
+              <img src="assets/img/billy.jpg" alt="">
+              <ul>
+                  <li><a href="">Anti élite</a></li>
+                  <li><a href="">404Billy</a></li>
+              </ul>
+          </td>
+          <td><a href="">Anti élite</a></td>
+          <td>Jan 11, 2024</td>
+          <td>
+            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" height="1.5rem" fill="whitesmoke" viewBox="0 0 512 512"><path d="M256 48C141.31 48 48 141.31 48 256s93.31 208 208 208 208-93.31 208-208S370.69 48 256 48zm108.25 138.29l-134.4 160a16 16 0 01-12 5.71h-.27a16 16 0 01-11.89-5.3l-57.6-64a16 16 0 1123.78-21.4l45.29 50.32 122.59-145.91a16 16 0 0124.5 20.58z"/></svg>
+          </td>
+          <td>1:55</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

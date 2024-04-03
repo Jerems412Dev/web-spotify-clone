@@ -1,10 +1,12 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-album-item',
   templateUrl: './album-item.component.html',
   styleUrls: ['./album-item.component.css'],
-  standalone: true
+  standalone: true,
+  imports: [RouterLink]
 })
 export class AlbumItemComponent implements OnInit {
   @ViewChild('playButton') playButton: ElementRef | undefined;

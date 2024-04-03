@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-album-details',
@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./album-details.component.css']
 })
 export class AlbumDetailsComponent implements OnInit {
-
+  @Input() imgLeftLink: string | undefined;
   constructor() { }
 
   ngOnInit() {

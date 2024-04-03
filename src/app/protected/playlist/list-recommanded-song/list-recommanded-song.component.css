@@ -1,0 +1,137 @@
+.listRecommender, .listRecommenderSearch {
+    width: 100%;
+}
+
+.listRecommender .top, .listRecommenderSearch .top {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2%;
+}
+
+.listRecommender .top .left ul, .listRecommenderSearch .top .left ul {
+    list-style: none;
+    padding: 0;
+}
+
+.listRecommender .top .left ul li, .listRecommenderSearch .top .left ul li {
+    margin-bottom: -5%;
+}
+
+.listRecommender .top .left ul li:last-child, .listRecommenderSearch .top .left ul li:last-child {
+    color: #a7a7a7;
+    font-size: .813rem;
+}
+
+.listRecommender .top .right a {
+    font-size: .813rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.listRecommenderSearch .top .right svg {
+    cursor: pointer;
+}
+
+.listRecommender .bottom, .listRecommenderSearch .bottom {
+    width: 100%;
+}
+
+.listRecommender .bottom .song, .listRecommenderSearch .bottom .song {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 0 1% 0 1%;
+}
+
+.listRecommender .bottom .song:hover, .listRecommenderSearch .bottom .song:hover {
+    background-color: rgba(47, 47, 47, 0.4);
+    .title .img svg{
+        display: block;
+    }
+}
+
+.listRecommender .bottom .song .title, .listRecommenderSearch .bottom .song .title {
+    display: flex;
+    align-items: center;
+}
+
+.listRecommender .bottom .song .title .img, .listRecommenderSearch .bottom .song .title .img {
+    background-size: cover;
+    width: 2.813rem;
+    height: 7.5vh;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} 
+
+.listRecommender .bottom .song .title .img svg, .listRecommenderSearch .bottom .song .title .img svg {
+    display: none;
+}
+
+.listRecommender .bottom .song .title ul, .listRecommenderSearch .bottom .song .title ul {
+    list-style: none;
+    color: #a7a7a7;
+    margin-left: -13%;
+    overflow: hidden;
+}
+
+.listRecommender .bottom .song .title ul li, .listRecommenderSearch .bottom .song .title ul li {
+    white-space: nowrap;
+    font-size: .9rem;
+}
+
+.listRecommender .bottom .song a:hover, .listRecommenderSearch .bottom .song a:hover {
+    color: whitesmoke;
+    text-decoration: 1px underline;
+}
+
+.listRecommender .bottom .song a, .listRecommenderSearch .bottom .song a {
+    color: #a7a7a7;
+    font-size: .8rem;
+}
+
+.listRecommender .bottom .song .title ul li:first-child, .listRecommenderSearch .bottom .song .title ul li:first-child {
+    color: whitesmoke;
+}
+
+.listRecommender .bottom .song button, .listRecommenderSearch .bottom .song button {
+    font-size: .813rem;
+    font-weight: bold;
+    color: whitesmoke;
+    background-color: transparent;
+    padding: 1% 2% 1% 2%;
+    border-radius: 20px;
+    border: .5px solid #a7a7a7;
+    cursor: pointer;
+}
+
+.inputSearch {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    background-color: #2f2f2f;
+    border-radius: 4px;
+    padding: 2%;
+    margin-top: 6%;
+}
+
+.inputSearch svg {
+    color: #a7a7a7;
+    cursor: pointer;
+}
+
+.inputSearch input {
+    width: 100%;
+    background-color: transparent;
+    border: 0;
+    outline: none;
+    color: #a7a7a7;
+    font-weight: 600;
+    font-size: .85rem;
+}

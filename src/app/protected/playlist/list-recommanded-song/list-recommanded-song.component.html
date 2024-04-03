@@ -1,3 +1,114 @@
-<p>
-  list-recommanded-song works!
-</p>
+<div class="listRecommender" *ngIf="isShowDiv == false">
+  <div class="top">
+      <div class="left">
+          <ul>
+              <li><h2>Recommended</h2></li>
+              <li>Based on what's in this playlist</li>
+          </ul>
+      </div>
+      <div class="right">
+          <a (click)="toggleDiv()">Find more</a>
+      </div>
+  </div>
+  <div class="bottom">
+      <div class="song">
+          <div class="title">
+              <div class="img" [style.background-image]="'url(assets/img/billy.jpg)'">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" height="1.5rem" fill="whitesmoke" viewBox="0 0 512 512"><path d="M133 440a35.37 35.37 0 01-17.5-4.67c-12-6.8-19.46-20-19.46-34.33V111c0-14.37 7.46-27.53 19.46-34.33a35.13 35.13 0 0135.77.45l247.85 148.36a36 36 0 010 61l-247.89 148.4A35.5 35.5 0 01133 440z"/></svg>
+              </div>
+              <ul>
+                  <li><a>Anti élite</a></li>
+                  <li><a>404Billy</a></li>
+              </ul>
+          </div>
+          <a>BLKKKK VAN GOGH</a>
+          <button>Add</button>
+      </div>
+      <div class="song">
+          <div class="title">
+              <div class="img" [style.background-image]="'url(assets/img/billy.jpg)'">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" height="1.5rem" fill="whitesmoke" viewBox="0 0 512 512"><path d="M133 440a35.37 35.37 0 01-17.5-4.67c-12-6.8-19.46-20-19.46-34.33V111c0-14.37 7.46-27.53 19.46-34.33a35.13 35.13 0 0135.77.45l247.85 148.36a36 36 0 010 61l-247.89 148.4A35.5 35.5 0 01133 440z"/></svg>
+              </div>
+              <ul>
+                  <li><a>Anti élite</a></li>
+                  <li><a>404Billy</a></li>
+              </ul>
+          </div>
+          <a>BLKKKK VAN GOGH</a>
+          <button>Add</button>
+      </div>
+      <div class="song">
+          <div class="title">
+              <div class="img" [style.background-image]="'url(assets/img/billy.jpg)'">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" height="1.5rem" fill="whitesmoke" viewBox="0 0 512 512"><path d="M133 440a35.37 35.37 0 01-17.5-4.67c-12-6.8-19.46-20-19.46-34.33V111c0-14.37 7.46-27.53 19.46-34.33a35.13 35.13 0 0135.77.45l247.85 148.36a36 36 0 010 61l-247.89 148.4A35.5 35.5 0 01133 440z"/></svg>
+              </div>
+              <ul>
+                  <li><a>Anti élite</a></li>
+                  <li><a>404Billy</a></li>
+              </ul>
+          </div>
+          <a>BLKKKK VAN GOGH</a>
+          <button>Add</button>
+      </div>
+      <div class="song">
+          <div class="title">
+              <div class="img" [style.background-image]="'url(assets/img/billy.jpg)'">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" height="1.5rem" fill="whitesmoke" viewBox="0 0 512 512"><path d="M133 440a35.37 35.37 0 01-17.5-4.67c-12-6.8-19.46-20-19.46-34.33V111c0-14.37 7.46-27.53 19.46-34.33a35.13 35.13 0 0135.77.45l247.85 148.36a36 36 0 010 61l-247.89 148.4A35.5 35.5 0 01133 440z"/></svg>
+              </div>
+              <ul>
+                  <li><a>Anti élite</a></li>
+                  <li><a>404Billy</a></li>
+              </ul>
+          </div>
+          <a>BLKKKK VAN GOGH</a>
+          <button>Add</button>
+      </div>
+  </div>
+</div>
+
+<div class="listRecommenderSearch" *ngIf="isShowDiv == true">
+    <div class="top">
+        <div class="left">
+            <ul>
+                <li><h2>Let's find something for your playlist</h2></li>
+                <li>
+                    <div class="inputSearch">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" height="1.188rem" viewBox="0 0 512 512"><path d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M338.29 338.29L448 448"/></svg>
+                        <input type="text" name="" placeholder="Search for songs or episodes">
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="right">
+            <svg (click)="toggleDiv()" xmlns="http://www.w3.org/2000/svg" class="ionicon" height="2rem" fill="#a7a7a7" viewBox="0 0 512 512"><path fill="#a7a7a7" d="M289.94 256l95-95A24 24 0 00351 127l-95 95-95-95a24 24 0 00-34 34l95 95-95 95a24 24 0 1034 34l95-95 95 95a24 24 0 0034-34z"/></svg>
+        </div>
+    </div>
+    <div class="bottom">
+        <div class="song">
+            <div class="title">
+                <div class="img" [style.background-image]="'url(assets/img/billy.jpg)'">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" height="1.5rem" fill="whitesmoke" viewBox="0 0 512 512"><path d="M133 440a35.37 35.37 0 01-17.5-4.67c-12-6.8-19.46-20-19.46-34.33V111c0-14.37 7.46-27.53 19.46-34.33a35.13 35.13 0 0135.77.45l247.85 148.36a36 36 0 010 61l-247.89 148.4A35.5 35.5 0 01133 440z"/></svg>
+                </div>
+                <ul>
+                    <li><a>Anti élite</a></li>
+                    <li><a>404Billy</a></li>
+                </ul>
+            </div>
+            <a>BLKKKK VAN GOGH</a>
+            <button>Add</button>
+        </div>
+        <div class="song">
+            <div class="title">
+                <div class="img" [style.background-image]="'url(assets/img/billy.jpg)'">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" height="1.5rem" fill="whitesmoke" viewBox="0 0 512 512"><path d="M133 440a35.37 35.37 0 01-17.5-4.67c-12-6.8-19.46-20-19.46-34.33V111c0-14.37 7.46-27.53 19.46-34.33a35.13 35.13 0 0135.77.45l247.85 148.36a36 36 0 010 61l-247.89 148.4A35.5 35.5 0 01133 440z"/></svg>
+                </div>
+                <ul>
+                    <li><a>Anti élite</a></li>
+                    <li><a>404Billy</a></li>
+                </ul>
+            </div>
+            <a>BLKKKK VAN GOGH</a>
+            <button>Add</button>
+        </div>
+    </div>
+</div>
