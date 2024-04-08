@@ -1,0 +1,40 @@
+.liked-details {
+    width: 100%;
+    display: flex;
+}
+
+ul {
+    width: 100%;
+    height: max-content;
+    list-style: none;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+ul li {
+    white-space: nowrap;
+}
+
+ul li:nth-child(1) {
+    font-size: .913rem;
+    color: whitesmoke;
+    display: flex;
+    align-items: center;
+    gap: 1%;
+}
+
+ul li:nth-child(2) {
+    font-size: 6rem;
+    font-weight: 1000;
+    color: whitesmoke;
+    letter-spacing: -1px;
+}
+
+ul li:nth-child(3) {
+    font-size: 1rem;
+    color: whitesmoke;
+    margin-top: -1%;
+}

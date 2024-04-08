@@ -2,7 +2,7 @@
   <app-sidebar></app-sidebar>
   <div class="right">
     <app-navbar></app-navbar>
-    <div class="content" [ngClass]="{ 'home': activeMarginHome(), 'other': activeMarginOther() }">
+    <div #content class="content" [ngClass]="{ 'home': activeMarginHome(), 'other': activeMarginOther() }">
       <ng-content></ng-content>
     </div>
     <app-footer></app-footer>

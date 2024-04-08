@@ -10,6 +10,8 @@ import { SearchShowAllComponent } from './protected/search/search-show-all/searc
 import { PlaylistComponent } from './protected/playlist/playlist/playlist.component';
 import { LikedComponent } from './protected/liked/liked/liked.component';
 import { AlbumComponent } from './protected/album/album/album.component';
+import { ArtistComponent } from './protected/artist/artist/artist.component';
+import { ArtistShowAllComponent } from './protected/artist/artist-show-all/artist-show-all.component';
 
 export const routes: Routes = [
     { 
@@ -48,6 +50,11 @@ export const routes: Routes = [
         component: SearchShowAllComponent
     },
     { 
+        path: 'artist/section',
+        title: 'Spotify - Web Player',
+        component: ArtistShowAllComponent
+    },
+    { 
         path: 'playlist',
         title: 'Spotify - Web Player',
         component: PlaylistComponent
@@ -61,5 +68,15 @@ export const routes: Routes = [
         path: 'album',
         title: 'Spotify - Web Player',
         component: AlbumComponent
+    },
+    { 
+        path: 'artist',
+        title: 'Spotify - Web Player',
+        component: ArtistComponent
+    },
+    { 
+        path: 'error',
+        title: 'Error',
+        component: PageNotFoundComponent
     }
 ];

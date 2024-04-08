@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router, RouterOutlet, NavigationEnd  } from '@angular/router';
+import { Router, RouterOutlet  } from '@angular/router';
 import { SidebarComponent } from './core/components/sidebar/sidebar.component';
 import { FooterComponent } from './core/components/footer/footer.component';
 import { AudioPlayerComponent } from './core/components/audio-player/audio-player.component';

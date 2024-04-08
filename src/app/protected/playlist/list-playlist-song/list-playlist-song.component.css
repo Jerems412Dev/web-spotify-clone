@@ -121,12 +121,13 @@
     display: flex;
     align-items: center;
     text-align: center;
+    gap: 5%;
 }
 
 .titlePlaylist ul {
     list-style: none;
     overflow: hidden;
-    margin-left: -8%;
+    padding: 0;
 }
 
 .titlePlaylist ul li {

@@ -1,19 +1,18 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ClickOutsideDirective } from '../../directives/clickOutside.directive';
 import { AutoFocusDirective } from '../../directives/autoFocus.directive';
 
 @Component({
-  selector: 'app-navbar',
-  standalone: true,
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css'],
-  imports: [CommonModule,ClickOutsideDirective,AutoFocusDirective]
+    selector: 'app-navbar',
+    standalone: true,
+    templateUrl: './navbar.component.html',
+    styleUrls: ['./navbar.component.css'],
+    imports: [CommonModule, ClickOutsideDirective, AutoFocusDirective, RouterLink]
 })
 export class NavbarComponent implements OnInit {
   showDiv = false;
-  clickbutton = false;
   
   constructor(private router: Router) {}
 
@@ -30,7 +29,7 @@ export class NavbarComponent implements OnInit {
   }
 
   hideDiv() {
-    this.showDiv = false;
+    //alert("allo");
   }
 
   ngOnInit() {

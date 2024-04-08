@@ -3,8 +3,7 @@
   src: url('assets/police/CircularStd-Medium.ttf') format('truetype');
 }
 
-@media screen and (min-width: 768px) {
-  body {
+body {
     background-color: black;
     margin: 0;
     padding: 0;
@@ -14,8 +13,6 @@
     justify-content: center;
     align-items: center;
     letter-spacing: .5px;
-}
-
 }
 
 /*scrollbar*/

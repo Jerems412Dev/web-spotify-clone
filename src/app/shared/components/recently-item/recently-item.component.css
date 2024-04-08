@@ -8,7 +8,7 @@ a {
     font-size: .8rem;
     font-weight: 600;
     color: whitesmoke;
-    justify-content: space-between;
+    gap: 4%;
     border-radius: 6px;
     float: left;
     margin: 0 .9% .9% 0;
@@ -26,6 +26,7 @@ a img {
 
 a svg {
     width: 40px;
+    right: 0;
     opacity: 0;
     transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) .3s;
 }
