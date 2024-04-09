@@ -17,15 +17,89 @@ app-recently-item {
     width: 150%;
 }
 
-.top .title {
+.top .titleTop {
     padding-bottom: 2%;
 }
 
-.top .title a {
+.top .titleTop a {
     text-decoration: none;
     font-size: 1.4rem;
     font-weight: bold;
     letter-spacing: .01px;
     cursor: pointer;
     color: whitesmoke;
+}
+
+.song {
+    display: flex;
+    width: 50%;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 0 1% 0 1%;
+}
+
+.song:hover {
+    background-color: rgba(47, 47, 47, 0.4);
+    svg{
+        opacity: 1;
+    }
+}
+
+.song .title {
+    display: flex;
+    align-items: center;
+}
+
+.song .title .img {
+    background-size: cover;
+    width: 2.813rem;
+    height: 7.5vh;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} 
+
+.song svg {
+    opacity: 0;
+}
+
+.song .title ul {
+    list-style: none;
+    color: #a7a7a7;
+    margin-left: -13%;
+    overflow: hidden;
+}
+
+.song .title ul li {
+    white-space: nowrap;
+    font-size: 1rem;
+}
+
+.song a:hover {
+    color: whitesmoke;
+    text-decoration: 1px underline;
+}
+
+.song a {
+    color: #a7a7a7;
+    font-size: .9rem;
+}
+
+.song span {
+    color: #a7a7a7;
+    font-size: .9rem;
+    font-weight: normal;
+}
+
+.song .title ul li:first-child {
+    color: whitesmoke;
+}
+
+.song .infos {
+    display: flex;
+    align-items: center;
+    gap: 5%;
 }

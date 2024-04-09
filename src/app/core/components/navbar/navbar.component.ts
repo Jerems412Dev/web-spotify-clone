@@ -32,6 +32,10 @@ export class NavbarComponent implements OnInit {
     //alert("allo");
   }
 
+  goBack() {
+    history.go(-1);
+  }
+
   ngOnInit() {
     
   }

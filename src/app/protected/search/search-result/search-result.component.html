@@ -1,13 +1,25 @@
 <div class="search-result">
   <div class="top">
-    <div class="title">
+    <div class="titleTop">
       <a>Top result</a>
     </div>
     <div class="list">
-      <app-recently-item [imgLink]="'assets/img/billy.jpg'">404Billy</app-recently-item>
-      <app-recently-item [imgLink]="'assets/img/billy.jpg'">404Billy</app-recently-item>
-      <app-recently-item [imgLink]="'assets/img/billy.jpg'">404Billy</app-recently-item>
-      <app-recently-item [imgLink]="'assets/img/billy.jpg'">404Billy</app-recently-item>
+      <div class="song" *ngFor="let i of tableTr">
+            <div class="title">
+                <div class="img" [style.background-image]="'url(assets/img/billy.jpg)'">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" height="1.5rem" fill="whitesmoke" viewBox="0 0 512 512"><path d="M133 440a35.37 35.37 0 01-17.5-4.67c-12-6.8-19.46-20-19.46-34.33V111c0-14.37 7.46-27.53 19.46-34.33a35.13 35.13 0 0135.77.45l247.85 148.36a36 36 0 010 61l-247.89 148.4A35.5 35.5 0 01133 440z"/></svg>
+                </div>
+                <ul>
+                    <li><a>Anti élite</a></li>
+                    <li>E&nbsp;<a>404Billy</a></li>
+                </ul>
+            </div>
+            <div class="infos">
+              <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" height="1.3rem" fill="#a7a7a7" viewBox="0 0 512 512"><path d="M448 256c0-106-86-192-192-192S64 150 64 256s86 192 192 192 192-86 192-192z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M256 176v160M336 256H176"/></svg>
+              <span>4:23</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" height="1.3rem" fill="#a7a7a7" viewBox="0 0 512 512"><circle cx="256" cy="256" r="32" fill="#a7a7a7" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/><circle cx="416" cy="256" r="32" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/><circle cx="96" cy="256" r="32" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/></svg>
+            </div>
+      </div>
     </div>
   </div>
   <div class="bottom">
