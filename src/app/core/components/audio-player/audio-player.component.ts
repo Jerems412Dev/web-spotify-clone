@@ -19,7 +19,7 @@ export class AudioPlayerComponent implements OnInit {
   isClickedLoop: boolean = false;
   isClickedMute: boolean = false;
   saveVolume: string = "";
-  total = '04:23';
+  total = '03:58';
 
   constructor() {}
 
