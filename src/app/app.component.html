@@ -1,4 +1,6 @@
-<app-squeleton *ngIf="isAuth()">
-    <router-outlet></router-outlet>
-</app-squeleton>
-<router-outlet *ngIf="!isAuth()"></router-outlet>
+<div class="container">
+    <app-squeleton *ngIf="isAuth()">
+        <router-outlet></router-outlet>
+    </app-squeleton>
+    <router-outlet *ngIf="!isAuth()"></router-outlet>
+</div>

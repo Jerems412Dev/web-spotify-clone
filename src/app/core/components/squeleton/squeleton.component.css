@@ -24,7 +24,7 @@ app-sidebar {
 }
 
 app-navbar {
-    position: fixed;
+  position: fixed;
     width: 75%;
 }
 

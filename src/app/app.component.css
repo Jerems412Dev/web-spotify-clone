@@ -1,3 +1,24 @@
 .container {
     width: 100%;
+    display: grid;
+    grid-gap: 0 30px;
+    grid-template-columns: repeat(1fr, 2fr);
+}
+
+@media screen and (min-width: 480px) {
+    .container {
+        grid-template-columns: repeat(3fr, 2fr);
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .container {
+        grid-template-columns: repeat(6fr, 2fr);
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    .container {
+        grid-template-columns: repeat(12fr, 2fr);
+    }
 }

@@ -17,10 +17,11 @@ a:hover {
 }
 
 a div {
+    background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
-    height: 27vh;
-    border-radius: 100px;
+    height: 150px;
+    border-radius: 100%;
 }
 
 a div svg {
