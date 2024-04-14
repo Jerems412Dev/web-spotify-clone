@@ -25,6 +25,10 @@ export class MusicItemComponent implements OnInit {
     }
   }
 
+  stopEventSvg() {
+    this.playButton?.nativeElement.stopPropagation();
+  }
+
   ngOnInit() {
   }
 

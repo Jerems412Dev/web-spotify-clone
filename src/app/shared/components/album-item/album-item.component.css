@@ -22,11 +22,13 @@ a div {
     width: 100%;
     height: 27vh;
     border-radius: 5px;
+    display: grid;
+    align-items: end;
 }
 
 a div svg {
     opacity: 0;
-    transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) .5s;
+    transition: cubic-bezier(0.785, 0.135, 0.15, 0.86) .3s;
 }
 
 a div svg:hover {
