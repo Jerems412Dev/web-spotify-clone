@@ -1,6 +1,6 @@
 <div class="squeleton-container">
   <app-sidebar></app-sidebar>
-  <div class="right">
+  <div class="right" #right>
     <app-navbar></app-navbar>
     <div #content class="content" [ngClass]="{ 'home': activeMarginHome(), 'other': activeMarginOther() }">
       <ng-content></ng-content>
