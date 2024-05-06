@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../models/User';
 import { Auth } from '../models/Auth';
+import { Login } from '../models/Login';
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +18,8 @@ export class AuthenticationService {
     return this.http.post<string>(`${this.apiUrl}/auth/register`, user);
   }
 
-  login(auth: Auth): Observable<Response> {
-    return this.http.post<Response>(`${this.apiUrl}/auth/login`, auth);
+  login(auth: Auth): Observable<Login> {
+    return this.http.post<Login>(`${this.apiUrl}/auth/login`, auth);
   }
 
   logout() {

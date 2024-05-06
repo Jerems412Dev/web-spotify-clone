@@ -74,6 +74,7 @@
     border: .01rem solid rgba(255, 255, 255, 0.646);
     border-radius: 500px;
     text-align: center;
+    cursor: pointer;
 }
 
 .login-with a:hover {

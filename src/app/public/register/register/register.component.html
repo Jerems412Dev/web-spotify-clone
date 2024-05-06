@@ -5,13 +5,13 @@
   <div class="content-register">
     <div class="form">
       <h1>Register to start listening</h1>
-      <form action="">
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
         <div class="forminput">
           <div class="div-input">
             <div class="div-input-text">
-              <label for="register">E-mail or username</label>
+              <label for="username">E-mail or username</label>
               <div class="input">
-                <input type="text" name="register" placeholder="E-mail or username">
+                <input type="text" name="username" formControlName="username" placeholder="E-mail or username">
               </div>
             </div>
           </div>
@@ -19,7 +19,7 @@
             <div class="div-input-text">
               <label for="password">Password</label>
               <div class="input">
-                <input type="password" name="password" placeholder="Password">
+                <input type="password" name="password" formControlName="password" placeholder="Password">
               </div>
             </div>
           </div>
@@ -34,9 +34,9 @@
         <hr><span>or</span><hr>
       </div>
       <div class="register-with">
-        <a href="">Register with Google</a>
-        <a href="">Register with Facebook</a>
-        <a href="">Register with Apple</a>
+        <a>Register with Google</a>
+        <a>Register with Facebook</a>
+        <a>Register with Apple</a>
       </div>
       <hr>
       <div class="div-input-link">
