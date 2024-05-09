@@ -20,7 +20,7 @@
         <li><a>Profile</a></li>
         <li><a>Upgrade to Premium <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" height="1.25rem" viewBox="0 0 512 512"><path d="M384 224v184a40 40 0 01-40 40H104a40 40 0 01-40-40V168a40 40 0 0140-40h167.48M336 64h112v112M224 288L440 72" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/></svg></a></li>
         <li><a>Settings</a></li>
-        <li><a [routerLink]="['/']">Log out</a></li>
+        <li (click)="logout()"><a>Log out</a></li>
       </ul>
     </div>
   </div>

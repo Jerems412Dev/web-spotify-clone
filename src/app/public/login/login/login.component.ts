@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthenticationService } from '../../../shared/services/Authentication.service';
-import { jwtDecode } from "jwt-decode";
 import { Router } from '@angular/router';
+import { TokenService } from '../../../shared/services/Token.service';
 
 
 @Component({
@@ -15,7 +15,10 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   loginForm: FormGroup;
 
-  constructor(private route:Router,private formBuilder: FormBuilder, private authService: AuthenticationService) {
+  constructor(private route:Router,
+              private formBuilder: FormBuilder, 
+              private authService: AuthenticationService,
+              private tokenService: TokenService) {
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
@@ -28,11 +31,10 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       const credentials = this.loginForm.value;
       this.authService.login(credentials).subscribe(data => {
-        const user: any = jwtDecode(data.token)
-        localStorage.setItem('token',data.token);
-        localStorage.setItem('userAuth',user);
+        this.tokenService.setToken(data.token);
+        this.tokenService.setUserByToken(data.token);
         if(data.token) {
-          this.route.navigateByUrl("/home");
+          this.route.navigate(['/home']);
         }
       });
     }

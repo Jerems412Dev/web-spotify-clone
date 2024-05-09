@@ -157,6 +157,7 @@ nav {
     justify-content: space-between;
     gap: 18px;
     border-radius: 4px;
+    cursor: pointer;
 }
 
 .navbar .navbaraccount ul li a:hover {

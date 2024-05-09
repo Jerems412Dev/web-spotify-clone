@@ -12,67 +12,78 @@ import { LikedComponent } from './protected/liked/liked/liked.component';
 import { AlbumComponent } from './protected/album/album/album.component';
 import { ArtistComponent } from './protected/artist/artist/artist.component';
 import { ArtistShowAllComponent } from './protected/artist/artist-show-all/artist-show-all.component';
+import { authGuard } from './shared/guards/auth.guard';
 
 export const routes: Routes = [
     { 
         path: '',
         title: 'Login - Spotify',
-        component: LoginComponent
+        component: LoginComponent,
     },
     { 
         path: 'register',
         title: 'Register - Spotify',
-        component: RegisterComponent 
+        component: RegisterComponent
     },
     { 
         path: 'home',
         title: 'Home - Spotify',
-        component: HomeComponent
+        component: HomeComponent,
+        canActivate: [authGuard]
     },
     { 
         path: 'search',
         title: 'Search - Spotify',
-        component: SearchComponent
+        component: SearchComponent,
+        canActivate: [authGuard]
     },
     { 
         path: 'section',
         title: 'Spotify - Web Player',
-        component: ShowAllComponent
+        component: ShowAllComponent,
+        canActivate: [authGuard]
     },
     { 
         path: 'genre',
         title: 'Spotify - Web Player',
-        component: GenreComponent
+        component: GenreComponent,
+        canActivate: [authGuard]
     },
     { 
         path: 'genre/section',
         title: 'Spotify - Web Player',
-        component: SearchShowAllComponent
+        component: SearchShowAllComponent,
+        canActivate: [authGuard]
     },
     { 
         path: 'artist/section',
         title: 'Spotify - Web Player',
-        component: ArtistShowAllComponent
+        component: ArtistShowAllComponent,
+        canActivate: [authGuard]
     },
     { 
         path: 'playlist',
         title: 'Spotify - Web Player',
-        component: PlaylistComponent
+        component: PlaylistComponent,
+        canActivate: [authGuard]
     },
     { 
         path: 'liked',
         title: 'Spotify - Web Player',
-        component: LikedComponent
+        component: LikedComponent,
+        canActivate: [authGuard]
     },
     { 
         path: 'album',
         title: 'Spotify - Web Player',
-        component: AlbumComponent
+        component: AlbumComponent,
+        canActivate: [authGuard]
     },
     { 
         path: 'artist',
         title: 'Spotify - Web Player',
-        component: ArtistComponent
+        component: ArtistComponent,
+        canActivate: [authGuard]
     },
     { 
         path: 'error',
