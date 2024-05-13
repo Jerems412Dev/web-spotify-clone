@@ -1,6 +1,9 @@
+import { Track } from "./Track";
+import { User } from "./User";
+
 export interface TrackListen {
     id: number;
-    user: any;
-    track: any;
+    user: User;
+    track: Track;
     listenedAt: string;
 }

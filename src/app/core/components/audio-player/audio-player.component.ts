@@ -1,12 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { TrackListenService } from '../../../shared/services/TrackListen.service';
+import { Track } from '../../../shared/models/Track';
+import { HttpClientModule } from '@angular/common/http';
+import { Artist } from '../../../shared/models/Artist';
 
 @Component({
   selector: 'app-audio-player',
   standalone: true,
   templateUrl: './audio-player.component.html',
   styleUrls: ['./audio-player.component.css'],
-  imports: [CommonModule]
+  imports: [CommonModule, HttpClientModule]
 })
 export class AudioPlayerComponent implements OnInit {
   showPlay = false;
@@ -19,9 +23,13 @@ export class AudioPlayerComponent implements OnInit {
   isClickedLoop: boolean = false;
   isClickedMute: boolean = false;
   saveVolume: string = "";
-  total = '03:58';
+  total = '';
+  track: Track | undefined;
+  artist: Artist | undefined;
 
-  constructor() {}
+  constructor(private trackService: TrackListenService) {
+    
+  }
 
   hogglePlayPauseDirective() {
     this.showPlay = !this.showPlay;
@@ -133,6 +141,9 @@ export class AudioPlayerComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+    this.trackService.findLastTrackListen("jerems").subscribe(data => {
+      //console.log(data.track);
+      this.track = data.track;
+    });
   }
 }
