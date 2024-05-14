@@ -22,7 +22,7 @@ export class TokenService {
 
   setUserByToken(token: string): any {
     const user:any = jwtDecode(token);
-    localStorage.setItem('userConnect', user);
+    localStorage.setItem('userConnect', JSON.stringify(user));
   }
 
   editIsAuthenticated(isAuthenticated: boolean): void {

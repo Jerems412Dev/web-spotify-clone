@@ -16,6 +16,12 @@ export class AlbumService {
 
   constructor(private http: HttpClient,private tokenService: TokenService) { }
 
+  findRandom10Album(): Observable<Album[]> {
+    return this.http.get<Album[]>(`${this.apiUrl}/albums/findrandom10album`, {
+      headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
+    });
+  }
+
   findAlbumByUsername(username: string): Observable<Album[]> {
     return this.http.get<Album[]>(`${this.apiUrl}/albums/findalbumbyusername/${username}`, {
       headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)

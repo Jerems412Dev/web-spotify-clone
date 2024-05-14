@@ -1,5 +1,6 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { Album } from '../../models/Album';
 
 @Component({
   selector: 'app-album-item',
@@ -10,6 +11,7 @@ import { RouterLink } from '@angular/router';
 })
 export class AlbumItemComponent implements OnInit {
   @ViewChild('playButton') playButton: ElementRef | undefined;
+  @Input("album") album: Album | undefined;
 
   constructor() { }
 

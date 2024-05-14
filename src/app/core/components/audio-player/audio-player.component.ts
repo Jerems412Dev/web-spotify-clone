@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { TrackListenService } from '../../../shared/services/TrackListen.service';
 import { Track } from '../../../shared/models/Track';
 import { HttpClientModule } from '@angular/common/http';
 import { Artist } from '../../../shared/models/Artist';
+import { DataService } from '../../../shared/services/Data.service';
 
 @Component({
   selector: 'app-audio-player',
@@ -12,7 +13,7 @@ import { Artist } from '../../../shared/models/Artist';
   styleUrls: ['./audio-player.component.css'],
   imports: [CommonModule, HttpClientModule]
 })
-export class AudioPlayerComponent implements OnInit {
+export class AudioPlayerComponent implements AfterViewInit  {
   showPlay = false;
   @ViewChild('music') music: ElementRef | undefined;
   @ViewChild('volume') volume: ElementRef | undefined;
@@ -27,8 +28,12 @@ export class AudioPlayerComponent implements OnInit {
   track: Track | undefined;
   artist: Artist | undefined;
 
-  constructor(private trackService: TrackListenService) {
+  constructor(private trackService: TrackListenService,
+              private data: DataService) {
     
+  }
+  ngOnInit(): void {
+    //throw new Error('Method not implemented.');
   }
 
   hogglePlayPauseDirective() {
@@ -140,9 +145,22 @@ export class AudioPlayerComponent implements OnInit {
     }
   }
 
-  ngOnInit() {
-    this.trackService.findLastTrackListen("jerems").subscribe(data => {
-      this.track = data.track;
+  lastListen() {
+    const userJson = localStorage.getItem('userConnect');
+    if (userJson) {
+      const user = JSON.parse(userJson);
+      const sub = user.sub;
+      this.trackService.findLastTrackListen(sub).subscribe(data => {
+        this.track = data.track;
+      });
+    }
+  }
+
+  ngAfterViewInit() {
+    this.lastListen();
+    this.data.getTrackSelect()?.subscribe(track => {
+      this.track = track;
+      this.playMusic();
     });
   }
 }

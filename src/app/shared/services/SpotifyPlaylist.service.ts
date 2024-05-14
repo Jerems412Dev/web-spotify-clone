@@ -22,6 +22,12 @@ export class SpotifyPlaylistService {
     });
   }
 
+  findRandom10Playlist(): Observable<SpotifyPlaylist[]> {
+    return this.http.get<SpotifyPlaylist[]>(`${this.apiUrl}/spotifyplaylists/findrandom10playlist`, {
+      headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
+    });
+  }
+
   findByIdPlaylist(idPlaylist: number): Observable<SpotifyPlaylist> {
     return this.http.get<SpotifyPlaylist>(`${this.apiUrl}/spotifyplaylists/findbyidplaylist/${idPlaylist}`, {
       headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)

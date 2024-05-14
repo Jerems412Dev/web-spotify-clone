@@ -16,6 +16,12 @@ export class ArtistService {
 
   constructor(private http: HttpClient,private tokenService: TokenService) { }
 
+  findRandom10Artist(): Observable<Artist[]> {
+    return this.http.get<Artist[]>(`${this.apiUrl}/artists/findrandom10artist`, {
+      headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
+    });
+  }
+
   findArtistByUsername(username: string): Observable<Artist[]> {
     return this.http.get<Artist[]>(`${this.apiUrl}/artists/findartistbyusername/${username}`, {
       headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)

@@ -1,5 +1,6 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { SpotifyPlaylist } from '../../models/SpotifyPlaylist';
 
 @Component({
   selector: 'app-playlist-item',
@@ -10,6 +11,7 @@ import { RouterLink } from '@angular/router';
 })
 export class PlaylistItemComponent implements OnInit {
   @ViewChild('playButton') playButton: ElementRef | undefined;
+  @Input("playlist") playlist: SpotifyPlaylist | undefined;
 
   constructor() { }
 

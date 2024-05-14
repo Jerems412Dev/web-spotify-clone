@@ -11,40 +11,24 @@
 <app-home-category>
     Made For You
     <div class="list">
-        <app-music-item></app-music-item>
-        <app-music-item></app-music-item>
-        <app-music-item></app-music-item>
-        <app-music-item></app-music-item>
-        <app-music-item></app-music-item>
+        <app-music-item *ngFor="let track of tracks?.slice(0, 5)" [track]="track"></app-music-item>
     </div>
 </app-home-category>
 <app-home-category>
     Your top Mixes
     <div class="list">
-        <app-playlist-item></app-playlist-item>
-        <app-playlist-item></app-playlist-item>
-        <app-playlist-item></app-playlist-item>
-        <app-playlist-item></app-playlist-item>
-        <app-playlist-item></app-playlist-item>
+        <app-playlist-item *ngFor="let playlist of playlists?.slice(0, 5)" [playlist]="playlist"></app-playlist-item>
     </div>
 </app-home-category>
 <app-home-category>
     Popular albums
     <div class="list">
-        <app-album-item></app-album-item>
-        <app-album-item></app-album-item>
-        <app-album-item></app-album-item>
-        <app-album-item></app-album-item>
-        <app-album-item></app-album-item>
+        <app-album-item *ngFor="let album of albums?.slice(0, 5)" [album]="album"></app-album-item>
     </div>
 </app-home-category>
 <app-home-category>
     Your favorites artists
     <div class="list">
-        <app-artist-item></app-artist-item>
-        <app-artist-item></app-artist-item>
-        <app-artist-item></app-artist-item>
-        <app-artist-item></app-artist-item>
-        <app-artist-item></app-artist-item>
+        <app-artist-item *ngFor="let artist of artists?.slice(0, 5)" [artist]="artist"></app-artist-item>
     </div>
 </app-home-category>

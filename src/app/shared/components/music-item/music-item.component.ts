@@ -1,15 +1,22 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Track } from '../../models/Track';
+import { Artist } from '../../models/Artist';
+import { CommonModule } from '@angular/common';
+import { DataService } from '../../services/Data.service';
 
 @Component({
   selector: 'app-music-item',
   templateUrl: './music-item.component.html',
   styleUrls: ['./music-item.component.css'],
-  standalone: true
+  standalone: true,
+  imports: [CommonModule]
 })
 export class MusicItemComponent implements OnInit {
   @ViewChild('playButton') playButton: ElementRef | undefined;
+  @Input("track") track: Track | undefined;
+  artist: Artist | undefined;
 
-  constructor() { }
+  constructor(private data: DataService) { }
 
   onMouseEnter() {
     if(this.playButton?.nativeElement) {
@@ -26,7 +33,9 @@ export class MusicItemComponent implements OnInit {
   }
 
   stopEventSvg() {
-    this.playButton?.nativeElement.stopPropagation();
+    if(this.track) {
+      this.data.setTrackSelect(this.track);
+    }
   }
 
   ngOnInit() {

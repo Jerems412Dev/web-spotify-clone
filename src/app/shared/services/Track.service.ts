@@ -17,79 +17,85 @@ export class TrackService {
   constructor(private http: HttpClient,private tokenService: TokenService) { }
 
   createTrack(track: Track): Observable<string> {
-    return this.http.post<string>(`${this.apiUrl}/createtrack`, track, {
+    return this.http.post<string>(`${this.apiUrl}/tracks/createtrack`, track, {
       headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
     });
   }
 
   createTracks(tracks: Track[]): Observable<string> {
-    return this.http.post<string>(`${this.apiUrl}/createtracks`, tracks, {
+    return this.http.post<string>(`${this.apiUrl}/tracks/createtracks`, tracks, {
+      headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
+    });
+  }
+
+  findRandom10Track(): Observable<Track[]> {
+    return this.http.get<Track[]>(`${this.apiUrl}/tracks/findrandom10track`, {
       headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
     });
   }
 
   findTrackByTitle(titletrack: string): Observable<Track> {
-    return this.http.get<Track>(`${this.apiUrl}/findtrackbytitle/${titletrack}`, {
+    return this.http.get<Track>(`${this.apiUrl}/tracks/findtrackbytitle/${titletrack}`, {
       headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
     });
   }
 
   findTrackById(idtrack: number): Observable<Track> {
-    return this.http.get<Track>(`${this.apiUrl}/findtrackbyId/${idtrack}`, {
+    return this.http.get<Track>(`${this.apiUrl}/tracks/findtrackbyId/${idtrack}`, {
       headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
     });
   }
 
   findTrackByUsername(username: string): Observable<Track[]> {
-    return this.http.get<Track[]>(`${this.apiUrl}/findtrackbyusername/${username}`, {
+    return this.http.get<Track[]>(`${this.apiUrl}/tracks/findtrackbyusername/${username}`, {
       headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
     });
   }
 
   findTrackByTitleAlbum(titlealbum: string): Observable<Track[]> {
-    return this.http.get<Track[]>(`${this.apiUrl}/findtrackbytitlealbum/${titlealbum}`, {
+    return this.http.get<Track[]>(`${this.apiUrl}/tracks/findtrackbytitlealbum/${titlealbum}`, {
       headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
     });
   }
 
   findTrackByNameArtist(nameartist: string): Observable<Track[]> {
-    return this.http.get<Track[]>(`${this.apiUrl}/findtrackbynameartist/${nameartist}`, {
+    return this.http.get<Track[]>(`${this.apiUrl}/tracks/findtrackbynameartist/${nameartist}`, {
       headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
     });
   }
 
   findByNameCategory(nameCategory: string): Observable<Track[]> {
-    return this.http.get<Track[]>(`${this.apiUrl}/findbynamecategory/${nameCategory}`, {
+    return this.http.get<Track[]>(`${this.apiUrl}/tracks/findbynamecategory/${nameCategory}`, {
       headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
     });
   }
 
   findByIdUserPlaylist(idplaylist: number): Observable<Track[]> {
-    return this.http.get<Track[]>(`${this.apiUrl}/findbyiduserplaylist/${idplaylist}`, {
+    return this.http.get<Track[]>(`${this.apiUrl}/tracks/findbyiduserplaylist/${idplaylist}`, {
       headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
     });
   }
 
   findByIdUserPlaylistNot(idplaylist: number): Observable<Track[]> {
-    return this.http.get<Track[]>(`${this.apiUrl}/findbyiduserplaylistnot/${idplaylist}`, {
+    return this.http.get<Track[]>(`${this.apiUrl}/tracks/findbyiduserplaylistnot/${idplaylist}`, {
       headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
     });
   }
 
   findByIdSpotifyPlaylist(idplaylist: number): Observable<Track[]> {
-    return this.http.get<Track[]>(`${this.apiUrl}/findbyidspotifyplaylist/${idplaylist}`, {
+    return this.http.get<Track[]>(`${this.apiUrl}/tracks/findbyidspotifyplaylist/${idplaylist}`, {
       headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
     });
   }
 
   findByIdSpotifyPlaylistNot(idplaylist: number): Observable<Track[]> {
-    return this.http.get<Track[]>(`${this.apiUrl}/findbyidspotifyplaylistnot/${idplaylist}`, {
+    return this.http.get<Track[]>(`${this.apiUrl}/tracks/findbyidspotifyplaylistnot/${idplaylist}`, {
       headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
     });
   }
 
   findByTitleTrackContaining(search: string): Observable<Track[]> {
-    return this.http.get<Track[]>(`${this.apiUrl}/findBytitletrackcontaining/${search}`, {
+    return this.http.get<Track[]>(`${this.apiUrl}/tracks/findBytitletrackcontaining/${search}`, {
       headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
     });
   }

@@ -1,5 +1,6 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { Artist } from '../../models/Artist';
 
 @Component({
   selector: 'app-artist-item',
@@ -10,6 +11,7 @@ import { RouterLink } from '@angular/router';
 })
 export class ArtistItemComponent implements OnInit {
   @ViewChild('playButton') playButton: ElementRef | undefined;
+  @Input("artist") artist: Artist | undefined;
 
   constructor() { }
 
