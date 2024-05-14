@@ -1,47 +1,67 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Album } from '../models/Album';
+import { TokenService } from './Token.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AlbumService {
   private apiUrl: string = environment.apiUrl;
+  private httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private tokenService: TokenService) { }
 
   findAlbumByUsername(username: string): Observable<Album[]> {
-    return this.http.get<Album[]>(`${this.apiUrl}/albums/findalbumbyusername/${username}`);
+    return this.http.get<Album[]>(`${this.apiUrl}/albums/findalbumbyusername/${username}`, {
+      headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
+    });
   }
 
   findByCategoryName(categoryName: string): Observable<Album[]> {
-    return this.http.get<Album[]>(`${this.apiUrl}/albums/findbycategoryname/${categoryName}`);
+    return this.http.get<Album[]>(`${this.apiUrl}/albums/findbycategoryname/${categoryName}`, {
+      headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
+    });
   }
 
   searchAlbum(containing: string): Observable<Album[]> {
-    return this.http.get<Album[]>(`${this.apiUrl}/albums/searchalbum/${containing}`);
+    return this.http.get<Album[]>(`${this.apiUrl}/albums/searchalbum/${containing}`, {
+      headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
+    });
   }
 
   albumExist(titleAlbum: string): Observable<boolean> {
-    return this.http.get<boolean>(`${this.apiUrl}/albums/albumexist/${titleAlbum}`);
+    return this.http.get<boolean>(`${this.apiUrl}/albums/albumexist/${titleAlbum}`, {
+      headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
+    });
   }
 
   albumExistInCategory(titleAlbum: string, nameCategory: string): Observable<boolean> {
-    return this.http.get<boolean>(`${this.apiUrl}/albums/albumexistincategory/${titleAlbum}/${nameCategory}`);
+    return this.http.get<boolean>(`${this.apiUrl}/albums/albumexistincategory/${titleAlbum}/${nameCategory}`, {
+      headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
+    });
   }
 
   deleteAlbumUser(username: string, titleAlbum: string): Observable<boolean> {
-    return this.http.get<boolean>(`${this.apiUrl}/albums/deletealbumuser/${username}/${titleAlbum}`);
+    return this.http.get<boolean>(`${this.apiUrl}/albums/deletealbumuser/${username}/${titleAlbum}`, {
+      headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
+    });
   }
 
   favAlbumByUser(idUser: number, idAlbum: number): Observable<string> {
-    return this.http.get<string>(`${this.apiUrl}/albums/favalbumbyuser/${idUser}/${idAlbum}`);
+    return this.http.get<string>(`${this.apiUrl}/albums/favalbumbyuser/${idUser}/${idAlbum}`, {
+      headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
+    });
   }
 
   findByTitleAlbum(titleAlbum: string): Observable<Album> {
-    return this.http.get<Album>(`${this.apiUrl}/albums/findbytitlealbum/${titleAlbum}`);
+    return this.http.get<Album>(`${this.apiUrl}/albums/findbytitlealbum/${titleAlbum}`, {
+      headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
+    });
   }
 
 }

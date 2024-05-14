@@ -1,47 +1,67 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Artist } from '../models/Artist';
+import { TokenService } from './Token.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArtistService {
   private apiUrl: string = environment.apiUrl;
+  private httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private tokenService: TokenService) { }
 
   findArtistByUsername(username: string): Observable<Artist[]> {
-    return this.http.get<Artist[]>(`${this.apiUrl}/artists/findartistbyusername/${username}`);
+    return this.http.get<Artist[]>(`${this.apiUrl}/artists/findartistbyusername/${username}`, {
+      headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
+    });
   }
 
   findByCategoryName(categoryName: string): Observable<Artist[]> {
-    return this.http.get<Artist[]>(`${this.apiUrl}/artists/findbycategoryname/${categoryName}`);
+    return this.http.get<Artist[]>(`${this.apiUrl}/artists/findbycategoryname/${categoryName}`, {
+      headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
+    });
   }
 
   searchArtist(containing: string): Observable<Artist[]> {
-    return this.http.get<Artist[]>(`${this.apiUrl}/artists/searchartist/${containing}`);
+    return this.http.get<Artist[]>(`${this.apiUrl}/artists/searchartist/${containing}`, {
+      headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
+    });
   }
 
   artistExist(nameArtist: string): Observable<boolean> {
-    return this.http.get<boolean>(`${this.apiUrl}/artists/artistexist/${nameArtist}`);
+    return this.http.get<boolean>(`${this.apiUrl}/artists/artistexist/${nameArtist}`, {
+      headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
+    });
   }
 
   artistExistInCategory(nameArtist: string, nameCategory: string): Observable<boolean> {
-    return this.http.get<boolean>(`${this.apiUrl}/artists/artistexistincategory/${nameArtist}/${nameCategory}`);
+    return this.http.get<boolean>(`${this.apiUrl}/artists/artistexistincategory/${nameArtist}/${nameCategory}`, {
+      headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
+    });
   }
 
   deleteArtistUser(username: string, nameArtist: string): Observable<boolean> {
-    return this.http.get<boolean>(`${this.apiUrl}/artists/deleteartistuser/${username}/${nameArtist}`);
+    return this.http.get<boolean>(`${this.apiUrl}/artists/deleteartistuser/${username}/${nameArtist}`, {
+      headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
+    });
   }
 
   favArtistByUser(idUser: number, idArtist: number): Observable<string> {
-    return this.http.get<string>(`${this.apiUrl}/artists/favartistbyuser/${idUser}/${idArtist}`);
+    return this.http.get<string>(`${this.apiUrl}/artists/favartistbyuser/${idUser}/${idArtist}`, {
+      headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
+    });
   }
 
   findByNameArtist(nameArtist: string): Observable<Artist> {
-    return this.http.get<Artist>(`${this.apiUrl}/artists/findartistbynameartist/${nameArtist}`);
+    return this.http.get<Artist>(`${this.apiUrl}/artists/findartistbynameartist/${nameArtist}`, {
+      headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
+    });
   }
 
 }

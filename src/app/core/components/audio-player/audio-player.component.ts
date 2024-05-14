@@ -142,7 +142,6 @@ export class AudioPlayerComponent implements OnInit {
 
   ngOnInit() {
     this.trackService.findLastTrackListen("jerems").subscribe(data => {
-      //console.log(data.track);
       this.track = data.track;
     });
   }
