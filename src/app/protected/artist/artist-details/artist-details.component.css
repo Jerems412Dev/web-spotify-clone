@@ -1,6 +1,8 @@
 .liked-details {
     width: 100%;
     display: flex;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 ul {

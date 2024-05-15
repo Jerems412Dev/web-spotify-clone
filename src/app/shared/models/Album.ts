@@ -1,8 +1,8 @@
 export interface Album {
-    idAlbum: number;
-    titleAlbum: string;
-    profilePicture: string;
-    releaseDate: string;
+    idAlbum: any;
+    titleAlbum: any;
+    profilePicture: any;
+    releaseDate: any;
     artist: any;
     tracks: any[];
 }

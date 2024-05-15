@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Artist } from '../../../shared/models/Artist';
 
 @Component({
   standalone: true,
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./artist-details.component.css']
 })
 export class ArtistDetailsComponent implements OnInit {
+  @Input("artist") artist : Artist | undefined;
+  listen: number = Math.floor(Math.random() * (500000000 - 5000)) + 5000;
   constructor() { }
 
   ngOnInit() {
+    
   }
 
 }

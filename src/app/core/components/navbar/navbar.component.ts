@@ -5,6 +5,8 @@ import { ClickOutsideDirective } from '../../directives/clickOutside.directive';
 import { AutoFocusDirective } from '../../directives/autoFocus.directive';
 import { AuthenticationService } from '../../../shared/services/Authentication.service';
 import { TokenService } from '../../../shared/services/Token.service';
+import { DataService } from '../../../shared/services/Data.service';
+import { User } from '../../../shared/models/User';
 
 @Component({
     selector: 'app-navbar',
@@ -15,10 +17,12 @@ import { TokenService } from '../../../shared/services/Token.service';
 })
 export class NavbarComponent implements OnInit {
   showDiv = false;
+  user: any;
   
   constructor(private router: Router,
               private authService: AuthenticationService,
-              private tokenService: TokenService) {}
+              private tokenService: TokenService,
+              private data: DataService) {}
 
   isHomeRoute(): boolean {
       return this.router.url === '/search';
@@ -33,7 +37,7 @@ export class NavbarComponent implements OnInit {
   }
 
   hideDiv() {
-    ;
+    
   }
 
   goBack() {
@@ -47,7 +51,7 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+    this.user = this.data.getData("userConnect");
   }
 
 }

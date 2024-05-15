@@ -108,7 +108,8 @@ nav {
 
 .navbar .right button {
     background-color: #509bf5;
-    font-size: .85rem;
+    font-size: .70rem;
+    text-transform: uppercase;
     font-weight: 554;
     padding: 5px;
     padding-left: 9px;

@@ -1,8 +1,8 @@
 export interface User {
-    idUser: number;
-    profileName: string;
-    username: string;
-    gender: string;
-    birth: string;
-    country: string;
+    idUser: any;
+    profileName: any;
+    username: any;
+    gender: any;
+    birth: any;
+    country: any;
 }

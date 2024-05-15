@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { catchError, map, Observable } from 'rxjs';
 import { TrackListen } from '../models/TrackListen';
 import { TokenService } from './Token.service';
 
@@ -15,6 +15,19 @@ export class TrackListenService {
   };
 
   constructor(private http: HttpClient,private tokenService: TokenService) { }
+
+  createListen(listen: TrackListen): Observable<Response> {
+    return this.http.post<Response>(`${this.apiUrl}/tracklistens/createlisten`,listen, {
+      headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
+    }).pipe(
+      map(response => {
+        return response;
+      }),
+      catchError(error => {
+        throw error;
+      })
+    );
+  }
 
   findLastTrackListen(username: string): Observable<TrackListen> {
     return this.http.get<TrackListen>(`${this.apiUrl}/tracklistens/findlasttracklisten/${username}`, {

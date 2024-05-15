@@ -37,8 +37,7 @@ export class AuthenticationService {
   }
 
   logout() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('userAuth');
+    localStorage.clear();
     return this.http.get<Response>(`${this.apiUrl}/auth/logout`);
   }
 }

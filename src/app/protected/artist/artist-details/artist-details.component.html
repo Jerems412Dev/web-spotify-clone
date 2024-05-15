@@ -1,4 +1,4 @@
-<div class="liked-details">
+<div class="liked-details" [style.backgroundImage]="'url(assets/img/artist/profil/'+artist?.profilePicture+'.jpg)'">
   <ul>
     <li>
       <svg height="1.5rem" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -13,7 +13,7 @@
       </svg>
       Verified Artist
     </li>
-    <li>Damso</li>
-    <li>4,320,478 monthly listeners</li>
+    <li>{{artist?.nameArtist}}</li>
+    <li>{{listen}} monthly listeners</li>
   </ul>
 </div>

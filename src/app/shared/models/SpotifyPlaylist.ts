@@ -1,8 +1,8 @@
 export interface SpotifyPlaylist {
-    idSpotifyPlaylist: number;
-    namePlaylist: string;
-    description: string;
-    profilePicture: string;
+    idSpotifyPlaylist: any;
+    namePlaylist: any;
+    description: any;
+    profilePicture: any;
     tracks: any[];
     categories: any[];
     users: any[];

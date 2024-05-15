@@ -1,8 +1,8 @@
 export interface UserPlaylist {
-    idUserPlaylist: number;
-    namePlaylist: string;
-    description: string;
-    profilePicture: string;
+    idUserPlaylist: any;
+    namePlaylist: any;
+    description: any;
+    profilePicture: any;
     user: any;
     tracks: any[];
 }

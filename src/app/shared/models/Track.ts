@@ -1,8 +1,8 @@
 export interface Track {
-    idTrack: number;
-    titleTrack: string;
-    duration: string;
-    profilePicture: string;
+    idTrack: any;
+    titleTrack: any;
+    duration: any;
+    profilePicture: any;
     album: any;
     artists: any[];
 }

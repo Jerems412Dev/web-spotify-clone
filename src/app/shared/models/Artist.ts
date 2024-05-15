@@ -1,7 +1,7 @@
 export interface Artist {
-    idArtist: number;
-    nameArtist: string;
-    profilePicture: string;
-    coverPicture: string;
+    idArtist: any;
+    nameArtist: any;
+    profilePicture: any;
+    coverPicture: any;
     albums: any[];
 }

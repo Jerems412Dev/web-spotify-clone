@@ -18,4 +18,24 @@ export class DataService {
     return this.trackListen.asObservable();
   }
 
+  saveData(key: string, data: any[]): void {
+    const jsonData = JSON.stringify(data);    
+    localStorage.setItem(key, jsonData);
+  }
+
+  getData(key: string): any[] {
+    const jsonData = localStorage.getItem(key);    
+    if (!jsonData) {
+      return [];
+    }    
+    return JSON.parse(jsonData);
+  }
+
+  existDataStorage(key: string):boolean {
+    if(localStorage.getItem(key)) {
+      return true;
+    }
+    return false;
+  }
+
 }

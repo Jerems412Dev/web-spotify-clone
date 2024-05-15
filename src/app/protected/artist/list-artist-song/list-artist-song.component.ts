@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Track } from '../../../shared/models/Track';
 
 @Component({
   standalone: true,
@@ -12,6 +13,10 @@ export class ListArtistSongComponent implements OnInit {
   showPlayPlaylist = false;
   tableTr = [1, 2, 3, 4];
   seeMoreLessContent = "See more";
+  @Input("tracks") tracks: Track[] | undefined;
+  track: Track | undefined;
+  nb = 0;
+  listen: number = Math.floor(Math.random() * (500000000 - 5000)) + 5000;
 
   constructor() { }
 

@@ -5,13 +5,14 @@ import { Track } from '../../../shared/models/Track';
 import { HttpClientModule } from '@angular/common/http';
 import { Artist } from '../../../shared/models/Artist';
 import { DataService } from '../../../shared/services/Data.service';
+import { TrackListen } from '../../../shared/models/TrackListen';
 
 @Component({
   selector: 'app-audio-player',
   standalone: true,
   templateUrl: './audio-player.component.html',
   styleUrls: ['./audio-player.component.css'],
-  imports: [CommonModule, HttpClientModule]
+  imports: [CommonModule, HttpClientModule,]
 })
 export class AudioPlayerComponent implements AfterViewInit  {
   showPlay = false;
@@ -27,9 +28,17 @@ export class AudioPlayerComponent implements AfterViewInit  {
   total = '';
   track: Track | undefined;
   artist: Artist | undefined;
+  tracklisten: TrackListen = {
+    user: null,
+    track: null,
+    listenedAt: null,
+    id: null
+  };
+  
 
   constructor(private trackService: TrackListenService,
-              private data: DataService) {
+              private data: DataService,
+              private trackListenService: TrackListenService) {
     
   }
   ngOnInit(): void {
@@ -46,6 +55,7 @@ export class AudioPlayerComponent implements AfterViewInit  {
       this.music?.nativeElement.play();
       this.loadTotalTime();
       this.seekUpdate();
+      this.addListenTrack()
     }else {
       this.music?.nativeElement.pause();
     }
@@ -151,16 +161,25 @@ export class AudioPlayerComponent implements AfterViewInit  {
       const user = JSON.parse(userJson);
       const sub = user.sub;
       this.trackService.findLastTrackListen(sub).subscribe(data => {
-        this.track = data.track;
+        if(data) {
+          this.track = data.track;
+        }
       });
     }
+  }
+
+  addListenTrack() {
+    this.tracklisten.track = this.track;
+    this.tracklisten.user = this.data.getData("userConnect");
+    this.trackListenService.createListen(this.tracklisten).subscribe(data => {
+      //alert(data)
+    });
   }
 
   ngAfterViewInit() {
     this.lastListen();
     this.data.getTrackSelect()?.subscribe(track => {
       this.track = track;
-      this.playMusic();
     });
   }
 }

@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Track } from '../../models/Track';
 import { Artist } from '../../models/Artist';
 import { CommonModule } from '@angular/common';
@@ -13,10 +13,14 @@ import { DataService } from '../../services/Data.service';
 })
 export class MusicItemComponent implements OnInit {
   @ViewChild('playButton') playButton: ElementRef | undefined;
+  @ViewChild('pauseButton') pauseButton: ElementRef | undefined;
   @Input("track") track: Track | undefined;
   artist: Artist | undefined;
+  showPlayButton = true;
+  showPauseButton = false;
 
-  constructor(private data: DataService) { }
+  constructor(private data: DataService,
+              private renderer: Renderer2) { }
 
   onMouseEnter() {
     if(this.playButton?.nativeElement) {
@@ -32,6 +36,20 @@ export class MusicItemComponent implements OnInit {
     }
   }
 
+  onMouseEnterPause() {
+    if(this.pauseButton?.nativeElement) {
+      this.pauseButton.nativeElement.style.opacity = "1";
+      this.pauseButton.nativeElement.style.marginLeft = "56%";
+    }
+  }
+
+  onMouseLeavePause() {
+    if(this.pauseButton?.nativeElement) {
+      this.pauseButton.nativeElement.style.opacity = "0";
+      this.pauseButton.nativeElement.style.marginLeft = "0";
+    }
+  }
+
   stopEventSvg() {
     if(this.track) {
       this.data.setTrackSelect(this.track);
@@ -39,6 +57,11 @@ export class MusicItemComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.data.getTrackSelect()?.subscribe(track => {
+      if(this.track === track) {
+        
+      }
+    });
   }
 
 }

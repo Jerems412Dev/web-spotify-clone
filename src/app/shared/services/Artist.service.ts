@@ -64,7 +64,7 @@ export class ArtistService {
     });
   }
 
-  findByNameArtist(nameArtist: string): Observable<Artist> {
+  findByNameArtist(nameArtist: string | null): Observable<Artist> {
     return this.http.get<Artist>(`${this.apiUrl}/artists/findartistbynameartist/${nameArtist}`, {
       headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
     });
