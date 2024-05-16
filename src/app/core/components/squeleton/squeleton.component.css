@@ -42,6 +42,11 @@ app-navbar {
   margin-top: 6%;
 }
 
+.right .artist {
+  padding-left: 0;
+  padding-right: 0;
+}
+
 /* scrollbar */
 
 .right::-webkit-scrollbar {
