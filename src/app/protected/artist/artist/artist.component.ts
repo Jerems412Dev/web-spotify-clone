@@ -38,6 +38,7 @@ export class ArtistComponent implements OnInit {
     this.route.fragment.subscribe(fragment => {
       this.artistService.findByNameArtist(fragment).subscribe(data => {
         this.artist = data;
+        this.trackList(this.artist.nameArtist);
       });
     });
   }
@@ -66,10 +67,15 @@ export class ArtistComponent implements OnInit {
     }
   }
 
-  trackRandom() {
-    this.trackService.findTrackByNameArtist(this.artist?.nameArtist).subscribe(data => {
+  trackList(nameArtist: string) {
+    this.trackService.findTrackByNameArtist(nameArtist).subscribe(data => {
       this.tracks = data;
-      console.log(data);
+    });
+  }
+
+  Following(idArtist: number) {
+    const user : any = this.dataService.getData("userConnect");
+    this.artistService.favArtistByUser(user.idUser,idArtist).subscribe(data => {
     });
   }
 
@@ -78,7 +84,6 @@ export class ArtistComponent implements OnInit {
     this.artistRandom();
     this.playlistRandom();
     this.findArtist();
-    this.trackRandom();
   }
 
 }

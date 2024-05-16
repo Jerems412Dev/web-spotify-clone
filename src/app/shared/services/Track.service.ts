@@ -118,4 +118,10 @@ export class TrackService {
     });
   }
 
+  favTrackByUser(idUser: number, idTrack: number): Observable<Response> {
+    return this.http.get<Response>(`${this.apiUrl}/tracks/favtrackbyuser/${idUser}/${idTrack}`, {
+      headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
+    });
+  }
+
 }

@@ -17,7 +17,11 @@ export class TokenService {
   }
 
   getToken(): string |null{
-    return localStorage.getItem('token');
+    const jsonData = localStorage.getItem("token");    
+    if (!jsonData) {
+      return null;
+    }  
+    return jsonData;
   }
 
   setUserByToken(token: string): any {
@@ -29,8 +33,16 @@ export class TokenService {
     this.isAuthenticated = isAuthenticated;
   }
 
+  isToken(key: string): boolean {
+    const jsonData = localStorage.getItem(key);    
+    if (!jsonData) {
+      return false;
+    }    
+    return true;
+  }
+
   isAuthenticatedUser(): boolean {
-    if(localStorage.getItem('token')) {
+    if(this.isToken("token")) {
       this.isAuthenticated = true;
     }
     return this.isAuthenticated;

@@ -58,14 +58,20 @@ export class AlbumService {
     });
   }
 
-  favAlbumByUser(idUser: number, idAlbum: number): Observable<string> {
-    return this.http.get<string>(`${this.apiUrl}/albums/favalbumbyuser/${idUser}/${idAlbum}`, {
+  favAlbumByUser(idUser: number, idAlbum: number): Observable<Response> {
+    return this.http.get<Response>(`${this.apiUrl}/albums/favalbumbyuser/${idUser}/${idAlbum}`, {
       headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
     });
   }
 
   findByTitleAlbum(titleAlbum: string): Observable<Album> {
     return this.http.get<Album>(`${this.apiUrl}/albums/findbytitlealbum/${titleAlbum}`, {
+      headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
+    });
+  }
+
+  existsByTitleAlbumAndUsername(titlealbum: string, username: string): Observable<boolean> {
+    return this.http.get<boolean>(`${this.apiUrl}/existsbytitlealbumandusername/${titlealbum}/${username}`, {
       headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
     });
   }
