@@ -57,11 +57,7 @@ export class MusicItemComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.data.getTrackSelect()?.subscribe(track => {
-      if(this.track === track) {
-        
-      }
-    });
+
   }
 
 }

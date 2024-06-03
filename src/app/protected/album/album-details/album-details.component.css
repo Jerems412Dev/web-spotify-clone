@@ -1,5 +1,4 @@
 .album-details {
-    width: 100%;
     display: flex;
     padding-top: 3%;
     padding-bottom: 3%;
@@ -23,10 +22,7 @@
     height: max-content;
     list-style: none;
     padding: 8% 0 0 3%;
-}
-
-.right ul {
-    list-style: none;
+    overflow: hidden;
 }
 
 .right ul li {
@@ -39,10 +35,14 @@
 }
 
 .right ul li:nth-child(2) {
+    display: block;
     font-size: 6rem;
     font-weight: 1000;
     color: whitesmoke;
     letter-spacing: -1px;
+    overflow: hidden;
+    white-space: nowrap;
+    box-sizing: border-box;
 }
 
 .right ul li:nth-child(3) {

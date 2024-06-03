@@ -71,7 +71,7 @@ export class ArtistService {
   }
 
   existsByNameArtistAndUsername(nameartist: string, username: string): Observable<boolean> {
-    return this.http.get<boolean>(`${this.apiUrl}/existsbynameartistandusername/${nameartist}/${username}`, {
+    return this.http.get<boolean>(`${this.apiUrl}/artists/existsbynameartistandusername/${nameartist}/${username}`, {
       headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
     });
   }

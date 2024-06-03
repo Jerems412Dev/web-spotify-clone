@@ -59,7 +59,7 @@ export class SpotifyPlaylistService {
   }
 
   deleteByUsernameAndNamePlaylist(username: string, namePlaylist: string): Observable<boolean> {
-    return this.http.get<boolean>(`${this.apiUrl}/spotifyplaylists/deletebyusernameandnameplaylist/${username}/${namePlaylist}`, {
+    return this.http.get<boolean>(`${this.apiUrl}/spotifyplaylists/spotifyplaylists/deletebyusernameandnameplaylist/${username}/${namePlaylist}`, {
       headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
     });
   }

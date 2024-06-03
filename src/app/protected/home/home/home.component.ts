@@ -16,6 +16,7 @@ import { CommonModule } from '@angular/common';
 import { SpotifyPlaylist } from '../../../shared/models/SpotifyPlaylist';
 import { SpotifyPlaylistService } from '../../../shared/services/SpotifyPlaylist.service';
 import { DataService } from '../../../shared/services/Data.service';
+import { Section } from '../../../shared/models/Section';
 
 @Component({
     selector: 'app-home',
@@ -29,6 +30,10 @@ export class HomeComponent implements OnInit {
   albums: Album[] | undefined;
   tracks: Track[] | undefined;
   playlists: SpotifyPlaylist[] | undefined;
+  hc_track: Section | undefined;
+  hc_playlist: Section | undefined;
+  hc_artist: Section | undefined;
+  hc_album: Section | undefined;
 
   constructor(private trackService: TrackService,
               private albumService: AlbumService,
@@ -41,6 +46,7 @@ export class HomeComponent implements OnInit {
     this.albumRandom();
     this.artistRandom();
     this.playlistRandom();
+    this.initSectionVariables();
   }
 
   albumRandom() {
@@ -97,6 +103,29 @@ export class HomeComponent implements OnInit {
         this.dataService.saveData("home_playlists",data);
       });
     }
+  }
+
+  initSectionVariables() {
+    this.hc_track = {
+      section: "Made For You",
+      type: "track",
+      category: "null"
+    };
+    this.hc_playlist = {
+      section: "Your top Mixes",
+      type: "playlist",
+      category: "null"
+    };
+    this.hc_artist = {
+      section: "Your favorites artists",
+      type: "artist",
+      category: "null"
+    };
+    this.hc_album = {
+      section: "Popular albums",
+      type: "album",
+      category: "null"
+    };
   }
 
 }

@@ -4,5 +4,4 @@ export interface Album {
     profilePicture: any;
     releaseDate: any;
     artist: any;
-    tracks: any[];
 }

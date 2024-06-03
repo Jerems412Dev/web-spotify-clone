@@ -1,19 +1,19 @@
 <app-artist-details [artist]="artist"></app-artist-details>
 <app-list-artist-song [tracks]="tracks"></app-list-artist-song>
 <div class="categories">
-    <app-artist-category>
+    <app-artist-category [section]="hc_album">
         Discography
         <div class="list">
             <app-album-item *ngFor="let album of albums?.slice(0, 5)" [album]="album"></app-album-item>
         </div>
     </app-artist-category>
-    <app-artist-category>
+    <app-artist-category [section]="hc_artist">
         Fans also like
         <div class="list">
             <app-artist-item *ngFor="let artist of artists?.slice(0, 5)" [artist]="artist"></app-artist-item>
         </div>
     </app-artist-category>
-    <app-artist-category>
+    <app-artist-category [section]="hc_playlist">
         Discovered on
         <div class="list">
             <app-playlist-item *ngFor="let playlist of playlists?.slice(0, 5)" [playlist]="playlist"></app-playlist-item>

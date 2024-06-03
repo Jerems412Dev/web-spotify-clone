@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
+import { Section } from '../../../shared/models/Section';
+import { DataService } from '../../../shared/services/Data.service';
 
 @Component({
   standalone: true,
@@ -10,10 +12,20 @@ import { Router, RouterLink } from '@angular/router';
   imports: [CommonModule, RouterLink]
 })
 export class ArtistCategoryComponent implements OnInit {
+  @Input("section") section: Section | undefined;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+    private dataService: DataService) { }
+
   isRightLink(): boolean {
-    return this.router.url !== '/artist/section';
+    if(this.router.url === '/section') {
+      return true;
+    }
+    return false;
+  }
+
+  linkSection(section: any) {
+    this.dataService.setSectionSelect(section);
   }
 
 

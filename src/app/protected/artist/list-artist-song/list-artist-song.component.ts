@@ -1,6 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { Track } from '../../../shared/models/Track';
+import { DataService } from '../../../shared/services/Data.service';
+import { ArtistService } from '../../../shared/services/Artist.service';
+import { Artist } from '../../../shared/models/Artist';
 
 @Component({
   standalone: true,
@@ -16,9 +19,11 @@ export class ListArtistSongComponent implements OnInit {
   @Input("tracks") tracks: Track[] | undefined;
   track: Track | undefined;
   nb = 0;
-  listen: number = Math.floor(Math.random() * (500000000 - 5000)) + 5000;
+  listen: number = Math.floor(Math.random() * (50000000 - 5000)) + 5000;
+  isFollow = "Follow";
 
-  constructor() { }
+  constructor(private dataService: DataService,
+              private artistService: ArtistService) { }
 
   hogglePlayPausePlaylist() {
     this.showPlayPlaylist = !this.showPlayPlaylist;
@@ -34,7 +39,52 @@ export class ListArtistSongComponent implements OnInit {
     }
   }
 
+  Following() {
+    const user : any = this.dataService.getData("userConnect");
+    this.dataService.getArtistSelect().subscribe(artist => {
+      this.artistService.favArtistByUser(user.idUser,artist.idArtist).subscribe(data => {
+        this.isFollow = "Following";
+      });
+    });
+  }
+
+  isFollowing(): boolean {
+    const user : any = this.dataService.getData("userConnect");
+    this.dataService.getArtistSelect().subscribe(artist => {
+      this.artistService.existsByNameArtistAndUsername(artist.nameArtist,user.sub).subscribe(data => {
+        return data;
+      });
+    });
+    return false;
+  }
+
+  deleteFollowing() {
+    const user : any = this.dataService.getData("userConnect");
+    this.dataService.getArtistSelect().subscribe(artist => {
+      this.artistService.deleteArtistUser(user.sub,artist.nameArtist).subscribe(data => {
+        this.isFollow = "Follow";
+      });
+    });
+  }
+
+  clickFollow(){
+    if(this.isFollow === "Following") {
+      this.isFollow = "Follow";
+    }else {
+      this.isFollow = "Following";
+    }
+  }
+
+  stopEventSvg(track: Track) {
+    this.dataService.setTrackSelect(track);
+  }
+
   ngOnInit() {
+    
+  }
+
+  ngAfterViewInit() {
+    
   }
 
 }

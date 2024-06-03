@@ -5,4 +5,5 @@ export interface Track {
     profilePicture: any;
     album: any;
     artists: any[];
+    categories: any[];
 }

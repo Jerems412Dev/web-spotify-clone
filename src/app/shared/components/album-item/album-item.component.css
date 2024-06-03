@@ -53,10 +53,12 @@ a ul li:first-child {
     color: whitesmoke;
     margin-bottom: 4%;
     white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 a ul li:last-child {
     font-size: .70rem;
     color: #a7a7a7;
     white-space: nowrap;
+    text-overflow: ellipsis;
 }

@@ -14,6 +14,7 @@ import { CommonModule } from '@angular/common';
 import { ArtistService } from '../../../shared/services/Artist.service';
 import { TrackService } from '../../../shared/services/Track.service';
 import { Track } from '../../../shared/models/Track';
+import { Section } from '../../../shared/models/Section';
 
 @Component({
     selector: 'app-artist',
@@ -28,6 +29,9 @@ export class ArtistComponent implements OnInit {
   artist: Artist | undefined;
   albums: Album[] | undefined;
   playlists: SpotifyPlaylist[] | undefined;
+  hc_playlist: Section | undefined;
+  hc_artist: Section | undefined;
+  hc_album: Section | undefined;
 
   constructor(private route: ActivatedRoute, 
               private dataService: DataService,
@@ -36,10 +40,14 @@ export class ArtistComponent implements OnInit {
 
   findArtist() {
     this.route.fragment.subscribe(fragment => {
-      this.artistService.findByNameArtist(fragment).subscribe(data => {
+      /*this.artistService.findByNameArtist(fragment).subscribe(data => {
         this.artist = data;
         this.trackList(this.artist.nameArtist);
-      });
+        this.dataService.setArtistSelect(this.artist);
+      });*/
+      this.artist = this.dataService.getData("home_artists").find(artist => artist.nameArtist === fragment);
+      this.trackList(this.artist?.nameArtist);
+      //this.dataService.setArtistSelect(this.artist);
     });
   }
 
@@ -73,10 +81,22 @@ export class ArtistComponent implements OnInit {
     });
   }
 
-  Following(idArtist: number) {
-    const user : any = this.dataService.getData("userConnect");
-    this.artistService.favArtistByUser(user.idUser,idArtist).subscribe(data => {
-    });
+  initSectionVariables() {
+    this.hc_playlist = {
+      section: "Discovered on",
+      type: "playlist",
+      category: "null"
+    };
+    this.hc_artist = {
+      section: "Fans also like",
+      type: "artist",
+      category: "null"
+    };
+    this.hc_album = {
+      section: "Discography",
+      type: "album",
+      category: "null"
+    };
   }
 
   ngOnInit() {
@@ -84,6 +104,7 @@ export class ArtistComponent implements OnInit {
     this.artistRandom();
     this.playlistRandom();
     this.findArtist();
+    this.initSectionVariables();
   }
 
 }

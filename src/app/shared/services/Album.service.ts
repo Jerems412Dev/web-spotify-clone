@@ -64,14 +64,14 @@ export class AlbumService {
     });
   }
 
-  findByTitleAlbum(titleAlbum: string): Observable<Album> {
+  findByTitleAlbum(titleAlbum: string | null): Observable<Album> {
     return this.http.get<Album>(`${this.apiUrl}/albums/findbytitlealbum/${titleAlbum}`, {
       headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
     });
   }
 
   existsByTitleAlbumAndUsername(titlealbum: string, username: string): Observable<boolean> {
-    return this.http.get<boolean>(`${this.apiUrl}/existsbytitlealbumandusername/${titlealbum}/${username}`, {
+    return this.http.get<boolean>(`${this.apiUrl}/albums/existsbytitlealbumandusername/${titlealbum}/${username}`, {
       headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
     });
   }

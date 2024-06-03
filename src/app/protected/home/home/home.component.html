@@ -8,25 +8,25 @@
     <app-recently-item [imgLink]="'assets/img/album.jpg'">Damso</app-recently-item>
     <app-recently-item [imgLink]="'assets/img/album.jpg'">Damso</app-recently-item>
 </div>-->
-<app-home-category>
+<app-home-category [section]="hc_track">
     Made For You
     <div class="list">
         <app-music-item *ngFor="let track of tracks?.slice(0, 5)" [track]="track"></app-music-item>
     </div>
 </app-home-category>
-<app-home-category>
+<app-home-category [section]="hc_playlist">
     Your top Mixes
     <div class="list">
         <app-playlist-item *ngFor="let playlist of playlists?.slice(0, 5)" [playlist]="playlist"></app-playlist-item>
     </div>
 </app-home-category>
-<app-home-category>
+<app-home-category [section]="hc_album">
     Popular albums
     <div class="list">
         <app-album-item *ngFor="let album of albums?.slice(0, 5)" [album]="album"></app-album-item>
     </div>
 </app-home-category>
-<app-home-category>
+<app-home-category [section]="hc_artist">
     Your favorites artists
     <div class="list">
         <app-artist-item *ngFor="let artist of artists?.slice(0, 5)" [artist]="artist"></app-artist-item>

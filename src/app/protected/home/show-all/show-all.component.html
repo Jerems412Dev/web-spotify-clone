@@ -1,13 +1,22 @@
-<app-home-category>
-  Made For Jerems
+<app-home-category *ngIf="section?.category == 'null'">
+  {{section?.section}}
+  <div class="list" *ngIf="section?.type == 'track'">
+      <app-music-item  *ngFor="let track of tracks" [track]="track"></app-music-item>
+  </div>
+  <div class="list" *ngIf="section?.type == 'album'">
+    <app-album-item  *ngFor="let album of albums" [album]="album"></app-album-item>
+  </div>
+  <div class="list" *ngIf="section?.type == 'artist'">
+    <app-artist-item  *ngFor="let artist of artists" [artist]="artist"></app-artist-item>
+  </div>
+  <div class="list" *ngIf="section?.type == 'playlist'">
+    <app-playlist-item  *ngFor="let playlist of playlists" [playlist]="playlist"></app-playlist-item>
+  </div>
+</app-home-category>
+
+<app-home-category *ngIf="section?.category != 'null'">
+  Plus tard
   <div class="list">
-      <app-music-item></app-music-item>
-      <app-music-item></app-music-item>
-      <app-music-item></app-music-item>
-      <app-music-item></app-music-item>
-      <app-music-item></app-music-item>
-      <app-music-item></app-music-item>
-      <app-music-item></app-music-item>
-      <app-music-item></app-music-item>
+      <app-music-item *ngIf=""></app-music-item>
   </div>
 </app-home-category>

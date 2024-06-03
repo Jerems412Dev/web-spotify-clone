@@ -3,5 +3,4 @@ export interface Artist {
     nameArtist: any;
     profilePicture: any;
     coverPicture: any;
-    albums: any[];
 }

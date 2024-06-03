@@ -6,13 +6,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { Artist } from '../../../shared/models/Artist';
 import { DataService } from '../../../shared/services/Data.service';
 import { TrackListen } from '../../../shared/models/TrackListen';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-audio-player',
   standalone: true,
   templateUrl: './audio-player.component.html',
   styleUrls: ['./audio-player.component.css'],
-  imports: [CommonModule, HttpClientModule,]
+  imports: [CommonModule, HttpClientModule,RouterLink]
 })
 export class AudioPlayerComponent implements AfterViewInit  {
   showPlay = false;

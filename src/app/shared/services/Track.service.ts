@@ -101,19 +101,19 @@ export class TrackService {
   }
 
   existsByTitleTrack(titletrack: string): Observable<boolean> {
-    return this.http.get<boolean>(`${this.apiUrl}/existsByTitleTrack/${titletrack}`, {
+    return this.http.get<boolean>(`${this.apiUrl}/tracks/existsByTitleTrack/${titletrack}`, {
       headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
     });
   }
 
   existsByTitleTrackAndUsername(titletrack: string, username: string): Observable<boolean> {
-    return this.http.get<boolean>(`${this.apiUrl}/existsbytitletrackandusername/${titletrack}/${username}`, {
+    return this.http.get<boolean>(`${this.apiUrl}/tracks/existsbytitletrackandusername/${titletrack}/${username}`, {
       headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
     });
   }
 
   deleteByUsernameAndTitleTrack(username: string, titletrack: string): Observable<boolean> {
-    return this.http.get<boolean>(`${this.apiUrl}/deletebyusernameandtitletrack/${username}/${titletrack}`, {
+    return this.http.get<boolean>(`${this.apiUrl}/tracks/deletebyusernameandtitletrack/${username}/${titletrack}`, {
       headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
     });
   }

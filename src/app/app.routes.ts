@@ -11,7 +11,6 @@ import { PlaylistComponent } from './protected/playlist/playlist/playlist.compon
 import { LikedComponent } from './protected/liked/liked/liked.component';
 import { AlbumComponent } from './protected/album/album/album.component';
 import { ArtistComponent } from './protected/artist/artist/artist.component';
-import { ArtistShowAllComponent } from './protected/artist/artist-show-all/artist-show-all.component';
 import { authGuard } from './shared/guards/auth.guard';
 
 export const routes: Routes = [
@@ -53,12 +52,6 @@ export const routes: Routes = [
         path: 'genre/section',
         title: 'Spotify - Web Player',
         component: SearchShowAllComponent,
-        canActivate: [authGuard]
-    },
-    { 
-        path: 'artist/section',
-        title: 'Spotify - Web Player',
-        component: ArtistShowAllComponent,
         canActivate: [authGuard]
     },
     { 

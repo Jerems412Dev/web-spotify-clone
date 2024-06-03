@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Album } from '../../../shared/models/Album';
 
 @Component({
   selector: 'app-album-details',
@@ -7,7 +8,8 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./album-details.component.css']
 })
 export class AlbumDetailsComponent implements OnInit {
-  @Input() imgLeftLink: string | undefined;
+  @Input("album") album : Album | undefined;
+  duration: number = Math.floor(Math.random() * (7 - 1)) + 1;
   constructor() { }
 
   ngOnInit() {
