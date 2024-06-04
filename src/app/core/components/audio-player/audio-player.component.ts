@@ -215,6 +215,7 @@ export class AudioPlayerComponent implements AfterViewInit  {
     this.lastListen();
     this.data.getTrackSelect()?.subscribe(track => {
       this.track = track;
+      this.data.setData("previewTrack", track.idTrack);
       this.reloadAudioElement();
     });
   }
