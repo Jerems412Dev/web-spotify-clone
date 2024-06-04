@@ -239,7 +239,6 @@ export class AudioPlayerComponent implements AfterViewInit  {
     this.data.getTrackSelect()?.subscribe(track => {
       this.track = track;
       this.loadSrcAudio(this.track?.profilePicture);
-      this.reloadAudioElement();
     });
   }
 }
