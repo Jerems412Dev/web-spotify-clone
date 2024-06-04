@@ -24,10 +24,12 @@ export class AudioPlayerComponent implements AfterViewInit  {
   @ViewChild('totalTime') totalTime: ElementRef | undefined;
   intervalId: any;
   isClickedLoop: boolean = false;
+  isClickedRandom: boolean = false;
   isClickedMute: boolean = false;
   saveVolume: string = "";
   total = '';
   track: Track | undefined;
+  tracks: Track[] | undefined;
   artist: Artist | undefined;
   tracklisten: TrackListen = {
     user: null,
@@ -64,6 +66,9 @@ export class AudioPlayerComponent implements AfterViewInit  {
 
   endedMusic() {
     this.showPlay = false;
+    if(this.isClickedRandom) {
+      this.nextTrack();
+    }
   }
 
   loopClick() {
@@ -76,6 +81,10 @@ export class AudioPlayerComponent implements AfterViewInit  {
         this.music.nativeElement.loop = false;
         break;
     }
+  }
+
+  randomClick() {
+    this.isClickedRandom = !this.isClickedRandom;
   }
 
   muteVolumeClick() {
@@ -94,6 +103,7 @@ export class AudioPlayerComponent implements AfterViewInit  {
   pauseAudioWithSpaceButton(event: KeyboardEvent) {
     if (event.code === 'Space' && !this.isFocusOnTextInput()) {
       this.hogglePlayPauseDirective();
+      event.preventDefault();
     }
   }
 
@@ -167,20 +177,45 @@ export class AudioPlayerComponent implements AfterViewInit  {
         }
       });
     }
+    this.data.setData("previewTrack", this.track);
   }
 
   addListenTrack() {
     this.tracklisten.track = this.track;
     this.tracklisten.user = this.data.getData("userConnect");
     this.trackListenService.createListen(this.tracklisten).subscribe(data => {
-      //alert(data)
     });
+  }
+
+  nextTrack() {  
+    this.data.setData("previewTrack", this.track?.idTrack);  
+    var val = Math.floor(Math.random() * (86 - 1)) + 1;
+    this.tracks = this.data.getData("home_tracks");
+    this.track = this.tracks[val];
+    this.reloadAudioElement();
+  }
+
+  prevTrack() {
+    var val : any = this.track;
+    this.tracks = this.data.getData("home_tracks");
+    this.track = this.tracks[this.data.getOneData("previewTrack")-1];
+    this.data.setData("previewTrack", val.idTrack);
+    this.reloadAudioElement();
+  }
+
+  reloadAudioElement() {
+    this.showPlay = false;
+    if (this.currentTime?.nativeElement && this.rangeInput?.nativeElement) {
+      this.currentTime.nativeElement.textContent = this.formatTime(0);
+      this.rangeInput.nativeElement.value = '0';
+    }
   }
 
   ngAfterViewInit() {
     this.lastListen();
     this.data.getTrackSelect()?.subscribe(track => {
       this.track = track;
+      this.reloadAudioElement();
     });
   }
 }

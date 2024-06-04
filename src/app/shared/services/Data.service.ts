@@ -44,7 +44,8 @@ export class DataService {
   }
 
   setData(key: string, data: any): void {
-    localStorage.setItem(key, data);
+    const jsonData = JSON.stringify(data);    
+    localStorage.setItem(key, jsonData);
   }
 
   getOneData(key: string): any {
