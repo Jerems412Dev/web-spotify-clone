@@ -4,7 +4,7 @@
     <ul>
       <li>Album</li>
       <li>{{album?.titleAlbum.slice(0, 15)}}</li>
-      <li>{{album?.artist.nameArtist}} . {{album?.releaseDate.slice(0, 4)}} . 1 song, {{duration}} mins</li>
+      <li><img src="assets/img/artist/profil/{{album?.artist.profilePicture}}.jpg" alt="">&nbsp;<strong><a [routerLink]="['/artist']" fragment="{{album?.artist.nameArtist}}">{{album?.artist.nameArtist}}</a></strong> . {{album?.releaseDate.slice(0, 4)}} . 1 song, {{duration}} mins</li>
     </ul>
   </div>
 </div>
