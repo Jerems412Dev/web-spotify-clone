@@ -67,7 +67,7 @@ export class AudioPlayerComponent implements AfterViewInit  {
   endedMusic() {
     this.showPlay = false;
     if(this.isClickedRandom) {
-      this.nextTrack();
+      this.randomTrack();
     }
   }
 
@@ -174,10 +174,10 @@ export class AudioPlayerComponent implements AfterViewInit  {
       this.trackService.findLastTrackListen(sub).subscribe(data => {
         if(data) {
           this.track = data.track;
+          this.loadSrcAudio(this.track?.profilePicture);
         }
       });
     }
-    this.data.setData("previewTrack", this.track);
   }
 
   addListenTrack() {
@@ -188,26 +188,50 @@ export class AudioPlayerComponent implements AfterViewInit  {
   }
 
   nextTrack() {  
-    this.data.setData("previewTrack", this.track?.idTrack);  
-    var val = Math.floor(Math.random() * (86 - 1)) + 1;
     this.tracks = this.data.getData("home_tracks");
-    this.track = this.tracks[val];
+    if(this.track?.idTrack < 86) {
+      this.track = this.tracks[this.track?.idTrack];
+    }else {
+      this.track = this.tracks[0];
+    }
+    this.loadSrcAudio(this.track.profilePicture);
+    this.reloadAudioElement();
+  }
+
+  randomTrack() {
+    this.tracks = this.data.getData("home_tracks");
+    this.track = this.tracks[Math.floor(Math.random() * (85 - 0)) + 0];
+    this.loadSrcAudio(this.track.profilePicture);
     this.reloadAudioElement();
   }
 
   prevTrack() {
-    var val : any = this.track;
     this.tracks = this.data.getData("home_tracks");
-    this.track = this.tracks[this.data.getOneData("previewTrack")-1];
-    this.data.setData("previewTrack", val.idTrack);
+    if(this.track?.idTrack > 1) {
+      this.track = this.tracks[this.track?.idTrack-2];
+    } else {
+      this.track = this.tracks[85];
+    }
+    this.loadSrcAudio(this.track.profilePicture);
     this.reloadAudioElement();
   }
 
   reloadAudioElement() {
+
     this.showPlay = false;
-    if (this.currentTime?.nativeElement && this.rangeInput?.nativeElement) {
+    if (this.currentTime?.nativeElement && this.rangeInput?.nativeElement && this.music?.nativeElement) {
       this.currentTime.nativeElement.textContent = this.formatTime(0);
       this.rangeInput.nativeElement.value = '0';
+      this.music.nativeElement.pause();
+      this.music.nativeElement.currentTime = 0;
+    }
+    this.hogglePlayPauseDirective();
+    //this.playMusic();
+  }
+
+  loadSrcAudio(src:string) {
+    if(this.music?.nativeElement) {
+      this.music.nativeElement.src = "assets/musics/"+src+".mp3";
     }
   }
 
@@ -215,8 +239,8 @@ export class AudioPlayerComponent implements AfterViewInit  {
     this.lastListen();
     this.data.getTrackSelect()?.subscribe(track => {
       this.track = track;
-      this.data.setData("previewTrack", this.track?.idTrack);
-      this.reloadAudioElement();
+      this.loadSrcAudio(this.track?.profilePicture);
+      //this.data.setData("previewTrack", this.track?.idTrack);
     });
   }
 }
