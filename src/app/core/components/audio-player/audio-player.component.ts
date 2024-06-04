@@ -226,7 +226,6 @@ export class AudioPlayerComponent implements AfterViewInit  {
       this.music.nativeElement.currentTime = 0;
     }
     this.hogglePlayPauseDirective();
-    //this.playMusic();
   }
 
   loadSrcAudio(src:string) {
@@ -240,7 +239,7 @@ export class AudioPlayerComponent implements AfterViewInit  {
     this.data.getTrackSelect()?.subscribe(track => {
       this.track = track;
       this.loadSrcAudio(this.track?.profilePicture);
-      //this.data.setData("previewTrack", this.track?.idTrack);
+      this.reloadAudioElement();
     });
   }
 }
