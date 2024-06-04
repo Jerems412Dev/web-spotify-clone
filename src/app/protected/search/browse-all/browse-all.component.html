@@ -1,20 +1,6 @@
 <div class="browseAll">
   <h2>Browse all</h2>
   <div class="list">
-    <a [routerLink]="['/genre']" appSetBackground>Afro</a>
-    <a [routerLink]="['/genre']" appSetBackground>At Home</a>
-    <a [routerLink]="['/genre']" appSetBackground>Charts</a>
-    <a [routerLink]="['/genre']" appSetBackground>Chill</a>
-    <a [routerLink]="['/genre']" appSetBackground>Gaming</a>
-    <a [routerLink]="['/genre']" appSetBackground>Gospel</a>
-    <a [routerLink]="['/genre']" appSetBackground>Hip-Hop</a>
-    <a [routerLink]="['/genre']" appSetBackground>Jazz</a>
-    <a [routerLink]="['/genre']" appSetBackground>Latin</a>
-    <a [routerLink]="['/genre']" appSetBackground>Mood</a>
-    <a [routerLink]="['/genre']" appSetBackground>Pop</a>
-    <a [routerLink]="['/genre']" appSetBackground>R&B</a>
-    <a [routerLink]="['/genre']" appSetBackground>Rock</a>
-    <a [routerLink]="['/genre']" appSetBackground>Sleep</a>
-    <a [routerLink]="['/genre']" appSetBackground>Soul</a>
+    <a [routerLink]="['/genre']" [style.backgroundColor]="category.color" *ngFor="let category of categories">{{category.nameCategory}}</a>
   </div>
 </div>

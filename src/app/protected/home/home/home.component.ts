@@ -17,6 +17,8 @@ import { SpotifyPlaylist } from '../../../shared/models/SpotifyPlaylist';
 import { SpotifyPlaylistService } from '../../../shared/services/SpotifyPlaylist.service';
 import { DataService } from '../../../shared/services/Data.service';
 import { Section } from '../../../shared/models/Section';
+import { CategoryService } from '../../../shared/services/Category.service';
+import { Category } from '../../../shared/models/Category';
 
 @Component({
     selector: 'app-home',
@@ -29,6 +31,7 @@ export class HomeComponent implements OnInit {
   artists: Artist[] | undefined;
   albums: Album[] | undefined;
   tracks: Track[] | undefined;
+  categories: Category[] | undefined;
   playlists: SpotifyPlaylist[] | undefined;
   hc_track: Section | undefined;
   hc_playlist: Section | undefined;
@@ -38,6 +41,7 @@ export class HomeComponent implements OnInit {
   constructor(private trackService: TrackService,
               private albumService: AlbumService,
               private artistService: ArtistService,
+              private categoryService: CategoryService,
               private playlistService: SpotifyPlaylistService,
               private dataService: DataService) { }
 
@@ -45,6 +49,7 @@ export class HomeComponent implements OnInit {
     this.trackRandom();
     this.albumRandom();
     this.artistRandom();
+    this.categoriesRandom();
     this.playlistRandom();
     this.initSectionVariables();
   }
@@ -103,6 +108,13 @@ export class HomeComponent implements OnInit {
         this.dataService.saveData("home_playlists",data);
       });
     }
+  }
+
+  categoriesRandom() {
+    this.categoryService.findAll().subscribe(data => {
+      this.categories = data;
+      this.dataService.saveData("home_categories",data);
+    });
   }
 
   initSectionVariables() {

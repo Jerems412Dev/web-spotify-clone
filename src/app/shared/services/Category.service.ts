@@ -16,6 +16,12 @@ export class CategoryService {
 
   constructor(private http: HttpClient,private tokenService: TokenService) { }
 
+  findAll(): Observable<Category[]> {
+    return this.http.get<Category[]>(`${this.apiUrl}/categories/findall`, {
+      headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
+    });
+  }
+
   findByNameCategory(nameCategory: string): Observable<Category> {
     return this.http.get<Category>(`${this.apiUrl}/categories/findbynamecategory/${nameCategory}`, {
       headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
