@@ -16,65 +16,65 @@ import { authGuard } from './shared/guards/auth.guard';
 export const routes: Routes = [
     { 
         path: '',
-        title: 'Login - Spotify',
+        title: 'Login',
         component: LoginComponent,
     },
     { 
         path: 'register',
-        title: 'Register - Spotify',
+        title: 'Register',
         component: RegisterComponent
     },
     { 
         path: 'home',
-        title: 'Home - Spotify',
+        title: 'Home',
         component: HomeComponent,
         canActivate: [authGuard]
     },
     { 
         path: 'search',
-        title: 'Search - Spotify',
+        title: 'Search',
         component: SearchComponent,
         canActivate: [authGuard]
     },
     { 
         path: 'section',
-        title: 'Spotify - Web Player',
+        title: 'Web Player',
         component: ShowAllComponent,
         canActivate: [authGuard]
     },
     { 
         path: 'genre',
-        title: 'Spotify - Web Player',
+        title: 'Web Player',
         component: GenreComponent,
         canActivate: [authGuard]
     },
     { 
         path: 'genre/section',
-        title: 'Spotify - Web Player',
+        title: 'Web Player',
         component: SearchShowAllComponent,
         canActivate: [authGuard]
     },
     { 
         path: 'playlist',
-        title: 'Spotify - Web Player',
+        title: 'Web Player',
         component: PlaylistComponent,
         canActivate: [authGuard]
     },
     { 
         path: 'liked',
-        title: 'Spotify - Web Player',
+        title: 'Web Player',
         component: LikedComponent,
         canActivate: [authGuard]
     },
     { 
         path: 'album',
-        title: 'Spotify - Web Player',
+        title: 'Web Player',
         component: AlbumComponent,
         canActivate: [authGuard]
     },
     { 
         path: 'artist',
-        title: 'Spotify - Web Player',
+        title: 'Web Player',
         component: ArtistComponent,
         canActivate: [authGuard]
     },
