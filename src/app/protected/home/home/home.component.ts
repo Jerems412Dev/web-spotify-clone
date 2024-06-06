@@ -122,7 +122,6 @@ export class HomeComponent implements OnInit {
       let user: any = this.dataService.getData("userConnect");
       this.tracklistenService.findByUsername(user.sub).subscribe(data => {
         this.trackListens = data;
-        console.table(data);
         this.dataService.saveData("home_tracklistens",data);
       });
     }

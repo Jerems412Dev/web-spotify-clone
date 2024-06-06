@@ -9,6 +9,7 @@ body {
     padding: 0;
     box-sizing: border-box;
     font-family: 'CircularStd';
+    font-display: swap;
     color: white;
     justify-content: center;
     align-items: center;

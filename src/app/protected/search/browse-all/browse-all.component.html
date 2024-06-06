@@ -1,6 +1,6 @@
 <div class="browseAll">
   <h2>Browse all</h2>
   <div class="list">
-    <a [routerLink]="['/genre']" [style.backgroundColor]="category.color" *ngFor="let category of categories">{{category.nameCategory}}</a>
+    <a (click)="linkGender(category);setBackgroundColor(category.color)" [routerLink]="['/genre']" [style.backgroundColor]="category.color" *ngFor="let category of categories">{{category.nameCategory}}</a>
   </div>
 </div>

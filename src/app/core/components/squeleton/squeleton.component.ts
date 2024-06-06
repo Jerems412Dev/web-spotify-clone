@@ -6,6 +6,7 @@ import { AudioPlayerComponent } from '../audio-player/audio-player.component';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { DataService } from '../../../shared/services/Data.service';
 
 @Component({
   selector: 'app-squeleton',
@@ -18,11 +19,13 @@ export class SqueletonComponent implements OnInit,OnDestroy,AfterViewInit {
   @ViewChild('content') content: ElementRef | undefined;
   @ViewChild('right') right: ElementRef | undefined;
   private routerSubscription: Subscription | undefined;
+  background: any | undefined;
   
-  constructor(private router: Router,private route: ActivatedRoute) {
+  constructor(private router: Router,private route: ActivatedRoute,private data: DataService) {
     this.routerSubscription = this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         (this.right?.nativeElement) ? this.right.nativeElement.scrollTop = 0 : null;
+        this.rightBackgroundColor();
       }
     });
   }
@@ -48,12 +51,21 @@ export class SqueletonComponent implements OnInit,OnDestroy,AfterViewInit {
     return false;
   }
 
+  rightBackgroundColor() {
+    if(this.right?.nativeElement) {
+      if(this.router.url === '/genre') {
+        this.right.nativeElement.style.background = "linear-gradient(360deg, #1f1f1f 55%,"+this.data.getOneData("backgroundColor")+" 100%)";
+      }else {
+        this.right.nativeElement.style.background = "#1f1f1f";
+      }
+    }
+  }
+
   ngOnInit() {
     
   }
 
   ngAfterViewInit() {
-    //this.paddingContent();
   }
 
   ngOnDestroy() {

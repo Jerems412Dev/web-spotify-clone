@@ -68,12 +68,36 @@ export class ShowAllComponent implements OnInit {
     }
   }
 
+  findTrackByCategory() {
+    this.tracks = this.dataService.getData("home_tracks").filter(track =>
+      track.categories.some((category: { nameCategory: string; }) => category.nameCategory === this.section?.category)
+    );
+  }
+
+  findAlbumByCategory() {
+    this.albums = this.dataService.getData("home_albums").filter(album =>
+      album.categories.some((category: { nameCategory: string; }) => category.nameCategory === this.section?.category)
+    );
+  }
+
+  findArtistByCategory() {
+    this.artists = this.dataService.getData("home_artists").filter(artist =>
+      artist.categories.some((category: { nameCategory: string; }) => category.nameCategory === this.section?.category)
+    );
+  }
+
   ngOnInit() {
     this.initSectionVariable();
-    this.trackRandom();
-    this.albumRandom();
-    this.artistRandom();
-    this.playlistRandom();
+    if(this.section?.category === "null") {
+      this.trackRandom();
+      this.albumRandom();
+      this.artistRandom();
+      this.playlistRandom();
+    }else {
+      this.findAlbumByCategory();
+      this.findArtistByCategory();
+      this.findTrackByCategory();
+    }
   }
 
 }

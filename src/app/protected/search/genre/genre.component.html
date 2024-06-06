@@ -1,36 +1,24 @@
 <div class="genre">
   <div class="top">
-    <h1>Afro</h1>
+    <h1>{{category?.nameCategory}}</h1>
   </div>
   <div class="bottom">
-    <app-search-category>
-      Your top Afro 
+    <app-search-category [section]="hc_track">
+      {{hc_track?.section}} 
       <div class="list">
-          <app-playlist-item></app-playlist-item>
-          <app-playlist-item></app-playlist-item>
-          <app-playlist-item></app-playlist-item>
-          <app-playlist-item></app-playlist-item>
-          <app-playlist-item></app-playlist-item>
+          <app-music-item *ngFor="let track of tracks?.slice(0,5)" [track]="track"></app-music-item>
       </div>
     </app-search-category>
-    <app-search-category>
-      Afro albums
+    <app-search-category [section]="hc_album">
+      {{hc_album?.section}}
       <div class="list">
-          <app-album-item></app-album-item>
-          <app-album-item></app-album-item>
-          <app-album-item></app-album-item>
-          <app-album-item></app-album-item>
-          <app-album-item></app-album-item>
+          <app-album-item *ngFor="let album of albums?.slice(0,5)" [album]="album"></app-album-item>
       </div>
     </app-search-category>
-    <app-search-category>
-      Afro artists
+    <app-search-category [section]="hc_artist">
+      {{hc_artist?.section}}
       <div class="list">
-          <app-artist-item></app-artist-item>
-          <app-artist-item></app-artist-item>
-          <app-artist-item></app-artist-item>
-          <app-artist-item></app-artist-item>
-          <app-artist-item></app-artist-item>
+          <app-artist-item *ngFor="let artist of artists?.slice(0,5)" [artist]="artist"></app-artist-item>
       </div>
     </app-search-category>
   </div>

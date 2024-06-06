@@ -23,6 +23,14 @@ export class BrowseAllComponent implements OnInit {
     this.categories = this.data.getData("home_categories");
   }
 
+  linkGender(category: any) {
+    this.data.setData("gd_category",category);
+  }
+
+  setBackgroundColor(color: any) {
+    this.data.setData("backgroundColor",color);
+  }
+
   ngOnInit() {
     this.findAllCategories();
   }

@@ -4,4 +4,5 @@ export interface SpotifyPlaylist {
     description: any;
     profilePicture: any;
     tracks: any[];
+    categories: any[];
 }
