@@ -27,7 +27,7 @@ export class HomeCategoryComponent implements OnInit {
   }
 
   linkSection(section: any) {
-    this.dataService.setSectionSelect(section);
+    this.dataService.setData("sc_section",section);
   }
 
   ngOnInit() {

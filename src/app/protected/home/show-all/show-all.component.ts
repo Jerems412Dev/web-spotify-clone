@@ -28,13 +28,12 @@ export class ShowAllComponent implements OnInit {
   tracks: Track[] | undefined;
   playlists: SpotifyPlaylist[] | undefined;
 
-  constructor(private route: ActivatedRoute,
-              private dataService: DataService) { }
+  constructor(private dataService: DataService) { }
 
   initSectionVariable() {
-    this.dataService.getSectionSelect().subscribe(section => {
-      this.section = section;
-    });
+    if(this.dataService.existDataStorage("sc_section")) {
+      this.section = this.dataService.getOneData("sc_section");
+    }
   }
 
   albumRandom() {

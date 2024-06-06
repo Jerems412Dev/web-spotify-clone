@@ -41,6 +41,12 @@ export class TrackListenService {
     });
   }
 
+  findByUsername(username: string): Observable<TrackListen[]> {
+    return this.http.get<TrackListen[]>(`${this.apiUrl}/tracklistens/findbyusername/${username}`, {
+      headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
+    });
+  }
+
   findByUserAndTrackNot(username: string, titleTrack: string): Observable<TrackListen[]> {
     return this.http.get<TrackListen[]>(`${this.apiUrl}/tracklistens/findbyuserandtracknot/${username}/${titleTrack}`, {
       headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)

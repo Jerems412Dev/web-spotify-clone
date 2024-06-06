@@ -19,6 +19,8 @@ import { DataService } from '../../../shared/services/Data.service';
 import { Section } from '../../../shared/models/Section';
 import { CategoryService } from '../../../shared/services/Category.service';
 import { Category } from '../../../shared/models/Category';
+import { TrackListen } from '../../../shared/models/TrackListen';
+import { TrackListenService } from '../../../shared/services/TrackListen.service';
 
 @Component({
     selector: 'app-home',
@@ -33,6 +35,7 @@ export class HomeComponent implements OnInit {
   tracks: Track[] | undefined;
   categories: Category[] | undefined;
   playlists: SpotifyPlaylist[] | undefined;
+  trackListens: TrackListen[] | undefined;
   hc_track: Section | undefined;
   hc_playlist: Section | undefined;
   hc_artist: Section | undefined;
@@ -43,6 +46,7 @@ export class HomeComponent implements OnInit {
               private artistService: ArtistService,
               private categoryService: CategoryService,
               private playlistService: SpotifyPlaylistService,
+              private tracklistenService: TrackListenService,
               private dataService: DataService) { }
 
   ngOnInit() {
@@ -52,6 +56,7 @@ export class HomeComponent implements OnInit {
     this.categoriesRandom();
     this.playlistRandom();
     this.initSectionVariables();
+    this.tracklistenRandom();
   }
 
   albumRandom() {
@@ -106,6 +111,19 @@ export class HomeComponent implements OnInit {
         var val = Math.floor(Math.random() * (81 - 0)) + 0;
         this.playlists = data.slice(val, val+10);
         this.dataService.saveData("home_playlists",data);
+      });
+    }
+  }
+
+  tracklistenRandom() {
+    if(this.dataService.existDataStorage("home_tracklistens")) {
+      this.trackListens = this.dataService.getData("home_tracklistens");
+    }else {
+      let user: any = this.dataService.getData("userConnect");
+      this.tracklistenService.findByUsername(user.sub).subscribe(data => {
+        this.trackListens = data;
+        console.table(data);
+        this.dataService.saveData("home_tracklistens",data);
       });
     }
   }

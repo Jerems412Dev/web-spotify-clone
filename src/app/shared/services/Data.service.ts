@@ -49,7 +49,11 @@ export class DataService {
   }
 
   getOneData(key: string): any {
-    return localStorage.getItem(key);
+    const jsonData = localStorage.getItem(key);
+    if (!jsonData) {
+      return null;
+    }  
+    return JSON.parse(jsonData);
   }
 
   getData(key: string): any[] {
@@ -65,6 +69,10 @@ export class DataService {
       return true;
     }
     return false;
+  }
+
+  removeItem(key: string) {
+    localStorage.removeItem(key);
   }
 
 }

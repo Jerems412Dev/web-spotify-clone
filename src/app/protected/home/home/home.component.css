@@ -1,5 +1,9 @@
 .recently {
-    max-width: 100%;
-    min-width: 100%;
-    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap
+}
+
+app-recently-item {
+    flex-grow: 1;
+    flex-basis: 24%;
 }

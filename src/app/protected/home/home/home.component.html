@@ -1,23 +1,10 @@
-<!--<div class="recently">
-    <app-recently-item [imgLink]="'assets/img/billy.jpg'">404Billy</app-recently-item>
-    <app-recently-item [imgLink]="'assets/img/billy.jpg'">404Billy</app-recently-item>
-    <app-recently-item [imgLink]="'assets/img/billy.jpg'">404Billy</app-recently-item>
-    <app-recently-item [imgLink]="'assets/img/billy.jpg'">404Billy</app-recently-item>
-    <app-recently-item [imgLink]="'assets/img/album.jpg'">Damso</app-recently-item>
-    <app-recently-item [imgLink]="'assets/img/album.jpg'">Damso</app-recently-item>
-    <app-recently-item [imgLink]="'assets/img/album.jpg'">Damso</app-recently-item>
-    <app-recently-item [imgLink]="'assets/img/album.jpg'">Damso</app-recently-item>
-</div>-->
+<div class="recently">
+    <app-recently-item [track]="trackListen.track" [imgLink]="trackListen.track.profilePicture" *ngFor="let trackListen of trackListens">{{trackListen.track.titleTrack}}</app-recently-item>
+</div>
 <app-home-category [section]="hc_track">
     Made For You
     <div class="list">
         <app-music-item *ngFor="let track of tracks?.slice(0, 5)" [track]="track"></app-music-item>
-    </div>
-</app-home-category>
-<app-home-category [section]="hc_playlist">
-    Your top Mixes
-    <div class="list">
-        <app-playlist-item *ngFor="let playlist of playlists?.slice(0, 5)" [playlist]="playlist"></app-playlist-item>
     </div>
 </app-home-category>
 <app-home-category [section]="hc_album">
@@ -30,5 +17,11 @@
     Your favorites artists
     <div class="list">
         <app-artist-item *ngFor="let artist of artists?.slice(0, 5)" [artist]="artist"></app-artist-item>
+    </div>
+</app-home-category>
+<app-home-category [section]="hc_playlist">
+    Your top Mixes
+    <div class="list">
+        <app-playlist-item *ngFor="let playlist of playlists?.slice(0, 5)" [playlist]="playlist"></app-playlist-item>
     </div>
 </app-home-category>

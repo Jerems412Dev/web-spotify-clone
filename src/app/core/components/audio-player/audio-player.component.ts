@@ -58,7 +58,6 @@ export class AudioPlayerComponent implements AfterViewInit  {
       this.music?.nativeElement.play();
       this.loadTotalTime();
       this.seekUpdate();
-      this.addListenTrack()
     }else {
       this.music?.nativeElement.pause();
     }
@@ -66,7 +65,7 @@ export class AudioPlayerComponent implements AfterViewInit  {
 
   endedMusic() {
     this.showPlay = false;
-    if(this.isClickedRandom) {
+    if(this.isClickedRandom && !this.isClickedLoop) {
       this.randomTrack();
     }
   }
@@ -196,6 +195,7 @@ export class AudioPlayerComponent implements AfterViewInit  {
     }
     this.loadSrcAudio(this.track.profilePicture);
     this.reloadAudioElement();
+    this.addListenTrack();
   }
 
   randomTrack() {
@@ -203,6 +203,7 @@ export class AudioPlayerComponent implements AfterViewInit  {
     this.track = this.tracks[Math.floor(Math.random() * (85 - 0)) + 0];
     this.loadSrcAudio(this.track.profilePicture);
     this.reloadAudioElement();
+    this.addListenTrack();
   }
 
   prevTrack() {
@@ -214,6 +215,7 @@ export class AudioPlayerComponent implements AfterViewInit  {
     }
     this.loadSrcAudio(this.track.profilePicture);
     this.reloadAudioElement();
+    this.addListenTrack();
   }
 
   reloadAudioElement() {
@@ -241,7 +243,9 @@ export class AudioPlayerComponent implements AfterViewInit  {
         this.track = track;
         this.loadSrcAudio(this.track?.profilePicture);
         this.reloadAudioElement();
+        this.addListenTrack();
       }
     });
+    this.showPlay = false;
   }
 }

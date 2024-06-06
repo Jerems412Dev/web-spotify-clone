@@ -1,7 +1,6 @@
 a {
     display: flex;
     background-color: rgba(47, 47, 47, 0.4);
-    width: 24%;
     height: 8vh;
     align-items: center;
     text-decoration: none;
@@ -10,8 +9,7 @@ a {
     color: whitesmoke;
     gap: 4%;
     border-radius: 6px;
-    float: left;
-    margin: 0 .9% .9% 0;
+    justify-content: space-between;
 }
 
 a:hover {
@@ -34,4 +32,10 @@ a svg {
 a svg:hover {
     transition: all .1s;
     transform: scale(1.1);
+}
+
+.left {
+    display: flex;
+    align-items: center;
+    gap: 5%;
 }

@@ -25,7 +25,7 @@ export class ArtistCategoryComponent implements OnInit {
   }
 
   linkSection(section: any) {
-    this.dataService.setSectionSelect(section);
+    this.dataService.setData("sc_section",section);
   }
 
 
