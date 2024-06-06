@@ -6,8 +6,8 @@ import { AutoFocusDirective } from '../../directives/autoFocus.directive';
 import { AuthenticationService } from '../../../shared/services/Authentication.service';
 import { TokenService } from '../../../shared/services/Token.service';
 import { DataService } from '../../../shared/services/Data.service';
-import { User } from '../../../shared/models/User';
-
+import { debounceTime } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 @Component({
     selector: 'app-navbar',
     standalone: true,
@@ -18,11 +18,20 @@ import { User } from '../../../shared/models/User';
 export class NavbarComponent implements OnInit {
   showDiv = false;
   user: any;
+  inputValue: any = null;
+  private inputSubject = new Subject<string>();
   
   constructor(private router: Router,
               private authService: AuthenticationService,
               private tokenService: TokenService,
-              private data: DataService) {}
+              private data: DataService) 
+  {
+    this.inputSubject.pipe(
+      debounceTime(900)
+    ).subscribe(value => {
+      this.checkIfWriting(value);
+    });
+  }
 
   isHomeRoute(): boolean {
       return this.router.url === '/search';
@@ -48,6 +57,20 @@ export class NavbarComponent implements OnInit {
     this.authService.logout();
     this.tokenService.editIsAuthenticated(false);
     this.router.navigate(['/']);
+  }
+
+  onInputChange(event: any): void {
+    const inputValue = event.target.value;
+    this.inputSubject.next(inputValue);
+  }
+
+  checkIfWriting(value: string): void {
+    if(/\S/.test(value) && value.length > 1) {
+      this.data.setSearchSelect(value);
+    }else {
+      this.data.setSearchSelect('');
+    }
+    
   }
 
   ngOnInit() {

@@ -10,7 +10,8 @@
 
 .top .list {
     width: 100%;
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 app-recently-item {
@@ -32,12 +33,13 @@ app-recently-item {
 
 .song {
     display: flex;
-    width: 50%;
     align-items: center;
     justify-content: space-between;
     border-radius: 6px;
     cursor: pointer;
     padding: 0 1% 0 1%;
+    flex-grow: 1;
+    flex-basis: 40%;
 }
 
 .song:hover {

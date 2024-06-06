@@ -11,11 +11,16 @@ export class DataService {
   private trackListen = new BehaviorSubject<any>(null);
   private artist = new BehaviorSubject<any>(null);
   private section = new BehaviorSubject<any>(null);
+  private search = new BehaviorSubject<any>(null);
 
   constructor() { }
 
   setTrackSelect(track: Track) {
     this.trackListen.next(track);
+  }
+
+  setSearchSelect(search: string) {
+    this.search.next(search);
   }
 
   setArtistSelect(artist: Artist) {
@@ -28,6 +33,10 @@ export class DataService {
 
   getSectionSelect() {
     return this.section.asObservable();
+  }
+
+  getSearchSelect() {
+    return this.search.asObservable();
   }
 
   getArtistSelect() {

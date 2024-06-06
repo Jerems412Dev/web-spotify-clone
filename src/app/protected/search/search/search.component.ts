@@ -3,6 +3,7 @@ import { BrowseAllComponent } from "../browse-all/browse-all.component";
 import { GenreComponent } from "../genre/genre.component";
 import { SearchResultComponent } from "../search-result/search-result.component";
 import { CommonModule } from '@angular/common';
+import { DataService } from '../../../shared/services/Data.service';
 
 @Component({
     selector: 'app-search',
@@ -12,22 +13,22 @@ import { CommonModule } from '@angular/common';
     imports: [BrowseAllComponent, GenreComponent, SearchResultComponent,CommonModule]
 })
 export class SearchComponent implements OnInit {
-  //@Input() inputSearch: ElementRef | undefined;
+  isSearch: boolean | undefined;
+  searchValue: any;
 
-  constructor() { }
-
-  /*isKeyUp(): boolean {
-    let regex = /\S/;
-    let verif = false;
-    if (regex.test(this.inputSearch?.nativeElement.value)) {
-      alert(this.inputSearch?.nativeElement.value);
-      verif = true;
-    }
-    return verif;
-  }*/
+  constructor(private data: DataService) {
+    this.data.getSearchSelect().subscribe(data => {
+      if(data) {
+        this.isSearch = true;
+        this.searchValue = data;
+      }else {
+        this.isSearch = false;
+      }
+    });
+  }
 
   ngOnInit() {
-    
+    this.isSearch = false;
   }
 
 }
