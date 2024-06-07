@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { jwtDecode } from "jwt-decode";
+import { DataService } from './Data.service';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +10,7 @@ export class TokenService {
   private isAuthenticated: boolean = false;
   private authToken: string = '';
 
-  constructor() { }
+  constructor(private data: DataService) { }
 
   setToken(token: string): void {
     this.isAuthenticated = true;
@@ -34,18 +36,35 @@ export class TokenService {
   }
 
   isToken(key: string): boolean {
-    const jsonData = localStorage.getItem(key);    
-    if (!jsonData) {
+    if (this.isLocalStorageAvailable()) {
+      return !!localStorage.getItem(key);
+    } else {
       return false;
-    }    
-    return true;
+    }
   }
 
-  isAuthenticatedUser(): boolean {
+  /*isAuthenticatedUser(): boolean {
     if(this.isToken("token")) {
       this.isAuthenticated = true;
     }
     return this.isAuthenticated;
+  }*/
+
+  isAuthenticatedUser(): Observable<boolean> {
+    const isAuthenticated = this.isToken("token");
+    this.isAuthenticated = isAuthenticated;
+    return of(this.isAuthenticated);
+  }
+
+  isLocalStorageAvailable(): boolean {
+    try {
+      const testKey = '__test__';
+      localStorage.setItem(testKey, testKey);
+      localStorage.removeItem(testKey);
+      return true;
+    } catch (e) {
+      return false;
+    }
   }
 
 }
