@@ -118,7 +118,7 @@
     margin-top: 10px;
 }
 
-.forminput .div-input-text .input input {
+.forminput .div-input-text .input input,.forminput .div-input-text .input select {
     appearance: none;
     background-image: none;
     border: 0px;
@@ -138,6 +138,31 @@
     background-color: transparent;
     box-shadow: inset 0 0 0 1px #878787;
     color: rgba(255, 255, 255, 0.9);
+}
+
+.forminput .div-input-text .input select {
+    appearance: none;
+    background-image: none;
+    border: 0px;
+    display: block;
+    font-size: 1rem;
+    font-weight: 400;
+    font-family: sans-serif;
+    transition: box-shadow 0.1s ease-in-out 0s, color 0.1s ease-in-out 0s;
+    inline-size: 100%;
+    box-sizing: border-box;
+    margin-block: 0px;
+    border-radius: 4px;
+    padding-inline: 14px;
+    padding-block-start: 8px;
+    padding-block-end: 8px;
+    min-block-size: 48px;
+    background-color: transparent;
+    color: white;
+}
+
+.forminput .div-input-text .input select option {
+    color: black;
 }
 
 .forminput .div-input-text .input input.custom-outline:focus  {

@@ -62,10 +62,12 @@ app-recently-item {
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 } 
 
 .song svg {
     opacity: 0;
+    fill: white;
 }
 
 .song .title ul {

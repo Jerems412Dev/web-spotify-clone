@@ -62,7 +62,6 @@ export class SqueletonComponent implements OnInit,OnDestroy,AfterViewInit {
   }
 
   ngOnInit() {
-    
   }
 
   ngAfterViewInit() {

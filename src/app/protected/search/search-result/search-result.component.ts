@@ -9,13 +9,14 @@ import { Track } from '../../../shared/models/Track';
 import { Album } from '../../../shared/models/Album';
 import { Artist } from '../../../shared/models/Artist';
 import { DataService } from '../../../shared/services/Data.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
     standalone: true,
     selector: 'app-search-result',
     templateUrl: './search-result.component.html',
     styleUrls: ['./search-result.component.css'],
-    imports: [CommonModule, SearchCategoryComponent, PlaylistItemComponent, AlbumItemComponent, ArtistItemComponent, RecentlyItemComponent]
+    imports: [RouterLink,CommonModule, SearchCategoryComponent, PlaylistItemComponent, AlbumItemComponent, ArtistItemComponent, RecentlyItemComponent]
 })
 export class SearchResultComponent implements OnInit {
   value: any;
