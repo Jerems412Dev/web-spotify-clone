@@ -109,7 +109,7 @@
     box-sizing: border-box;
     font-size: 0.875rem;
     font-weight: 700;
-    font-family: CircularSp,CircularSp-Arab,CircularSp-Hebr,CircularSp-Cyrl,CircularSp-Grek,CircularSp-Deva,sans-serif,Helvetica,Arial,sans-serif;
+    font-family: sans-serif;
     -moz-box-align: center;
     align-items: center;
     display: flex;
@@ -125,7 +125,7 @@
     display: block;
     font-size: 1rem;
     font-weight: 400;
-    font-family: CircularSp,CircularSp-Arab,CircularSp-Hebr,CircularSp-Cyrl,CircularSp-Grek,CircularSp-Deva,sans-serif,Helvetica,Arial,sans-serif;
+    font-family: sans-serif;
     transition: box-shadow 0.1s ease-in-out 0s, color 0.1s ease-in-out 0s;
     inline-size: 100%;
     box-sizing: border-box;
@@ -172,7 +172,7 @@
 .forminput .div-input-text label {
     font-size: 0.875rem;
     font-weight: 700;
-    font-family: CircularSp,CircularSp-Arab,CircularSp-Hebr,CircularSp-Cyrl,CircularSp-Grek,CircularSp-Deva,sans-serif,Helvetica,Arial,sans-serif;
+    font-family: sans-serif;
 }
 
 .forminput .div-input-submit {
