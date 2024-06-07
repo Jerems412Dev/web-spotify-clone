@@ -3,7 +3,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Track } from '../../../shared/models/Track';
 import { DataService } from '../../../shared/services/Data.service';
 import { ArtistService } from '../../../shared/services/Artist.service';
-import { Artist } from '../../../shared/models/Artist';
 
 @Component({
   standalone: true,

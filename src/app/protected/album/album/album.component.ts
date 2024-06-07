@@ -25,10 +25,6 @@ export class AlbumComponent implements OnInit {
 
   findAlbum() {
     this.route.fragment.subscribe(fragment => {
-      /*this.albumService.findByTitleAlbum(fragment).subscribe(data => {
-        this.album = data;
-        this.findTracks(this.album.titleAlbum);
-      });*/
       this.album = this.dataService.getData("home_albums").find(album => album.titleAlbum === fragment);
       this.findTracks(this.album?.titleAlbum);
     });

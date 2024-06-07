@@ -6,7 +6,6 @@ import { HomeComponent } from './protected/home/home/home.component';
 import { SearchComponent } from './protected/search/search/search.component';
 import { ShowAllComponent } from './protected/home/show-all/show-all.component';
 import { GenreComponent } from './protected/search/genre/genre.component';
-import { SearchShowAllComponent } from './protected/search/search-show-all/search-show-all.component';
 import { PlaylistComponent } from './protected/playlist/playlist/playlist.component';
 import { LikedComponent } from './protected/liked/liked/liked.component';
 import { AlbumComponent } from './protected/album/album/album.component';
@@ -46,12 +45,6 @@ export const routes: Routes = [
         path: 'genre',
         title: 'Web Player',
         component: GenreComponent,
-        canActivate: [authGuard]
-    },
-    { 
-        path: 'genre/section',
-        title: 'Web Player',
-        component: SearchShowAllComponent,
         canActivate: [authGuard]
     },
     { 

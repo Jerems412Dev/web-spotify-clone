@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MusicItemComponent } from "../../../shared/components/music-item/music-item.component";
 import { HomeCategoryComponent } from "../home-category/home-category.component";
 import { Section } from '../../../shared/models/Section';
-import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ArtistItemComponent } from "../../../shared/components/artist-item/artist-item.component";
 import { AlbumItemComponent } from "../../../shared/components/album-item/album-item.component";

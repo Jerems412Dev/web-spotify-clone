@@ -11,7 +11,6 @@ import { Artist } from '../../../shared/models/Artist';
 import { Album } from '../../../shared/models/Album';
 import { SpotifyPlaylist } from '../../../shared/models/SpotifyPlaylist';
 import { CommonModule } from '@angular/common';
-import { ArtistService } from '../../../shared/services/Artist.service';
 import { TrackService } from '../../../shared/services/Track.service';
 import { Track } from '../../../shared/models/Track';
 import { Section } from '../../../shared/models/Section';
@@ -35,19 +34,12 @@ export class ArtistComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, 
               private dataService: DataService,
-              private artistService: ArtistService,
               private trackService: TrackService) {}
 
   findArtist() {
     this.route.fragment.subscribe(fragment => {
-      /*this.artistService.findByNameArtist(fragment).subscribe(data => {
-        this.artist = data;
-        this.trackList(this.artist.nameArtist);
-        this.dataService.setArtistSelect(this.artist);
-      });*/
       this.artist = this.dataService.getData("home_artists").find(artist => artist.nameArtist === fragment);
       this.trackList(this.artist?.nameArtist);
-      //this.dataService.setArtistSelect(this.artist);
     });
   }
 

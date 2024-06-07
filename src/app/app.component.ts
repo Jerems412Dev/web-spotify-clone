@@ -7,7 +7,6 @@ import { AudioPlayerComponent } from './core/components/audio-player/audio-playe
 import { HomeComponent } from "./protected/home/home/home.component";
 import { SqueletonComponent } from './core/components/squeleton/squeleton.component';
 import { TokenService } from './shared/services/Token.service';
-import { DataService } from './shared/services/Data.service';
 
 @Component({
     selector: 'app-root',

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { AuthenticationService } from '../../../shared/services/Authentication.service';
 import { Router } from '@angular/router';
 import { TokenService } from '../../../shared/services/Token.service';
+import { DataService } from '../../../shared/services/Data.service';
 
 
 @Component({
@@ -18,7 +19,8 @@ export class LoginComponent {
   constructor(private route:Router,
               private formBuilder: FormBuilder, 
               private authService: AuthenticationService,
-              private tokenService: TokenService) {
+              private tokenService: TokenService,
+              private data: DataService) {
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
@@ -33,6 +35,7 @@ export class LoginComponent {
       this.authService.login(credentials).subscribe(data => {
         this.tokenService.setToken(data.token);
         this.tokenService.setUserByToken(data.token);
+        this.data.setData("exp",new Date);
         if(data.token) {
           this.route.navigate(['/home']);
         }

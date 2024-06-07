@@ -45,7 +45,6 @@ export class AudioPlayerComponent implements AfterViewInit  {
     
   }
   ngOnInit(): void {
-    //throw new Error('Method not implemented.');
   }
 
   hogglePlayPauseDirective() {
@@ -234,6 +233,15 @@ export class AudioPlayerComponent implements AfterViewInit  {
     if(this.music?.nativeElement) {
       this.music.nativeElement.src = "assets/musics/"+src+".mp3";
     }
+  }
+
+  isSixHoursPassed(): boolean {
+    const referenceDate = this.data.getOneData("exp");
+    const currentDate = new Date();
+    const differenceInMs = currentDate.getTime() - referenceDate.getTime();
+    const differenceInMinutes = differenceInMs / (1000 * 60);
+    const targetMinutes = (1 * 60) + 30;
+    return differenceInMinutes >= targetMinutes;
   }
 
   ngAfterViewInit() {

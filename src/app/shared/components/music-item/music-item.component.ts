@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { Track } from '../../models/Track';
 import { Artist } from '../../models/Artist';
 import { CommonModule } from '@angular/common';
@@ -19,8 +19,7 @@ export class MusicItemComponent implements OnInit {
   showPlayButton = true;
   showPauseButton = false;
 
-  constructor(private data: DataService,
-              private renderer: Renderer2) { }
+  constructor(private data: DataService) { }
 
   onMouseEnter() {
     if(this.playButton?.nativeElement) {

@@ -43,13 +43,6 @@ export class TokenService {
     }
   }
 
-  /*isAuthenticatedUser(): boolean {
-    if(this.isToken("token")) {
-      this.isAuthenticated = true;
-    }
-    return this.isAuthenticated;
-  }*/
-
   isAuthenticatedUser(): Observable<boolean> {
     const isAuthenticated = this.isToken("token");
     this.isAuthenticated = isAuthenticated;

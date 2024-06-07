@@ -58,11 +58,15 @@ export class DataService {
   }
 
   getOneData(key: string): any {
-    const jsonData = localStorage.getItem(key);
-    if (!jsonData) {
+    if(this.isLocalStorageAvailable()) {
+      const jsonData = localStorage.getItem(key);
+      if (!jsonData) {
+        return null;
+      }  
+      return JSON.parse(jsonData);
+    }else {
       return null;
-    }  
-    return JSON.parse(jsonData);
+    }
   }
 
   getData(key: string): any[] {
@@ -82,6 +86,17 @@ export class DataService {
 
   removeItem(key: string) {
     localStorage.removeItem(key);
+  }
+
+  isLocalStorageAvailable(): boolean {
+    try {
+      const testKey = '__test__';
+      localStorage.setItem(testKey, testKey);
+      localStorage.removeItem(testKey);
+      return true;
+    } catch (e) {
+      return false;
+    }
   }
 
 }
