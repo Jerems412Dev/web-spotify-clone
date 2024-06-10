@@ -39,4 +39,5 @@ a svg:hover {
     display: flex;
     align-items: center;
     gap: 5%;
+    white-space: nowrap;
 }

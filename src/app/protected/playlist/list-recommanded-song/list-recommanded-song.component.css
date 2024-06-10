@@ -58,6 +58,7 @@
 .listRecommender .bottom .song .title, .listRecommenderSearch .bottom .song .title {
     display: flex;
     align-items: center;
+    width: 20%;
 }
 
 .listRecommender .bottom .song .title .img, .listRecommenderSearch .bottom .song .title .img {
@@ -134,4 +135,11 @@
     color: #a7a7a7;
     font-weight: 600;
     font-size: .85rem;
+}
+
+.albumName {
+    width: 20%;
+    text-align: left;
+    justify-content: left;
+    text-decoration: none;
 }

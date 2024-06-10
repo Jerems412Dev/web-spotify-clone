@@ -13,7 +13,12 @@ import { ListRecommandedSongComponent } from "../list-recommanded-song/list-reco
 })
 export class PlaylistComponent implements OnInit {
 
+  constructor() {
+
+  }
+
   ngOnInit() {
+    
   }
 
 }

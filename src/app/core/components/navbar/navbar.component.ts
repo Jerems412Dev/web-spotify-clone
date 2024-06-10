@@ -69,8 +69,7 @@ export class NavbarComponent implements OnInit {
       this.data.setSearchSelect(value);
     }else {
       this.data.setSearchSelect('');
-    }
-    
+    } 
   }
 
   ngOnInit() {

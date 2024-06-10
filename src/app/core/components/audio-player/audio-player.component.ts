@@ -194,7 +194,6 @@ export class AudioPlayerComponent implements AfterViewInit  {
     }
     this.loadSrcAudio(this.track.profilePicture);
     this.reloadAudioElement();
-    this.addListenTrack();
   }
 
   randomTrack() {
@@ -202,7 +201,6 @@ export class AudioPlayerComponent implements AfterViewInit  {
     this.track = this.tracks[Math.floor(Math.random() * (85 - 0)) + 0];
     this.loadSrcAudio(this.track.profilePicture);
     this.reloadAudioElement();
-    this.addListenTrack();
   }
 
   prevTrack() {
@@ -214,7 +212,6 @@ export class AudioPlayerComponent implements AfterViewInit  {
     }
     this.loadSrcAudio(this.track.profilePicture);
     this.reloadAudioElement();
-    this.addListenTrack();
   }
 
   reloadAudioElement() {

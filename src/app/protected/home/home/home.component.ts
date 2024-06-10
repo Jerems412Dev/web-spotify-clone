@@ -21,6 +21,7 @@ import { CategoryService } from '../../../shared/services/Category.service';
 import { Category } from '../../../shared/models/Category';
 import { TrackListen } from '../../../shared/models/TrackListen';
 import { TrackListenService } from '../../../shared/services/TrackListen.service';
+import { UserPlaylistService } from '../../../shared/services/UserPlaylist.service';
 
 @Component({
     selector: 'app-home',
@@ -46,6 +47,7 @@ export class HomeComponent implements OnInit {
               private artistService: ArtistService,
               private categoryService: CategoryService,
               private playlistService: SpotifyPlaylistService,
+              private userPlaylistService: UserPlaylistService,
               private tracklistenService: TrackListenService,
               private dataService: DataService) { }
 
@@ -57,6 +59,7 @@ export class HomeComponent implements OnInit {
     this.playlistRandom();
     this.initSectionVariables();
     this.tracklistenRandom();
+    this.findPlaylistsUser();
   }
 
   albumRandom() {
@@ -121,8 +124,8 @@ export class HomeComponent implements OnInit {
     }else {
       let user: any = this.dataService.getData("userConnect");
       this.tracklistenService.findByUsername(user.sub).subscribe(data => {
-        this.trackListens = data;
-        this.dataService.saveData("home_tracklistens",data);
+        this.trackListens = data.slice(-8);
+        this.dataService.saveData("home_tracklistens",data.slice(-8));
       });
     }
   }
@@ -131,6 +134,13 @@ export class HomeComponent implements OnInit {
     this.categoryService.findAll().subscribe(data => {
       this.categories = data;
       this.dataService.saveData("home_categories",data);
+    });
+  }
+
+  findPlaylistsUser() {
+    let user: any = this.dataService.getOneData("userConnect");
+    this.userPlaylistService.findByUsername(user.sub).subscribe(list => {
+      this.dataService.setData("user_playlists",list);
     });
   }
 

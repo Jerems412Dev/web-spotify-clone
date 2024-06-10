@@ -3,6 +3,8 @@ import { BehaviorSubject } from 'rxjs';
 import { Track } from '../models/Track';
 import { Artist } from '../models/Artist';
 import { Section } from '../models/Section';
+import { UserPlaylist } from '../models/UserPlaylist';
+import { Album } from '../models/Album';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +12,10 @@ import { Section } from '../models/Section';
 export class DataService {
   private trackListen = new BehaviorSubject<any>(null);
   private artist = new BehaviorSubject<any>(null);
+  private album = new BehaviorSubject<any>(null);
   private section = new BehaviorSubject<any>(null);
   private search = new BehaviorSubject<any>(null);
+  private userPlaylist = new BehaviorSubject<any>(null);
 
   constructor() { }
 
@@ -19,8 +23,16 @@ export class DataService {
     this.trackListen.next(track);
   }
 
+  setUserPlaylistSelect(playlist: UserPlaylist) {
+    this.userPlaylist.next(playlist);
+  }
+
   setSearchSelect(search: string) {
     this.search.next(search);
+  }
+
+  setAlbumSelect(album: Album) {
+    this.album.next(album);
   }
 
   setArtistSelect(artist: Artist) {
@@ -33,6 +45,14 @@ export class DataService {
 
   getSectionSelect() {
     return this.section.asObservable();
+  }
+
+  getAlbumSelect() {
+    return this.album.asObservable();
+  }
+
+  getUserPlaylistSelect() {
+    return this.userPlaylist.asObservable();
   }
 
   getSearchSelect() {

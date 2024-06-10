@@ -87,6 +87,7 @@
     margin-bottom: -6px;
     transition: ease-in-out .2s;
     cursor: pointer;
+    outline: none;
 }
 
 .part-one ul li svg:hover {
@@ -177,6 +178,7 @@
 .content-part-three {
     width: 100%;
     display: block;
+    margin-bottom: 30%;
 }
 
 .content-part-three ul {
