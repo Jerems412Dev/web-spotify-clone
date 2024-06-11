@@ -27,14 +27,7 @@ export class ListPlaylistSongComponent implements OnInit {
       this.playlist = this.data.getOneData("u_playlist");
     }else {
       this.user = this.data.getOneData("userConnect");
-      this.playlist = {
-        'idUserPlaylist': null,
-        'namePlaylist': 'Ma playlist #'+this.data.getData("user_playlists").length,
-        'description': 'Description',
-        'profilePicture': 'billy',
-        'user': {'idUser':this.user.idUser},
-        'tracks': []
-      }
+      this.playlist = this.data.getOneData("u_playlist");
     }
   }
 

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { catchError, map, Observable } from 'rxjs';
+
 import { Album } from '../models/Album';
 import { TokenService } from './Token.service';
 
@@ -58,8 +59,8 @@ export class AlbumService {
     });
   }
 
-  favAlbumByUser(idUser: number, idAlbum: number): Observable<Response> {
-    return this.http.get<Response>(`${this.apiUrl}/albums/favalbumbyuser/${idUser}/${idAlbum}`, {
+  favAlbumByUser(idUser: number, idAlbum: number): Observable<{message: string}> {
+    return this.http.get<{message: string}>(`${this.apiUrl}/albums/favalbumbyuser/${idUser}/${idAlbum}`, {
       headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
     });
   }
@@ -70,8 +71,8 @@ export class AlbumService {
     });
   }
 
-  existsByTitleAlbumAndUsername(titlealbum: string, username: string): Observable<boolean> {
-    return this.http.get<boolean>(`${this.apiUrl}/albums/existsbytitlealbumandusername/${titlealbum}/${username}`, {
+  existsByIdAlbumAndUsername(idalbum: number, username: string): Observable<boolean> {
+    return this.http.get<boolean>(`${this.apiUrl}/albums/existsbyidalbumandusername/${idalbum}/${username}`, {
       headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
     });
   }

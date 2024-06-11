@@ -21,7 +21,6 @@ import { CategoryService } from '../../../shared/services/Category.service';
 import { Category } from '../../../shared/models/Category';
 import { TrackListen } from '../../../shared/models/TrackListen';
 import { TrackListenService } from '../../../shared/services/TrackListen.service';
-import { UserPlaylistService } from '../../../shared/services/UserPlaylist.service';
 
 @Component({
     selector: 'app-home',
@@ -47,7 +46,6 @@ export class HomeComponent implements OnInit {
               private artistService: ArtistService,
               private categoryService: CategoryService,
               private playlistService: SpotifyPlaylistService,
-              private userPlaylistService: UserPlaylistService,
               private tracklistenService: TrackListenService,
               private dataService: DataService) { }
 
@@ -59,17 +57,18 @@ export class HomeComponent implements OnInit {
     this.playlistRandom();
     this.initSectionVariables();
     this.tracklistenRandom();
-    this.findPlaylistsUser();
   }
 
   albumRandom() {
     if(this.dataService.existDataStorage("home_albums")) {
       this.albums = this.dataService.getData("home_albums");
-      var val = Math.floor(Math.random() * (81 - 0)) + 0;
+      var val1 = this.albums.length-5;
+      var val = Math.floor(Math.random() * (val1 - 0)) + 0;
       this.albums = this.albums.slice(val, val+10);
     }else {
       this.albumService.findRandom10Album().subscribe(data => {
-        var val = Math.floor(Math.random() * (81 - 0)) + 0;
+        var val1 = data.length-5;
+        var val = Math.floor(Math.random() * (val1 - 0)) + 0;
         this.albums = data.slice(val, val+10);
         this.dataService.saveData("home_albums",data);
       });
@@ -79,11 +78,13 @@ export class HomeComponent implements OnInit {
   artistRandom() {
     if(this.dataService.existDataStorage("home_artists")) {
       this.artists = this.dataService.getData("home_artists");
-      var val = Math.floor(Math.random() * (81 - 0)) + 0;
+      var val1 = this.artists.length-5;
+      var val = Math.floor(Math.random() * (val1 - 0)) + 0;
       this.artists = this.artists.slice(val, val+10);
     }else {
       this.artistService.findRandom10Artist().subscribe(data => {
-        var val = Math.floor(Math.random() * (81 - 0)) + 0;
+        var val1 = data.length-5;
+        var val = Math.floor(Math.random() * (val1 - 0)) + 0;
         this.artists = data.slice(val, val+10);
         this.dataService.saveData("home_artists",data);
       });
@@ -93,11 +94,13 @@ export class HomeComponent implements OnInit {
   trackRandom() {
     if(this.dataService.existDataStorage("home_tracks")) {
       this.tracks = this.dataService.getData("home_tracks");
-      var val = Math.floor(Math.random() * (81 - 0)) + 0;
+      var val1 = this.tracks.length-5;
+      var val = Math.floor(Math.random() * (val1 - 0)) + 0;
       this.tracks = this.tracks.slice(val, val+10);
     }else {
       this.trackService.findRandom10Track().subscribe(data => {
-        var val = Math.floor(Math.random() * (81 - 0)) + 0;
+        var val1 = data.length-5;
+        var val = Math.floor(Math.random() * (val1 - 0)) + 0;
         this.tracks = data.slice(val, val+10);
         this.dataService.saveData("home_tracks",data);
       });
@@ -134,13 +137,6 @@ export class HomeComponent implements OnInit {
     this.categoryService.findAll().subscribe(data => {
       this.categories = data;
       this.dataService.saveData("home_categories",data);
-    });
-  }
-
-  findPlaylistsUser() {
-    let user: any = this.dataService.getOneData("userConnect");
-    this.userPlaylistService.findByUsername(user.sub).subscribe(list => {
-      this.dataService.setData("user_playlists",list);
     });
   }
 

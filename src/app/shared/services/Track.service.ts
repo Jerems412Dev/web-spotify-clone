@@ -106,8 +106,8 @@ export class TrackService {
     });
   }
 
-  existsByTitleTrackAndUsername(titletrack: string, username: string): Observable<boolean> {
-    return this.http.get<boolean>(`${this.apiUrl}/tracks/existsbytitletrackandusername/${titletrack}/${username}`, {
+  existsByIdTrackAndUsername(idtrack: number, username: string): Observable<boolean> {
+    return this.http.get<boolean>(`${this.apiUrl}/tracks/existsbyidtrackandusername/${idtrack}/${username}`, {
       headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
     });
   }
@@ -118,8 +118,8 @@ export class TrackService {
     });
   }
 
-  favTrackByUser(idUser: number, idTrack: number): Observable<Response> {
-    return this.http.get<Response>(`${this.apiUrl}/tracks/favtrackbyuser/${idUser}/${idTrack}`, {
+  favTrackByUser(idUser: number, idTrack: number): Observable<{message: string}> {
+    return this.http.get<{message: string}>(`${this.apiUrl}/tracks/favtrackbyuser/${idUser}/${idTrack}`, {
       headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
     });
   }

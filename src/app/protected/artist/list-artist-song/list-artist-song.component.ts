@@ -50,7 +50,7 @@ export class ListArtistSongComponent implements OnInit {
   isFollowing(): boolean {
     const user : any = this.dataService.getData("userConnect");
     this.dataService.getArtistSelect().subscribe(artist => {
-      this.artistService.existsByNameArtistAndUsername(artist.nameArtist,user.sub).subscribe(data => {
+      this.artistService.existsByIdArtistAndUsername(artist.idArtist,user.sub).subscribe(data => {
         return data;
       });
     });

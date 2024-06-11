@@ -15,9 +15,11 @@ import { AlbumService } from '../../../shared/services/Album.service';
 })
 export class ListAlbumSongComponent implements OnInit {
   isShow = false;
+  isFav = false;
   @Input("tracks") tracks: Track[] | undefined;
   @Input("album") album: Album | undefined;
   track: Track | undefined;
+  colorLike = 'whitesmoke';
 
   constructor(private dataService: DataService,private albumService:AlbumService) { }
 
@@ -41,8 +43,9 @@ export class ListAlbumSongComponent implements OnInit {
 
   existLike() {
     let user = this.dataService.getOneData("userConnect");
-    this.albumService.existsByTitleAlbumAndUsername(user.sub,this.album?.titleAlbum).subscribe(data => {
-    })
+    this.albumService.existsByIdAlbumAndUsername(this.album?.idAlbum,user.sub).subscribe(data => {
+      (data) ? this.isFav = true : this.isFav = false;
+    });
   }
 
   favAlbum() {
@@ -52,10 +55,11 @@ export class ListAlbumSongComponent implements OnInit {
         this.dataService.setAlbumSelect(this.album);
       }
     }); 
+    this.isFav = true;
   }
 
   ngOnInit() {
-    this.existLike()
+    this.existLike();
   }
 
 }

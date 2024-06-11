@@ -24,7 +24,7 @@ export class ListlLikedSongComponent implements OnInit {
 
   findTrackLiked() {
     let user: any = this.data.getOneData("userConnect");
-    this.trackService.findTrackByUsername(user.cub).subscribe(list => {
+    this.trackService.findTrackByUsername(user.sub).subscribe(list => {
       this.tracks = list;
     });
   }

@@ -7,6 +7,7 @@ import { Artist } from '../../../shared/models/Artist';
 import { DataService } from '../../../shared/services/Data.service';
 import { TrackListen } from '../../../shared/models/TrackListen';
 import { RouterLink } from '@angular/router';
+import { TrackService } from '../../../shared/services/Track.service';
 
 @Component({
   selector: 'app-audio-player',
@@ -39,7 +40,7 @@ export class AudioPlayerComponent implements AfterViewInit  {
   };
   
 
-  constructor(private trackService: TrackListenService,
+  constructor(private trackService: TrackService,
               private data: DataService,
               private trackListenService: TrackListenService) {
     
@@ -169,7 +170,7 @@ export class AudioPlayerComponent implements AfterViewInit  {
     if (userJson) {
       const user = JSON.parse(userJson);
       const sub = user.sub;
-      this.trackService.findLastTrackListen(sub).subscribe(data => {
+      this.trackListenService.findLastTrackListen(sub).subscribe(data => {
         if(data) {
           this.track = data.track;
           this.loadSrcAudio(this.track?.profilePicture);
@@ -239,6 +240,12 @@ export class AudioPlayerComponent implements AfterViewInit  {
     const differenceInMinutes = differenceInMs / (1000 * 60);
     const targetMinutes = (1 * 60) + 30;
     return differenceInMinutes >= targetMinutes;
+  }
+
+  favTrack() {
+    let user = this.data.getOneData("userConnect");
+    this.trackService.favTrackByUser(user.idUser,this.track?.idTrack).subscribe(data => {
+    }); 
   }
 
   ngAfterViewInit() {

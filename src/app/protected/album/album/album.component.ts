@@ -4,7 +4,6 @@ import { ListAlbumSongComponent } from "../list-album-song/list-album-song.compo
 import { Album } from '../../../shared/models/Album';
 import { ActivatedRoute } from '@angular/router';
 import { DataService } from '../../../shared/services/Data.service';
-import { AlbumService } from '../../../shared/services/Album.service';
 import { Track } from '../../../shared/models/Track';
 import { TrackService } from '../../../shared/services/Track.service';
 

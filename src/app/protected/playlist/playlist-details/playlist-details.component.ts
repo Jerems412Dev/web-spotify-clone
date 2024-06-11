@@ -38,13 +38,12 @@ export class PlaylistDetailsComponent implements OnInit {
         'profilePicture': 'billy',
         'user': {'idUser':this.user.idUser},
         'tracks': []
-      }
+      };
       this.playlistService.createUserPlaylist(this.playlist).subscribe(data => {
-        if(this.playlist) {
-          this.data.setUserPlaylistSelect(this.playlist);
-        }
-       
-      })
+        
+      });
+      this.data.setUserPlaylistSelect(this.playlist);
+      this.data.setData("u_playlist",this.playlist);
     }
   }
 

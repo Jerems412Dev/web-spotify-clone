@@ -58,8 +58,8 @@ export class ArtistService {
     });
   }
 
-  favArtistByUser(idUser: number, idArtist: number): Observable<Response> {
-    return this.http.get<Response>(`${this.apiUrl}/artists/favartistbyuser/${idUser}/${idArtist}`, {
+  favArtistByUser(idUser: number, idArtist: number): Observable<{message: string}> {
+    return this.http.get<{message: string}>(`${this.apiUrl}/artists/favartistbyuser/${idUser}/${idArtist}`, {
       headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
     });
   }
@@ -70,8 +70,8 @@ export class ArtistService {
     });
   }
 
-  existsByNameArtistAndUsername(nameartist: string, username: string): Observable<boolean> {
-    return this.http.get<boolean>(`${this.apiUrl}/artists/existsbynameartistandusername/${nameartist}/${username}`, {
+  existsByIdArtistAndUsername(idartist: number, username: string): Observable<boolean> {
+    return this.http.get<boolean>(`${this.apiUrl}/artists/existsbyidartistandusername/${idartist}/${username}`, {
       headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
     });
   }
