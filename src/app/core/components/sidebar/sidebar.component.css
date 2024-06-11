@@ -197,6 +197,7 @@
     padding-left: 7px;
     transition: ease-in-out .3s;
     margin-bottom: .1rem;
+    overflow: hidden;
 }
 
 .content-part-three ul li a:hover {
@@ -221,12 +222,16 @@
     margin-top: 4px;
 }
 
-.content-part-three ul li a img {
+.content_part_three_other img {
     width: 48px;
     border-radius: 5px;
 }
 
-
+.content_part_three_artist img {
+    width: 48px;
+    height: 8vh;
+    border-radius: 50%;
+}
 
 
 

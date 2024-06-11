@@ -29,7 +29,7 @@
         <tr class="trPlaylist" *ngFor="let track of tracks">
           <td>
             <span></span>
-            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" height="1rem" fill="whitesmoke" viewBox="0 0 512 512"><path d="M133 440a35.37 35.37 0 01-17.5-4.67c-12-6.8-19.46-20-19.46-34.33V111c0-14.37 7.46-27.53 19.46-34.33a35.13 35.13 0 0135.77.45l247.85 148.36a36 36 0 010 61l-247.89 148.4A35.5 35.5 0 01133 440z"/></svg>
+            <svg (click)="stopEventSvg(track)" xmlns="http://www.w3.org/2000/svg" class="ionicon" height="1.5rem" fill="whitesmoke" viewBox="0 0 512 512"><path d="M133 440a35.37 35.37 0 01-17.5-4.67c-12-6.8-19.46-20-19.46-34.33V111c0-14.37 7.46-27.53 19.46-34.33a35.13 35.13 0 0135.77.45l247.85 148.36a36 36 0 010 61l-247.89 148.4A35.5 35.5 0 01133 440z"/></svg>
           </td>
           <td class="titlePlaylist">
               <img src="assets/img/track/{{track.profilePicture}}.jpg" alt="">
@@ -41,7 +41,7 @@
           <td><a>{{track.album.titleAlbum}}</a></td>
           <td>{{track.album.releaseDate}}</td>
           <td>
-            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" height="1.5rem" fill="whitesmoke" viewBox="0 0 512 512"><path d="M256 48C141.31 48 48 141.31 48 256s93.31 208 208 208 208-93.31 208-208S370.69 48 256 48zm108.25 138.29l-134.4 160a16 16 0 01-12 5.71h-.27a16 16 0 01-11.89-5.3l-57.6-64a16 16 0 1123.78-21.4l45.29 50.32 122.59-145.91a16 16 0 0124.5 20.58z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" height="1.5rem" fill="#1ed760" viewBox="0 0 512 512"><path d="M256 48C141.31 48 48 141.31 48 256s93.31 208 208 208 208-93.31 208-208S370.69 48 256 48zm108.25 138.29l-134.4 160a16 16 0 01-12 5.71h-.27a16 16 0 01-11.89-5.3l-57.6-64a16 16 0 1123.78-21.4l45.29 50.32 122.59-145.91a16 16 0 0124.5 20.58z"/></svg>
           </td>
           <td>{{track.duration}}</td>
         </tr>

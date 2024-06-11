@@ -3,6 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Track } from '../../../shared/models/Track';
 import { DataService } from '../../../shared/services/Data.service';
 import { ArtistService } from '../../../shared/services/Artist.service';
+import { Artist } from '../../../shared/models/Artist';
 
 @Component({
   standalone: true,
@@ -16,10 +17,11 @@ export class ListArtistSongComponent implements OnInit {
   tableTr = [1, 2, 3, 4];
   seeMoreLessContent = "See more";
   @Input("tracks") tracks: Track[] | undefined;
+  @Input("artist") artist: Artist | undefined;
   track: Track | undefined;
   nb = 0;
   listen: number = Math.floor(Math.random() * (50000000 - 5000)) + 5000;
-  isFollow = "Follow";
+  isFollow = false;
 
   constructor(private dataService: DataService,
               private artistService: ArtistService) { }
@@ -40,38 +42,32 @@ export class ListArtistSongComponent implements OnInit {
 
   Following() {
     const user : any = this.dataService.getData("userConnect");
-    this.dataService.getArtistSelect().subscribe(artist => {
-      this.artistService.favArtistByUser(user.idUser,artist.idArtist).subscribe(data => {
-        this.isFollow = "Following";
-      });
+    this.artistService.favArtistByUser(user.idUser,this.artist?.idArtist).subscribe(data => {
+      this.isFollow = true;
+      if(this.artist) {
+        this.dataService.setArtistSelect(this.artist);
+      }
     });
   }
 
-  isFollowing(): boolean {
+  isFollowing() {
     const user : any = this.dataService.getData("userConnect");
-    this.dataService.getArtistSelect().subscribe(artist => {
-      this.artistService.existsByIdArtistAndUsername(artist.idArtist,user.sub).subscribe(data => {
-        return data;
-      });
+    this.artistService.existsByIdArtistAndUsername(this.artist?.idArtist,user.sub).subscribe(data => {
+      if(data) {
+        this.isFollow = data;
+      }else {
+        this.isFollow = data;
+      }
     });
-    return false;
   }
 
   deleteFollowing() {
     const user : any = this.dataService.getData("userConnect");
     this.dataService.getArtistSelect().subscribe(artist => {
       this.artistService.deleteArtistUser(user.sub,artist.nameArtist).subscribe(data => {
-        this.isFollow = "Follow";
+        this.isFollow = false;
       });
     });
-  }
-
-  clickFollow(){
-    if(this.isFollow === "Following") {
-      this.isFollow = "Follow";
-    }else {
-      this.isFollow = "Following";
-    }
   }
 
   stopEventSvg(track: Track) {
@@ -79,7 +75,7 @@ export class ListArtistSongComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+    this.isFollowing();
   }
 
   ngAfterViewInit() {

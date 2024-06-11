@@ -58,6 +58,14 @@ export class ListAlbumSongComponent implements OnInit {
     this.isFav = true;
   }
 
+  unFavAlbum() {
+    let user = this.dataService.getOneData("userConnect");
+    this.albumService.deleteAlbumUser(user.idUser,this.album?.idAlbum).subscribe(data => {
+      (this.album) ? this.dataService.setAlbumDeleteSelect(this.album.idAlbum): null;
+    }); 
+    this.isFav = false;
+  }
+
   ngOnInit() {
     this.existLike();
   }

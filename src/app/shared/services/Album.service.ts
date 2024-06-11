@@ -53,8 +53,8 @@ export class AlbumService {
     });
   }
 
-  deleteAlbumUser(username: string, titleAlbum: string): Observable<boolean> {
-    return this.http.get<boolean>(`${this.apiUrl}/albums/deletealbumuser/${username}/${titleAlbum}`, {
+  deleteAlbumUser(iduser: number, idalbum: number): Observable<boolean> {
+    return this.http.get<boolean>(`${this.apiUrl}/albums/deletealbumuser/${iduser}/${idalbum}`, {
       headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
     });
   }

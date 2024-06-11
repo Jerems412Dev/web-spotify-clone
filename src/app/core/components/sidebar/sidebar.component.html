@@ -33,13 +33,13 @@
         <div class="nav-part-three">
             <div class="input-search">
                 <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" height="1.188rem" viewBox="0 0 512 512"><path d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M338.29 338.29L448 448"/></svg>
-                <input type="text" name="" placeholder="Search in Your Library">
+                <input (input)="onInputChange($event)" type="text" name="" placeholder="Search in Your Library">
             </div>
         </div>
         <div class="content-part-three">
-            <ul>
+            <ul *ngIf="!isCorrect">
                 <li>
-                    <a [routerLink]="['/liked']">
+                    <a class="content_part_three_other" [routerLink]="['/liked']">
                         <img src="assets/img/liked.png" alt="">
                         <ul>
                             <li>Liked Songs</li>
@@ -54,7 +54,7 @@
                     </a>
                 </li>
                 <li>
-                    <a [routerLink]="['/playlist']" *ngFor="let playlist of userPlaylists" (click)="isOldPlaylist(playlist.namePlaylist)">
+                    <a class="content_part_three_other" [routerLink]="['/playlist']" *ngFor="let playlist of userPlaylists" (click)="isOldPlaylist(playlist.namePlaylist)">
                         <img src="assets/img/user_playlist/{{playlist.profilePicture}}.jpg" alt="">
                         <ul>
                             <li>{{playlist.namePlaylist}}</li>
@@ -63,11 +63,49 @@
                     </a>
                 </li>
                 <li>
-                    <a [routerLink]="['/album']" fragment="{{album.titleAlbum}}" *ngFor="let album of albums">
+                    <a class="content_part_three_other" [routerLink]="['/album']" fragment="{{album.titleAlbum}}" *ngFor="let album of albums">
                         <img src="assets/img/album/{{album.profilePicture}}.jpg" alt="">
                         <ul>
                             <li>{{album.titleAlbum}}</li>
                             <li>Album . {{album.artist.nameArtist}}</li>
+                        </ul>
+                    </a>
+                </li>
+                <li>
+                    <a class="content_part_three_artist" [routerLink]="['/artist']" fragment="{{artist.nameArtist}}" *ngFor="let artist of artists">
+                        <img src="assets/img/artist/profil/{{artist.profilePicture}}.jpg" alt="">
+                        <ul>
+                            <li>{{artist.nameArtist}}</li>
+                            <li>Artist</li>
+                        </ul>
+                    </a>
+                </li>
+            </ul>
+            <ul *ngIf="isCorrect">
+                <li>
+                    <a class="content_part_three_other" [routerLink]="['/playlist']" *ngFor="let playlist of s_userPlaylists" (click)="isOldPlaylist(playlist.namePlaylist)">
+                        <img src="assets/img/user_playlist/{{playlist.profilePicture}}.jpg" alt="">
+                        <ul>
+                            <li>{{playlist.namePlaylist}}</li>
+                            <li>Playlist . {{user.profileName}}</li>
+                        </ul>
+                    </a>
+                </li>
+                <li>
+                    <a class="content_part_three_other" [routerLink]="['/album']" fragment="{{album.titleAlbum}}" *ngFor="let album of s_albums">
+                        <img src="assets/img/album/{{album.profilePicture}}.jpg" alt="">
+                        <ul>
+                            <li>{{album.titleAlbum}}</li>
+                            <li>Album . {{album.artist.nameArtist}}</li>
+                        </ul>
+                    </a>
+                </li>
+                <li>
+                    <a class="content_part_three_artist" [routerLink]="['/artist']" fragment="{{artist.nameArtist}}" *ngFor="let artist of s_artists">
+                        <img src="assets/img/artist/profil/{{artist.profilePicture}}.jpg" alt="">
+                        <ul>
+                            <li>{{artist.nameArtist}}</li>
+                            <li>Artist</li>
                         </ul>
                     </a>
                 </li>

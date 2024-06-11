@@ -16,6 +16,12 @@ body {
     letter-spacing: .5px;
 }
 
+@media (max-width:992px) {
+  body{
+    display: none;
+  }
+}
+
 /*scrollbar*/
 
 /* For WebKit (Chrome, Safari) */

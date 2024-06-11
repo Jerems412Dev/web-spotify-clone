@@ -27,6 +27,7 @@ export class AudioPlayerComponent implements AfterViewInit  {
   isClickedLoop: boolean = false;
   isClickedRandom: boolean = false;
   isClickedMute: boolean = false;
+  isFav = false;
   saveVolume: string = "";
   total = '';
   track: Track | undefined;
@@ -173,6 +174,7 @@ export class AudioPlayerComponent implements AfterViewInit  {
       this.trackListenService.findLastTrackListen(sub).subscribe(data => {
         if(data) {
           this.track = data.track;
+          this.existLike(data.track);
           this.loadSrcAudio(this.track?.profilePicture);
         }
       });
@@ -230,6 +232,7 @@ export class AudioPlayerComponent implements AfterViewInit  {
   loadSrcAudio(src:string) {
     if(this.music?.nativeElement) {
       this.music.nativeElement.src = "assets/musics/"+src+".mp3";
+      this.music.nativeElement.load();
     }
   }
 
@@ -242,9 +245,17 @@ export class AudioPlayerComponent implements AfterViewInit  {
     return differenceInMinutes >= targetMinutes;
   }
 
+  existLike(track: Track) {
+    let user = this.data.getOneData("userConnect");
+    this.trackService.existsByIdTrackAndUsername(track.idTrack,user.sub).subscribe(data => {
+      (data) ? this.isFav = true : this.isFav = false;
+    });
+  }
+
   favTrack() {
     let user = this.data.getOneData("userConnect");
     this.trackService.favTrackByUser(user.idUser,this.track?.idTrack).subscribe(data => {
+      this.isFav = true;
     }); 
   }
 
@@ -253,6 +264,7 @@ export class AudioPlayerComponent implements AfterViewInit  {
     this.data.getTrackSelect()?.subscribe(track => {
       if(track) {
         this.track = track;
+        this.existLike(track);
         this.loadSrcAudio(this.track?.profilePicture);
         this.reloadAudioElement();
         this.addListenTrack();

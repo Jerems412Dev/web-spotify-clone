@@ -52,8 +52,8 @@ export class ArtistService {
     });
   }
 
-  deleteArtistUser(username: string, nameArtist: string): Observable<boolean> {
-    return this.http.get<boolean>(`${this.apiUrl}/artists/deleteartistuser/${username}/${nameArtist}`, {
+  deleteArtistUser(iduser: number, idartist: number): Observable<boolean> {
+    return this.http.get<boolean>(`${this.apiUrl}/artists/deleteartistuser/${iduser}/${idartist}`, {
       headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
     });
   }

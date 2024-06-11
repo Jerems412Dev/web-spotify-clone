@@ -29,6 +29,12 @@ export class ListlLikedSongComponent implements OnInit {
     });
   }
 
+  stopEventSvg(track: Track) {
+    if(track) {
+      this.data.setTrackSelect(track);
+    }
+  }
+
   ngOnInit() {
     this.findTrackLiked();
   }

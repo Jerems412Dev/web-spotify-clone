@@ -123,7 +123,7 @@ export class HomeComponent implements OnInit {
 
   tracklistenRandom() {
     if(this.dataService.existDataStorage("home_tracklistens")) {
-      this.trackListens = this.dataService.getData("home_tracklistens");
+      this.trackListens = this.dataService.getData("home_tracklistens");  
     }else {
       let user: any = this.dataService.getData("userConnect");
       this.tracklistenService.findByUsername(user.sub).subscribe(data => {

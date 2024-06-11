@@ -112,8 +112,8 @@ export class TrackService {
     });
   }
 
-  deleteByUsernameAndTitleTrack(username: string, titletrack: string): Observable<boolean> {
-    return this.http.get<boolean>(`${this.apiUrl}/tracks/deletebyusernameandtitletrack/${username}/${titletrack}`, {
+  deleteByUserTrack(iduser: number, idtrack: number): Observable<boolean> {
+    return this.http.get<boolean>(`${this.apiUrl}/tracks/deletebyusertrack/${iduser}/${idtrack}`, {
       headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
     });
   }

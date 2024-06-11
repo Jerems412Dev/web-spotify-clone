@@ -5,14 +5,17 @@ import { Artist } from '../models/Artist';
 import { Section } from '../models/Section';
 import { UserPlaylist } from '../models/UserPlaylist';
 import { Album } from '../models/Album';
+import { TrackListen } from '../models/TrackListen';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
+  private track = new BehaviorSubject<any>(null);
   private trackListen = new BehaviorSubject<any>(null);
   private artist = new BehaviorSubject<any>(null);
   private album = new BehaviorSubject<any>(null);
+  private albumDelete = new BehaviorSubject<any>(null);
   private section = new BehaviorSubject<any>(null);
   private search = new BehaviorSubject<any>(null);
   private userPlaylist = new BehaviorSubject<any>(null);
@@ -20,6 +23,10 @@ export class DataService {
   constructor() { }
 
   setTrackSelect(track: Track) {
+    this.track.next(track);
+  }
+
+  setTrackListenSelect(track: TrackListen) {
     this.trackListen.next(track);
   }
 
@@ -33,6 +40,10 @@ export class DataService {
 
   setAlbumSelect(album: Album) {
     this.album.next(album);
+  }
+
+  setAlbumDeleteSelect(album: number) {
+    this.albumDelete.next(album);
   }
 
   setArtistSelect(artist: Artist) {
@@ -51,6 +62,10 @@ export class DataService {
     return this.album.asObservable();
   }
 
+  getAlbumDeleteSelect() {
+    return this.albumDelete.asObservable();
+  }
+
   getUserPlaylistSelect() {
     return this.userPlaylist.asObservable();
   }
@@ -64,6 +79,10 @@ export class DataService {
   }
 
   getTrackSelect() {
+    return this.track.asObservable();
+  }
+
+  getTrackListenSelect() {
     return this.trackListen.asObservable();
   }
 

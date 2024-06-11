@@ -1,5 +1,5 @@
 <div class="recently" *ngIf="trackListens">
-    <app-recently-item [track]="trackListen.track" [imgLink]="trackListen.track.profilePicture" *ngFor="let trackListen of trackListens">{{trackListen.track.titleTrack}}</app-recently-item>
+    <app-recently-item [track]="trackListen.track" [imgLink]="trackListen.track.profilePicture" *ngFor="let trackListen of trackListens.slice(-8)">{{trackListen.track.titleTrack}}</app-recently-item>
 </div>
 <app-home-category [section]="hc_track">
     Made For You
