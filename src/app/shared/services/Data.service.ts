@@ -12,6 +12,7 @@ import { TrackListen } from '../models/TrackListen';
 })
 export class DataService {
   private track = new BehaviorSubject<any>(null);
+  private trackAddPlaylist = new BehaviorSubject<any>(null);
   private trackListen = new BehaviorSubject<any>(null);
   private artist = new BehaviorSubject<any>(null);
   private album = new BehaviorSubject<any>(null);
@@ -21,6 +22,10 @@ export class DataService {
   private userPlaylist = new BehaviorSubject<any>(null);
 
   constructor() { }
+
+  setTrackAddPlaylistSelect(trackAddPlaylist: Track) {
+    this.trackAddPlaylist.next(trackAddPlaylist);
+  }
 
   setTrackSelect(track: Track) {
     this.track.next(track);
@@ -76,6 +81,10 @@ export class DataService {
 
   getArtistSelect() {
     return this.artist.asObservable();
+  }
+
+  getTrackAddPlaylistSelect() {
+    return this.trackAddPlaylist.asObservable();
   }
 
   getTrackSelect() {

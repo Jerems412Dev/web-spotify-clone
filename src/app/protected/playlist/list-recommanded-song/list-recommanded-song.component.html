@@ -17,12 +17,12 @@
                   <svg (click)="stopEventSvg(track,$event)" xmlns="http://www.w3.org/2000/svg" class="ionicon" height="1.5rem" fill="whitesmoke" viewBox="0 0 512 512"><path d="M133 440a35.37 35.37 0 01-17.5-4.67c-12-6.8-19.46-20-19.46-34.33V111c0-14.37 7.46-27.53 19.46-34.33a35.13 35.13 0 0135.77.45l247.85 148.36a36 36 0 010 61l-247.89 148.4A35.5 35.5 0 01133 440z"/></svg>
               </div>
               <ul>
-                  <li><a>{{track.profilePicture}}</a></li>
+                  <li><a>{{track.titleTrack}}</a></li>
                   <li><a>{{track.artists[0].nameArtist}}</a></li>
               </ul>
           </div>
-          <a class="albumName" [routerLink]="['/album']" fragment="{{track.album.titleAlbum}}">{{track.album.titleAlbum}}</a>
-          <button>Add</button>
+          <a class="albumName" [routerLink]="['/album']" [fragment]="track.album.titleAlbum | encryption">{{track.album.titleAlbum}}</a>
+          <button (click)="addTrackOnPlaylist(track)">Add</button>
       </div>
   </div>
 </div>
@@ -55,8 +55,8 @@
                     <li><a>{{track.artists[0].nameArtist}}</a></li>
                 </ul>
             </div>
-            <a class="albumName" [routerLink]="['/album']" fragment="{{track.album.titleAlbum}}">{{track.album.titleAlbum}}</a>
-            <button>Add</button>
+            <a class="albumName" [routerLink]="['/album']" [fragment]="track.album.titleAlbum | encryption">{{track.album.titleAlbum}}</a>
+            <button (click)="addTrackOnPlaylist(track)">Add</button>
         </div>
     </div>
 </div>

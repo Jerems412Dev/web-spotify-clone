@@ -22,6 +22,12 @@ export class UserPlaylistService {
     });
   }
 
+  updateUserPlaylist(idplaylist: number,playlist: UserPlaylist): Observable<{message: string}> {
+    return this.http.post<{message: string}>(`${this.apiUrl}/userplaylists/updateuserplaylist/,${idplaylist} / ${playlist}`, {
+      headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
+    });
+  }
+
   findByNamePlaylist(namePlaylist: string): Observable<UserPlaylist> {
     return this.http.get<UserPlaylist>(`${this.apiUrl}/userplaylists/findbynameplaylist/${namePlaylist}`, {
       headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
@@ -48,6 +54,12 @@ export class UserPlaylistService {
 
   deleteByTracksAndUserPlaylist(titleTrack: string, id: number): Observable<boolean> {
     return this.http.get<boolean>(`${this.apiUrl}/userplaylists/deletebytracksanduserplaylist/${titleTrack}/${id}`, {
+      headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
+    });
+  }
+
+  addTrackOnPlaylist(idUserPlaylist: number, idTrack: number): Observable<{message: string}> {
+    return this.http.get<{message: string}>(`${this.apiUrl}/userplaylists/addtrackinplaylist/${idUserPlaylist}/${idTrack}`, {
       headers: this.httpOptions.headers.set('Authorization', `Bearer ${this.tokenService.getToken()}`)
     });
   }

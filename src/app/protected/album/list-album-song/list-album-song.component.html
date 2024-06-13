@@ -36,7 +36,7 @@
               <img src="assets/img/track/{{track.profilePicture}}.jpg" alt="">
               <ul>
                   <li><a>{{track.titleTrack}}</a></li>
-                  <li><a [routerLink]="['/artist']" fragment="{{artist?.nameArtist}}" *ngFor="let artist of track?.artists">{{artist.nameArtist}}</a></li>
+                  <li><a [routerLink]="['/artist']" [fragment]="artist?.nameArtist | encryption" *ngFor="let artist of track?.artists">{{artist.nameArtist}}</a></li>
               </ul>
           </td>
           <td>

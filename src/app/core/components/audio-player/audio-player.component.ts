@@ -8,13 +8,14 @@ import { DataService } from '../../../shared/services/Data.service';
 import { TrackListen } from '../../../shared/models/TrackListen';
 import { RouterLink } from '@angular/router';
 import { TrackService } from '../../../shared/services/Track.service';
+import { EncryptionPipe } from '../../../shared/pipes/encryption.pipe';
 
 @Component({
   selector: 'app-audio-player',
   standalone: true,
   templateUrl: './audio-player.component.html',
   styleUrls: ['./audio-player.component.css'],
-  imports: [CommonModule, HttpClientModule,RouterLink]
+  imports: [CommonModule, HttpClientModule,RouterLink,EncryptionPipe]
 })
 export class AudioPlayerComponent implements AfterViewInit  {
   showPlay = false;
@@ -250,6 +251,7 @@ export class AudioPlayerComponent implements AfterViewInit  {
     this.trackService.existsByIdTrackAndUsername(track.idTrack,user.sub).subscribe(data => {
       (data) ? this.isFav = true : this.isFav = false;
     });
+    console.log("exist like");
   }
 
   favTrack() {

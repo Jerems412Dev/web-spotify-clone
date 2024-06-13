@@ -5,13 +5,14 @@ import { RouterLink } from '@angular/router';
 import { DataService } from '../../../shared/services/Data.service';
 import { Album } from '../../../shared/models/Album';
 import { AlbumService } from '../../../shared/services/Album.service';
+import { EncryptionPipe } from '../../../shared/pipes/encryption.pipe';
 
 @Component({
   selector: 'app-list-album-song',
   standalone: true,
   templateUrl: './list-album-song.component.html',
   styleUrls: ['./list-album-song.component.css'],
-  imports: [CommonModule,RouterLink]
+  imports: [CommonModule,RouterLink,EncryptionPipe]
 })
 export class ListAlbumSongComponent implements OnInit {
   isShow = false;

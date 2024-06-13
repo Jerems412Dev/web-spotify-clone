@@ -1,25 +1,29 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { DataService } from '../../../shared/services/Data.service';
 import { Track } from '../../../shared/models/Track';
 import { debounceTime } from 'rxjs/operators';
 import { RouterLink } from '@angular/router';
+import { UserPlaylist } from '../../../shared/models/UserPlaylist';
+import { UserPlaylistService } from '../../../shared/services/UserPlaylist.service';
+import { EncryptionPipe } from '../../../shared/pipes/encryption.pipe';
 
 @Component({
   selector: 'app-list-recommanded-song',
   standalone: true,
   templateUrl: './list-recommanded-song.component.html',
   styleUrls: ['./list-recommanded-song.component.css'],
-  imports: [CommonModule,RouterLink]
+  imports: [CommonModule,RouterLink,EncryptionPipe]
 })
 export class ListRecommandedSongComponent implements OnInit {
   isShowDiv = false;
   tracks: Track[] | undefined;
+  @Input("playlist") playlist: UserPlaylist | undefined;
   tracksSearch: Track[] | undefined;
   nb_track = 0;
   val = 0;
 
-  constructor(private data: DataService) { }
+  constructor(private data: DataService,private userPlaylistService: UserPlaylistService) { }
 
   toggleDiv() {
     this.isShowDiv = !this.isShowDiv;
@@ -55,8 +59,17 @@ export class ListRecommandedSongComponent implements OnInit {
     }
   }
 
+  addTrackOnPlaylist(track: Track) {
+    this.userPlaylistService.addTrackOnPlaylist(this.playlist?.idUserPlaylist,track.idTrack).subscribe(data => {
+      this.tracks = this.tracks?.filter(trackFilter =>
+        trackFilter.titleTrack != track.titleTrack);
+    });
+    this.data.setTrackAddPlaylistSelect(track);
+  }
+
   ngOnInit() {
-    this.val = Math.floor(Math.random() * (80 - 0)) + 0;
+    let max = Math.floor(this.data.getData("home_tracks").length)-6;
+    this.val = Math.floor(Math.random() * (max - 0)) + 0;
     this.tracks = this.data.getData("home_tracks");
   }
 

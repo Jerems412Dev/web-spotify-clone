@@ -48,13 +48,13 @@
                                     <metadata> Svg Vector Icons : http://www.onlinewebfonts.com/icon </metadata>
                                     <g><g><g><path fill="#1ed760" d="M178.9,10.9c-2.7,1.2-8.2,7.2-9.8,10.7c-2.6,5.6-2.9,10-0.9,14.9c1.7,4.2,1,9.4-1.8,12.5c-1.8,2.2-56.7,43.3-58.9,44.2c-1.6,0.6-3.4,0.9-6,0.9c-3.3,0-4.1-0.2-7.6-1.8c-4.7-2.2-8-2.5-12.4-1.4c-6.5,1.7-11,4.8-19.7,13.7c-6.1,6.3-7.1,7.7-7.1,10.9c0,3.7,0.5,4.3,15.6,19.5c10.9,11,14.4,14.8,14.1,15.2c-0.2,0.3-16.7,21.3-36.7,46.7c-19.9,25.4-36.6,46.7-37,47.4c-1.1,1.6-0.6,2.1,1,1c0.7-0.5,21.5-16.7,46.2-36.2c24.7-19.5,45.7-36,46.7-36.7l1.8-1.3l14.6,14.5c12.2,12.2,14.9,14.7,16.5,15.1c4.9,1.3,6.6,0.6,14-6.6c8.9-8.6,12-13.1,13.7-19.6c1.2-4.3,0.7-8.1-1.3-12.3c-0.9-1.9-1.8-4.5-1.9-5.9c-0.4-2.7,0.4-7.1,1.6-9.3c0.4-0.8,10.4-14.1,22.1-29.6c20.4-26.8,21.5-28.3,23.7-29.3c3.8-1.8,5.7-1.9,9.6-0.6c4.8,1.6,6.3,1.8,9.7,1.2c4.5-0.8,8.3-2.9,12.3-6.6c4.9-4.7,6.2-8.1,4.5-12.2c-1-2.4-56.4-57.9-59-59.2C183.9,9.8,181.2,9.8,178.9,10.9z"/></g></g></g>
                                 </svg>
-                                Playlist . 110 songs
+                                Playlist . {{countLikedTrack}} songs
                             </li>
                         </ul>
                     </a>
                 </li>
                 <li>
-                    <a class="content_part_three_other" [routerLink]="['/playlist']" *ngFor="let playlist of userPlaylists" (click)="isOldPlaylist(playlist.namePlaylist)">
+                    <a class="content_part_three_other" [routerLink]="['/playlist']" [fragment]="playlist.namePlaylist | encryption" *ngFor="let playlist of userPlaylists">
                         <img src="assets/img/user_playlist/{{playlist.profilePicture}}.jpg" alt="">
                         <ul>
                             <li>{{playlist.namePlaylist}}</li>
@@ -63,7 +63,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="content_part_three_other" [routerLink]="['/album']" fragment="{{album.titleAlbum}}" *ngFor="let album of albums">
+                    <a class="content_part_three_other" [routerLink]="['/album']" [fragment]="album.titleAlbum | encryption" *ngFor="let album of albums">
                         <img src="assets/img/album/{{album.profilePicture}}.jpg" alt="">
                         <ul>
                             <li>{{album.titleAlbum}}</li>
@@ -72,7 +72,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="content_part_three_artist" [routerLink]="['/artist']" fragment="{{artist.nameArtist}}" *ngFor="let artist of artists">
+                    <a class="content_part_three_artist" [routerLink]="['/artist']" [fragment]="artist.nameArtist | encryption" *ngFor="let artist of artists">
                         <img src="assets/img/artist/profil/{{artist.profilePicture}}.jpg" alt="">
                         <ul>
                             <li>{{artist.nameArtist}}</li>
@@ -83,7 +83,7 @@
             </ul>
             <ul *ngIf="isCorrect">
                 <li>
-                    <a class="content_part_three_other" [routerLink]="['/playlist']" *ngFor="let playlist of s_userPlaylists" (click)="isOldPlaylist(playlist.namePlaylist)">
+                    <a class="content_part_three_other" [routerLink]="['/playlist']" [fragment]="playlist.namePlaylist | encryption" *ngFor="let playlist of s_userPlaylists">
                         <img src="assets/img/user_playlist/{{playlist.profilePicture}}.jpg" alt="">
                         <ul>
                             <li>{{playlist.namePlaylist}}</li>
@@ -92,7 +92,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="content_part_three_other" [routerLink]="['/album']" fragment="{{album.titleAlbum}}" *ngFor="let album of s_albums">
+                    <a class="content_part_three_other" [routerLink]="['/album']" [fragment]="album.titleAlbum | encryption" *ngFor="let album of s_albums">
                         <img src="assets/img/album/{{album.profilePicture}}.jpg" alt="">
                         <ul>
                             <li>{{album.titleAlbum}}</li>
@@ -101,7 +101,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="content_part_three_artist" [routerLink]="['/artist']" fragment="{{artist.nameArtist}}" *ngFor="let artist of s_artists">
+                    <a class="content_part_three_artist" [routerLink]="['/artist']" [fragment]="artist.nameArtist | encryption" *ngFor="let artist of s_artists">
                         <img src="assets/img/artist/profil/{{artist.profilePicture}}.jpg" alt="">
                         <ul>
                             <li>{{artist.nameArtist}}</li>

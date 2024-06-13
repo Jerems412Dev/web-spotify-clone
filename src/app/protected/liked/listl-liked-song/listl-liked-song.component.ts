@@ -3,13 +3,15 @@ import { Component, OnInit } from '@angular/core';
 import { TrackService } from '../../../shared/services/Track.service';
 import { Track } from '../../../shared/models/Track';
 import { DataService } from '../../../shared/services/Data.service';
+import { RouterLink } from '@angular/router';
+import { EncryptionPipe } from '../../../shared/pipes/encryption.pipe';
 
 @Component({
   selector: 'app-listl-liked-song',
   standalone: true,
   templateUrl: './listl-liked-song.component.html',
   styleUrls: ['./listl-liked-song.component.css'],
-  imports: [CommonModule]
+  imports: [CommonModule,RouterLink,EncryptionPipe]
 })
 export class ListlLikedSongComponent implements OnInit {
   showPlayPlaylist = false;

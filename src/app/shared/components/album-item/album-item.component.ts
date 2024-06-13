@@ -3,13 +3,14 @@ import { RouterLink } from '@angular/router';
 import { Album } from '../../models/Album';
 import { Track } from '../../models/Track';
 import { DataService } from '../../services/Data.service';
+import { EncryptionPipe } from '../../pipes/encryption.pipe';
 
 @Component({
   selector: 'app-album-item',
   templateUrl: './album-item.component.html',
   styleUrls: ['./album-item.component.css'],
   standalone: true,
-  imports: [RouterLink]
+  imports: [RouterLink,EncryptionPipe]
 })
 export class AlbumItemComponent implements OnInit {
   @ViewChild('playButton') playButton: ElementRef | undefined;

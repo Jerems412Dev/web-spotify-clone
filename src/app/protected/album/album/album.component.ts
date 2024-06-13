@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { DataService } from '../../../shared/services/Data.service';
 import { Track } from '../../../shared/models/Track';
 import { TrackService } from '../../../shared/services/Track.service';
+import { EncryptionService } from '../../../shared/services/Encryption.service';
 
 @Component({
     selector: 'app-album',
@@ -20,12 +21,15 @@ export class AlbumComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, 
               private trackService: TrackService,
-              private dataService: DataService) { }
+              private dataService: DataService,
+              private encrypt: EncryptionService) { }
 
   findAlbum() {
     this.route.fragment.subscribe(fragment => {
-      this.album = this.dataService.getData("home_albums").find(album => album.titleAlbum === fragment);
-      this.findTracks(this.album?.titleAlbum);
+      if(fragment) {
+        this.album = this.dataService.getData("home_albums").find(album => album.titleAlbum === this.encrypt.decrypt(fragment || ''));
+        this.findTracks(this.album?.titleAlbum);
+      }
     });
   }
 

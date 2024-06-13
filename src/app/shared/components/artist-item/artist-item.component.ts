@@ -3,13 +3,14 @@ import { RouterLink } from '@angular/router';
 import { Artist } from '../../models/Artist';
 import { Track } from '../../models/Track';
 import { DataService } from '../../services/Data.service';
+import { EncryptionPipe } from '../../pipes/encryption.pipe';
 
 @Component({
   selector: 'app-artist-item',
   templateUrl: './artist-item.component.html',
   styleUrls: ['./artist-item.component.css'],
   standalone: true,
-  imports: [RouterLink]
+  imports: [RouterLink,EncryptionPipe]
 })
 export class ArtistItemComponent implements OnInit {
   @ViewChild('playButton') playButton: ElementRef | undefined;

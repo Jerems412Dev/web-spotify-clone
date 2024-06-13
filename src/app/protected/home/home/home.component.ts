@@ -40,6 +40,7 @@ export class HomeComponent implements OnInit {
   hc_playlist: Section | undefined;
   hc_artist: Section | undefined;
   hc_album: Section | undefined;
+  user: any;
 
   constructor(private trackService: TrackService,
               private albumService: AlbumService,
@@ -55,6 +56,7 @@ export class HomeComponent implements OnInit {
     this.artistRandom();
     this.categoriesRandom();
     this.playlistRandom();
+    this.user = this.dataService.getOneData("userConnect");
     this.initSectionVariables();
     this.tracklistenRandom();
   }
@@ -142,7 +144,7 @@ export class HomeComponent implements OnInit {
 
   initSectionVariables() {
     this.hc_track = {
-      section: "Made For You",
+      section: "Made For "+this.user.profileName,
       type: "track",
       category: "null"
     };

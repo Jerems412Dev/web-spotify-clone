@@ -8,12 +8,13 @@ import { TokenService } from '../../../shared/services/Token.service';
 import { DataService } from '../../../shared/services/Data.service';
 import { debounceTime } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { SetBackgroundDirective } from '../../directives/SetBackgroundColor.directive';
 @Component({
     selector: 'app-navbar',
     standalone: true,
     templateUrl: './navbar.component.html',
     styleUrls: ['./navbar.component.css'],
-    imports: [CommonModule, ClickOutsideDirective, AutoFocusDirective, RouterLink]
+    imports: [CommonModule, ClickOutsideDirective, AutoFocusDirective, RouterLink,SetBackgroundDirective]
 })
 export class NavbarComponent implements OnInit {
   showDiv = false;

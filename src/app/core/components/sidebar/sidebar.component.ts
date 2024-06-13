@@ -9,13 +9,15 @@ import { UserPlaylistService } from '../../../shared/services/UserPlaylist.servi
 import { ArtistService } from '../../../shared/services/Artist.service';
 import { Artist } from '../../../shared/models/Artist';
 import { debounceTime } from 'rxjs';
+import { TrackService } from '../../../shared/services/Track.service';
+import { EncryptionPipe } from '../../../shared/pipes/encryption.pipe';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css'],
   standalone: true,
-  imports: [CommonModule,RouterLink]
+  imports: [CommonModule,RouterLink,EncryptionPipe]
 })
 export class SidebarComponent implements OnInit { 
   userPlaylists: UserPlaylist[] | undefined;
@@ -27,12 +29,14 @@ export class SidebarComponent implements OnInit {
   s_userPlaylists: UserPlaylist[] | undefined;
   value = '';
   isCorrect = false;
+  countLikedTrack = 0;
 
   constructor(private router: Router,
               private data: DataService,
               private albumService: AlbumService,
               private artistService: ArtistService,
-              private userPlaylistService: UserPlaylistService,) {
+              private trackService: TrackService,
+              private userPlaylistService: UserPlaylistService) {
       
   }
 
@@ -51,11 +55,8 @@ export class SidebarComponent implements OnInit {
   }
 
   isNewPlaylist() {
-    this.data.setData("u_playlist",null);
-  }
-
-  isOldPlaylist(value: string) {
-    this.data.setData("u_playlist",this.data.getData("user_playlists").find(playlist => playlist.namePlaylist === value));
+    localStorage.removeItem('old_playlist');
+    this.data.setData("new_playlist",null);
   }
 
   findAlbumLiked() {
@@ -112,6 +113,13 @@ export class SidebarComponent implements OnInit {
     );
   }
 
+  findCountTrackLiked() {
+    let user: any = this.data.getOneData("userConnect");
+    this.trackService.findTrackByUsername(user.sub).subscribe(list => {
+      this.countLikedTrack = list.length;
+    });
+  }
+
   onInputChange(event: any): void {
     debounceTime(900);
     this.checkIfWriting(event.target.value);
@@ -130,7 +138,6 @@ export class SidebarComponent implements OnInit {
       this.s_userPlaylists = [];
     } 
   }
-
 
   ngOnInit() {
     this.user = this.data.getOneData("userConnect");
@@ -157,6 +164,7 @@ export class SidebarComponent implements OnInit {
         this.artists?.push(data);
       }
     });
+    this.findCountTrackLiked();
   }
 
 }

@@ -18,10 +18,10 @@ export class ListArtistSongComponent implements OnInit {
   seeMoreLessContent = "See more";
   @Input("tracks") tracks: Track[] | undefined;
   @Input("artist") artist: Artist | undefined;
+  @Input("isFollow") isFollow: boolean = false;
   track: Track | undefined;
   nb = 0;
   listen: number = Math.floor(Math.random() * (50000000 - 5000)) + 5000;
-  isFollow = false;
 
   constructor(private dataService: DataService,
               private artistService: ArtistService) { }
@@ -75,11 +75,10 @@ export class ListArtistSongComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.isFollowing();
+    
   }
 
   ngAfterViewInit() {
-    
   }
 
 }
