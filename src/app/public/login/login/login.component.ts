@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthenticationService } from '../../../shared/services/Authentication.service';
 import { Router } from '@angular/router';
 import { TokenService } from '../../../shared/services/Token.service';
 import { DataService } from '../../../shared/services/Data.service';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
@@ -11,9 +12,11 @@ import { DataService } from '../../../shared/services/Data.service';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  imports: [FormsModule,ReactiveFormsModule]
+  imports: [FormsModule,ReactiveFormsModule,CommonModule]
 })
 export class LoginComponent {
+  showPassword: boolean = false;
+  @ViewChild("isToggle") isToggle: ElementRef | undefined;
   loginForm: FormGroup;
 
   constructor(private route:Router,
@@ -41,6 +44,14 @@ export class LoginComponent {
         }
       });
     }
+  }
+
+  togglePassword() {
+    this.showPassword = !this.showPassword;
+    if(this.isToggle?.nativeElement) {
+      (!this.showPassword) ? this.isToggle.nativeElement.type = "password" : this.isToggle.nativeElement.type = "text";
+    }
+    
   }
 
 }

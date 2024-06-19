@@ -3,59 +3,61 @@
   src: url('assets/police/CircularStd-Medium.ttf') format('truetype');
 }
 
-body {
-    background-color: black;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'CircularStd';
-    font-display: swap;
-    color: white;
-    justify-content: center;
-    align-items: center;
-    letter-spacing: .5px;
+:root {
+  --base-color-background-public: #171717;
+  --base-color-background-home: #1f1f1f;
+  --base-color-recently: #262626;
+  --base-color-sidebar-genre: #2a2a2a;
+  --base-color-back-input-sidebar: #2f2f2f;
+  --base-color-green: #1ed760;
+  --base-color-edit-playlist: #242424;
+
+  --font-color-gray: #ffffffa5;
+  --font-family: 'CircularStd';
 }
 
-@media (max-width:992px) {
-  body{
-    display: none;
-  }
+body {
+  background-color: black;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-family);
+  font-display: swap;
+  color: white;
 }
 
 /*scrollbar*/
 
 /* For WebKit (Chrome, Safari) */
 ::-webkit-scrollbar {
-    width: 15px;
-  }
-  
-  ::-webkit-scrollbar-track {
-    background-color: black;
-    opacity: .7;
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background-color: rgb(105, 105, 105);
-    opacity: .7;
-  }
-  
-  /* For Microsoft Edge */
-  /* Notez que Edge utilise la propriété -ms-overflow-style */
-  * {
-    -ms-overflow-style: none;
-  }
-  
-  *::-ms-scrollbar {
-    width: 15px;
-  }
-  
-  *::-ms-scrollbar-track {
-    background-color: black;
-    opacity: .7;
-  }
-  
-  *::-ms-scrollbar-thumb {
-    background-color: rgb(105, 105, 105);
-    opacity: .7;
-  }
-  
+  width: 15px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: black;
+  opacity: .7;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(105, 105, 105);
+  opacity: .7;
+}
+
+/* For Microsoft Edge */
+* {
+  -ms-overflow-style: none;
+}
+
+*::-ms-scrollbar {
+  width: 15px;
+}
+
+*::-ms-scrollbar-track {
+  background-color: black;
+  opacity: .7;
+}
+
+*::-ms-scrollbar-thumb {
+  background-color: rgb(105, 105, 105);
+  opacity: .7;
+}
