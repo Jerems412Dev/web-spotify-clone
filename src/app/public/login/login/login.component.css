@@ -76,7 +76,7 @@
                         align-items: center;
                         justify-content: space-between;
             
-                        input {
+                        input,input:focus,input:active {
                             background-color: transparent;
                             appearance: none;
                             outline: none;
@@ -239,7 +239,7 @@
                         align-items: center;
                         justify-content: space-between;
             
-                        input {
+                        input,input:focus,input:active {
                             background-color: transparent;
                             appearance: none;
                             outline: none;
