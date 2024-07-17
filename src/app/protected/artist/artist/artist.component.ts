@@ -113,6 +113,7 @@ export class ArtistComponent implements OnInit {
   }
 
   ngAfterViewInit() {
+    this.findArtist();
     this.trackList(this.artist?.nameArtist);
       this.albumRandom();
       this.artistRandom();
