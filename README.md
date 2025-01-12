@@ -71,7 +71,7 @@ Users should be able to:
 - CSS custom properties
 - Flexbox
 - CSS Grid
-- [Angular Js](https://angular.dev/) - Javascript framework
+- [Angular](https://angular.dev/) - Typescript framework
 
 ### What I learned
 
